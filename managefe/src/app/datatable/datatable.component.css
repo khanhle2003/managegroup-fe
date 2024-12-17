@@ -1,0 +1,55 @@
+.data-table {
+    width: 100%;
+    table-layout: fixed; 
+}
+
+
+table {
+    width: 120%;
+    border-collapse: collapse; 
+}
+
+th, td {
+    height: 65px;
+    width: 150px;
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    margin: 0 10px;
+    padding: 5px 10px;
+  }
+  
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .data-table th, .data-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .data-table th {
+    background-color: #f2f2f2;
+  }
+  .pagination input {
+    width: 50px;
+    text-align: center;
+    margin: 0 5px;
+    padding: 2px;
+  }
+  
+  .pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+  }

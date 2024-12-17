@@ -1,3 +1,5 @@
 import { Routes } from '@angular/router';
-
-export const routes: Routes = [];
+import { DatatableComponent } from './datatable/datatable.component';
+export const routes: Routes = [
+    {path: 'data-table',component:DatatableComponent}
+];

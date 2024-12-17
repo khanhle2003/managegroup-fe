@@ -1,0 +1,68 @@
+<table class="data-table">
+    <thead>
+        <tr>
+  
+            <th>Họ và Tên</th>
+            <th>Đơn vị</th>
+            <th>Quốc gia</th>
+            <th>Mục đích chuyến đi</th>
+            <th>Chức vụ</th>
+            <th>Tự túc</th>
+            <th>Nhà tài trợ</th>
+            <th>Bệnh viện</th>
+            <th>HĐBC</th>
+            <th>Đơn vị mời</th>
+            <th>Đoàn</th>
+            <th>Đảng viên</th>
+            <th>Số chuyến đi nước ngoài</th>
+            <th>Số thông báo</th>
+            <th>Ngày thông báo</th>
+            <th>Thành phố</th>
+            <th>Ngày bắt đầu</th>
+            <th>Ngày kết thúc</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of data; track $index) {
+            <tr>
+
+                <td>{{item.fullName}}</td>
+                <td>{{item.unit}}</td>
+                <td>{{item.country}}</td>
+                <td>{{item.tripPurpose}}</td>
+                <td>{{item.jobTitle || ''}}</td>
+                <td>{{item.selfFunded || ''}}</td>
+                <td>{{item.sponsor || ''}}</td>
+                <td>{{item.hospital}}</td>
+                <td>{{item.hdBc || ''}}</td>
+                <td>{{item.invitationUnit || ''}}</td>
+                <td>{{item.doan || ''}}</td>
+                <td>{{item.partyMember || ''}}</td>
+                <td>{{item.foreignTripCount || ''}}</td>
+                <td>{{item.notificationNumber || ''}}</td>
+                <td>{{item.notificationDate || ''}}</td>
+                <td>{{item.city || ''}}</td>
+                <td>{{item.startDate | date:'shortDate'}}</td>
+                <td>{{item.endDate | date:'shortDate'}}</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Trang trước</button>
+    
+    <span>Trang 
+      <input 
+        type="number" 
+        [(ngModel)]="pageInput" 
+        (keyup.enter)="goToPage()"
+        min="1"     
+        [max]="getTotalPages()"
+        style="width: 50px; margin: 0 5px;"
+      /> 
+      / {{getTotalPages()}}
+    </span>
+    
+    <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()">Trang sau</button>
+    <button (click)="goToPage()">Đi</button>
+  </div>
