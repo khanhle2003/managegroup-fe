@@ -10,7 +10,7 @@ table {
 }
 
 th, td {
-    height: 65px;
+    height: 100px;
     width: 150px;
     padding: 12px;
     text-align: left;
@@ -53,3 +53,15 @@ th, td {
     margin: 0 5px;
     padding: 5px 10px;
   }
+  .filter-section {
+    margin: 20px 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .filter-section input[type="date"] {
+    padding: 5px;
+    margin: 0 10px;
+  }
+  

@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 @Component({
   selector: 'app-datatable',
   standalone: true,
@@ -18,15 +17,30 @@ export class DatatableComponent implements OnInit {
   totalItems = 0;
   pageInput=1;
   originalData: any[] = [];
+startDateFilter: string = "";
+endDateFilter : string = "";
+showCheckbox :boolean = false;
+selectdItem: any []= [];
 
 
+
+hideCheckbox(){
+this.showCheckbox =  !this.showCheckbox;
+}
+
+
+selectAll(event : any ){
+  const checked = event.target.checked
+  this.data.forEach(item => item.selected = checked)
+
+}
 ngOnInit(): void {  
    this.fetchData();
 }
-fetchData(){
-  this.httpClient.get('http://localhost:8080/main/trips')
+fetchData(){//fetch data
+  this.httpClient.get('http://localhost:8080/main/datas')
   .subscribe((data:any) => {
-    console.log(data); 
+   
     this.data=data;
     this.originalData = data;
     this.loadPage(1)
@@ -34,12 +48,30 @@ fetchData(){
 }
 loadPage(page: number) {
   this.currentPage = page;
-  this.pageInput = page; // Đồng bộ giá trị input với trang hiện tại
+  this.pageInput = page; 
   const startIndex = (page - 1) * this.itemsPerPage;
   const endIndex = startIndex + this.itemsPerPage;
-  
+  let filteredData = this. originalData;
   this.data = this.originalData.slice(startIndex, endIndex);
   this.totalItems = this.originalData.length;
+  if (this.startDateFilter) {
+    filteredData = filteredData.filter(item => 
+     item.startDate && new Date(item.startDate) >= new Date(this.startDateFilter)//loai bo nhung o khong co ngay`
+    );
+  } 
+  if (this.endDateFilter) {
+    filteredData = filteredData.filter(item => 
+     item.endDate && new Date(item.endDate) <= new Date(this.endDateFilter)
+    );
+  }
+
+  
+  this.data = filteredData.slice(startIndex, endIndex);
+  this.totalItems = filteredData.length;
+}
+applyDateFilter(){
+  this.loadPage(1);
+
 }
 
 goToPage() {
@@ -66,5 +98,10 @@ prevPage() {
 
 getTotalPages(): number {
   return Math.ceil(this.totalItems / this.itemsPerPage);
+}
+clearDateFilter(){
+  this.endDateFilter = '';
+  this.startDateFilter = '';
+  this.loadPage(1);
 }
 }
