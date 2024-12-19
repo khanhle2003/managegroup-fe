@@ -1,7 +1,29 @@
+<!-- Thêm bộ lọc ngày vào trước bảng -->
+<div class="filter-section">
+    <label>
+      Từ ngày: 
+      <input type="date" [(ngModel)]="startDateFilter">
+    </label>
+
+    <label>
+      Đến ngày: 
+      <input type="date" [(ngModel)]="endDateFilter">
+    </label>
+    <button (click)="applyDateFilter()" label="Lọc">Lọc</button>   
+     <button (click)="clearDateFilter()" label="Hủy lọc">Hủy lọc</button>
+
+  </div>
+  <div>
+    <button (click) = "hideCheckbox()" >Chọn</button>
+  </div>
+  
+<div >
 <table class="data-table">
     <thead>
         <tr>
-  
+            <th *ngIf="showCheckbox">
+                <input type="checkbox" (change)="selectAll($event)">
+            </th>
             <th>Họ và Tên</th>
             <th>Đơn vị</th>
             <th>Quốc gia</th>
@@ -25,7 +47,9 @@
     <tbody>
         @for (item of data; track $index) {
             <tr>
-
+                <td *ngIf="showCheckbox"> 
+                    <input type="checkbox" [(ngModel)]="item.selected">
+                </td>
                 <td>{{item.fullName}}</td>
                 <td>{{item.unit}}</td>
                 <td>{{item.country}}</td>
@@ -48,6 +72,7 @@
         }
     </tbody>
 </table>
+</div>
 <div class="pagination">
     <button (click)="prevPage()" [disabled]="currentPage === 1">Trang trước</button>
     
