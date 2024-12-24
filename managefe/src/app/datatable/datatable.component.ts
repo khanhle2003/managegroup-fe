@@ -26,11 +26,15 @@ selectdItem: any []= [];
 
 hideCheckbox(){
 this.showCheckbox =  !this.showCheckbox;
+  if (!this.showCheckbox) {
+    this.originalData.forEach(item => item.selected = false); 
+    this.data.forEach(item => item.selected = false);}
 }
 
 
 selectAll(event : any ){
   const checked = event.target.checked
+  this.originalData.forEach(item => item.selected = checked)
   this.data.forEach(item => item.selected = checked)
 
 }
@@ -38,7 +42,7 @@ ngOnInit(): void {
    this.fetchData();
 }
 fetchData(){//fetch data
-  this.httpClient.get('http://localhost:8080/main/datas')
+  this.httpClient.get('http://localhost:8080/datas')
   .subscribe((data:any) => {
    
     this.data=data;
@@ -56,7 +60,7 @@ loadPage(page: number) {
   this.totalItems = this.originalData.length;
   if (this.startDateFilter) {
     filteredData = filteredData.filter(item => 
-     item.startDate && new Date(item.startDate) >= new Date(this.startDateFilter)//loai bo nhung o khong co ngay`
+     item.startDate && new Date(item.startDate) >= new Date(this.startDateFilter)
     );
   } 
   if (this.endDateFilter) {
@@ -95,7 +99,7 @@ prevPage() {
     this.loadPage(this.currentPage - 1);
   }
 }
-
+// 
 getTotalPages(): number {
   return Math.ceil(this.totalItems / this.itemsPerPage);
 }
@@ -104,4 +108,31 @@ clearDateFilter(){
   this.startDateFilter = '';
   this.loadPage(1);
 }
+
+
+ exportSelected() {
+    const selectedData = this.originalData.filter(item => item.selected);
+    if (selectedData.length === 0) {
+      alert('Vui long chon 1 o');
+      return;
+    }
+
+    this.httpClient.post('http://localhost:8080/api/export', selectedData, {
+      responseType: 'blob'  
+    }).subscribe(
+      (response: Blob) => {
+        const blob = new Blob([response], { type: 'application/vnd.ms-excel' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'exported_data.xlsx';
+        link.click();
+      },
+      error => {
+        console.error('Export failed:', error);
+        alert('Xuất file thất bại');
+      }
+    );
+  }
+
 }
