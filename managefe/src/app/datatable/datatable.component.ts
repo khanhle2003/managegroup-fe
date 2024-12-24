@@ -26,6 +26,9 @@ selectdItem: any []= [];
 
 hideCheckbox(){
 this.showCheckbox =  !this.showCheckbox;
+  if (!this.showCheckbox) {
+    this.originalData.forEach(item => item.selected = false); 
+    this.data.forEach(item => item.selected = false);}
 }
 
 
@@ -57,7 +60,7 @@ loadPage(page: number) {
   this.totalItems = this.originalData.length;
   if (this.startDateFilter) {
     filteredData = filteredData.filter(item => 
-     item.startDate && new Date(item.startDate) >= new Date(this.startDateFilter)//loai bo nhung o khong co ngay`
+     item.startDate && new Date(item.startDate) >= new Date(this.startDateFilter)
     );
   } 
   if (this.endDateFilter) {
@@ -96,7 +99,7 @@ prevPage() {
     this.loadPage(this.currentPage - 1);
   }
 }
-
+// 
 getTotalPages(): number {
   return Math.ceil(this.totalItems / this.itemsPerPage);
 }
@@ -115,7 +118,7 @@ clearDateFilter(){
     }
 
     this.httpClient.post('http://localhost:8080/api/export', selectedData, {
-      responseType: 'blob'  // Quan trọng: để nhận file Excel
+      responseType: 'blob'  
     }).subscribe(
       (response: Blob) => {
         const blob = new Blob([response], { type: 'application/vnd.ms-excel' });
