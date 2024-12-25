@@ -26,7 +26,8 @@ export class DatatableComponent implements OnInit {
   searchTerm = '';
   startDate = '';
   endDate = '';
-
+  showCheckbox :boolean = false;
+  selectdItem: any []= [];
   ngOnInit(): void {
     this.fetchData();
   }
@@ -38,7 +39,20 @@ export class DatatableComponent implements OnInit {
       this.loadPage(1);
     });
   }
+  hideCheckbox(){
+    this.showCheckbox =  !this.showCheckbox;
+    if (!this.showCheckbox) {
+      this.originalData.forEach(item => item.selected = false);
+      this.data.forEach(item => item.selected = false);}
+  }
 
+
+  selectAll(event : any ){
+    const checked = event.target.checked
+    this.originalData.forEach(item => item.selected = checked)
+    this.data.forEach(item => item.selected = checked)
+
+  }
   loadPage(page: number) {
     this.currentPage = page;
     this.pageInput = page; // Đồng bộ giá trị input với trang hiện tại
@@ -100,6 +114,30 @@ export class DatatableComponent implements OnInit {
     this.endDate = '';
     this.filteredData = [...this.originalData];
     this.loadPage(1); // Tải lại trang đầu tiên
+  }
+  exportSelected() {
+    const selectedData = this.originalData.filter(item => item.selected);
+    if (selectedData.length === 0) {
+      alert('Vui long chon 1 o');
+      return;
+    }
+
+    this.httpClient.post('http://localhost:8080/api/export', selectedData, {
+      responseType: 'blob'
+    }).subscribe(
+      (response: Blob) => {
+        const blob = new Blob([response], { type: 'application/vnd.ms-excel' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'exported_data.xlsx';
+        link.click();
+      },
+      error => {
+        console.error('Export failed:', error);
+        alert('Xuất file thất bại');
+      }
+    );
   }
 }
 

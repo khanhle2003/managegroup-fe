@@ -10,7 +10,12 @@
       style="padding: 5px; width: 200px;"
     />
   </div>
-
+  <div>
+    <button (click) = "hideCheckbox()" >Chọn DL</button>
+  </div>
+  <div>
+    <button (click) = "exportSelected()" >Xuất DL</button>
+  </div>
   <div style="display: flex; align-items: center; gap: 5px;">
     <label for="startDate">Từ ngày:</label>
     <input
@@ -53,6 +58,9 @@
 <table class="data-table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
   <thead>
     <tr>
+      <th *ngIf="showCheckbox">
+        <input type="checkbox" (change)="selectAll($event)">
+      </th>
       <th>Họ và Tên</th>
       <th>Đơn vị</th>
       <th>Quốc gia</th>
@@ -74,7 +82,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of data">
+    <tr
+      *ngFor="let item of data">
+      <td *ngIf="showCheckbox">
+        <input type="checkbox" [(ngModel)]="item.selected">
+      </td>
       <td>{{ item.fullName }}</td>
       <td>{{ item.unit }}</td>
       <td>{{ item.country }}</td>
