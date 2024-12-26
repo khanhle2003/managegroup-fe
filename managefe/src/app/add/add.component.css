@@ -1,0 +1,46 @@
+table{
+    font-size: 20px;
+}
+.textBox{
+    font-size: 17px;
+    width: 400px;
+    margin: 0px 0px 0px 20px;
+}
+.datePicker{
+    font-size: 17px;
+}
+.comboBox{
+    font-size: 17px;
+}
+.numberBox{
+    font-size: 17px;
+    width: 50px;
+    margin: 0px 0px 0px 20px;
+}
+label{
+    margin: 0px 0px 0px 20px;
+}
+button{
+    font-size: 17px;
+    height: 30px;
+    width:150px;
+    margin: 20px auto 0px auto
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
+.body{
+    width: fit-content;
+}
+.button1{
+    font-size: 17px;
+    height: 30px;
+    width:150px;
+    margin: 20px auto 0px auto
+}
+.phonenumber::-webkit-outer-spin-button,
+    .phonenumber::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
