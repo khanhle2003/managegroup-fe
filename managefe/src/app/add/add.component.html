@@ -1,0 +1,121 @@
+<div class="body">
+    <form (ngSubmit)="saveData()">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Full Name:</td>
+                    <td><label><input class="textBox" type="text" name="FullName" id="FullName" [(ngModel)] = "dataAdd.fullname" required></label></td>
+                </tr>
+                <tr>
+                    <td>
+                        Ngày sinh:
+                        <input class="datePicker" type="date" name="dob" required>
+                    </td>
+                    <td>
+                        <label>Giới tính: </label>
+                        <select class="comboBox" name="gender">
+                            <option value="male">Nam</option>
+                            <option value="female">Nữ</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Đảng viên:
+                        <input  type="checkbox" name="dangvien" value="Yes">
+                    </td>
+                    <td>
+                        <label>Chức vụ Đảng(nếu có):</label>
+                        <input class="textBox" style="margin-left: 0px; width: 212px;" type="text" name="PartyMember" id="PartyMember" [(ngModel)] = "dataAdd.partyMember">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="jobType" value="nvHopDong" required>Nhân viên hợp đồng
+                        <input type="radio" name="jobType" value="vienChuc" required>Viên Chức
+                    </td>
+                    <td>
+                        <label>Chức danh nghề nghiệp:</label>
+                        <input class="textBox" style="margin-left: 0px; width: 204px;" type="text" name="JobTitle" id="JobTitle" [(ngModel)] = "dataAdd.jobTitle" required>
+                    </td>   
+                </tr>
+                <tr>
+                    <td>Chức vụ chính quyền(Nếu có):</td>
+                    <td><input class="textBox" type="text" name="position"></td>
+                </tr>
+                <tr>
+                    <td>Đơn vị công tác:</td>
+                    <td><input class="textBox" type="text" name="Unit" id="Unit" required [(ngModel)] = "dataAdd.unit" required></td>
+                </tr>
+                <tr>
+                    <td>
+                        SĐT:<input class="phonenumber" style="width: 250px; font-size: 17px;" type="number" name="phoneNumber" required>
+                    </td>
+                    <td>
+                        <label>Email:</label>
+                        <input style="width: 347px; font-size: 17px;" type="email" name="email" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Quốc gia/Vùng lành thổ đến:</td>
+                    <td><input class="textBox" type="text" name="Country" id="Country"  [(ngModel)] = "dataAdd.country" required></td>
+                </tr>
+                <tr>
+                    <td>Tên cơ quan/Tổ chức/Cá nhân mời (nếu có)</td>
+                    <td><input class="textBox" type="text" name="InvitationUnit" id="InvitationUnit" [(ngModel)] = "dataAdd.invitationUnit" required></td>
+                </tr>
+                <tr>
+                    <td>
+                        Thời gian:
+                        <label>Từ ngày </label>
+                        <input class="datePicker" type="date" name="StartDate" id="StartDate" required [(ngModel)] = "dataAdd.startDate" required>
+                    </td>
+                    <td>
+                        <label>đến ngày</label>
+                        <input class="datePicker" type="date" name="EndDate" id="EndDate" required [(ngModel)] = "dataAdd.endDate" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mục đích chuyến đi:</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="TripPurpose" value="congtac" id="TripPurpose1" [(ngModel)] = "dataAdd.tripPurpose" required>Công tác
+                        <input style="margin-left: 70px;" type="radio" name="TripPurpose" id="TripPurpose2" value="hoctap" [(ngModel)] = "dataAdd.tripPurpose" required>Học tập/Tập huấn
+                    </td>
+                    <td>
+                        <input style="margin-left: 50px;" type="radio" name="TripPurpose" id="TripPurpose3" value="viecrieng" [(ngModel)] = "dataAdd.tripPurpose" required>Việc Riêng
+                        <input style="margin-left: 70px;" type="radio" name="TripPurpose" id="TripPurpose4" value="nghikoluong" [(ngModel)] = "dataAdd.tripPurpose" required>Nghỉ không lương
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Nguồn kinh phí:</div><br>
+                        <div>- Bên mời:</div><br>
+                        <div>- Cá nhân tự túc:</div><br>
+                        <div>- Bệnh viện tài trợ:</div><br>
+                    </td>
+                    <td>
+                        <br><br>
+                        <div><input class="textBox" type="text" name="Sponsor" id="Sponsor" [(ngModel)] = "dataAdd.sponsor" ></div><br>
+                        <div><input class="textBox" type="text" name="SelfFunded" id="SelfFunded" [(ngModel)] = "dataAdd.selfFunded" ></div><br>
+                        <div><input class="textBox" type="text" name="Hospital" id="Hospital" [(ngModel)] = "dataAdd.hospital" ></div><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Số lần xin đi nước ngoài trong năm 2024</td>
+                    <td><input class="numberBox" type="number" name="ForeignTripCount" id="ForeignTripCount" [(ngModel)] = "dataAdd.foreignTripCount" required></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="buttons">
+            <button type="reset">Reset Form</button>
+            <button type="submit">Submit Form</button>
+            <button>Export Form</button>
+            <a href="" style=" background-color: #efefef; color: black; text-decoration: none;font-size: 17px; border: solid black 1px; font-family: Arial, Helvetica, sans-serif; height: 28px; width: 150px; text-align: center;margin-top: 20px ; margin-left: 20px;">
+                Back to home
+              </a>
+        </div>
+    </form>
+    <p *ngIf="message">{{ message }}</p>
+</div>
