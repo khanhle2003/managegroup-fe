@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dăng nhập</title>
-  <link rel="stylesheet" href="login.component.css">
-</head>
-<body>
+
 <div class="container">
   <div class="form">
     <h2>Đăng nhập</h2>
-    <input type="email" placeholder="Email" required>
-    <input type="password" placeholder="Mật khẩu" required>
-    <button>Đăng nhập </button>
+    <form (ngSubmit)="login()">
+      <input type="email" [(ngModel)]="username" name="email" placeholder="Email" required>
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Mật khẩu" required>
+      <button type="submit">Đăng nhập</button>
+    </form>
     <p class="toggle">
       <a href="data-table">Trang chủ </a>
-      <a href="register"> Bạn không có tài khoản? Đăng kí</a>
+      <a href="register"> {{decodedToken | json}}</a>
     </p>
   </div>
 </div>
-</body>
-</html>

@@ -3,6 +3,8 @@ import { DatatableComponent } from './datatable/datatable.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
+import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'data-table', pathMatch: 'full' },
@@ -12,4 +14,8 @@ export const routes: Routes = [
 
 
 ];
-
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
