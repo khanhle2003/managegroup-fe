@@ -24,7 +24,7 @@ export class RegisterComponent {
     console.log('Sending data:', this.userData);
     this.http.post('http://localhost:8080/auth/register', this.userData).subscribe({
       next: (response) => console.log('Success:', response),
-      error: (error) => console.error('Error:', error)
+      
     });
   }
 }
