@@ -20,25 +20,27 @@ export class LoginComponent {
 
   constructor(private http: HttpClient, private router: Router){
   //   this.decodedToken = this.jwtDecodeService.decodeToken('eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImtoYW5oMTIzIiwic3ViIjoia2hhbmgxMjMiLCJpYXQiOjE3MzUxODUxOTUsImV4cCI6MTczNTIyMTE5NX0.EjzDsU6W-o74GgeW9u5Nen6PdGMq9eXOQzWFVZ50mZ8')
-   
+
   }
 
 login() {
   const credentials = { username: this.username, password: this.password };
-  
+
   this.http.post('http://localhost:8080/auth/login', credentials, {
     headers: { 'Content-Type': 'application/json' },
-    responseType: 'text' 
+    responseType: 'text'
   }).subscribe({
     next: (response: any) => {
-      console.log('Full response:', response);  
-      
+      this.router.navigate(['/data-table'], { replaceUrl: true }).then(() => {
+        location.reload();
+      });
+
+      console.log('API response:', response);
       if (response.body && response.body.token) {
          localStorage.setItem('jwt', response.body.token);
         this.decodedToken = this.jwtDecodeService.decodeToken(response.body.token);
         console.log('Decoded token:', response);
-        this.router.navigate(['/data-table']);
-        
+
       }     },
     error: (error) => {
       console.error('Error details:', {

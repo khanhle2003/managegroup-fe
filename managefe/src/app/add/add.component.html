@@ -37,7 +37,7 @@
                     <td>
                         <label>Chức danh nghề nghiệp:</label>
                         <input class="textBox" style="margin-left: 0px; width: 204px;" type="text" name="JobTitle" id="JobTitle" [(ngModel)] = "dataAdd.jobTitle" required>
-                    </td>   
+                    </td>
                 </tr>
                 <tr>
                     <td>Chức vụ chính quyền(Nếu có):</td>
@@ -89,6 +89,14 @@
                     </td>
                 </tr>
                 <tr>
+                  <td>Số thông báo</td>
+                  <td><input class="textBox" type="text" name="FullName" id="notificationNumber" [(ngModel)] = "dataAdd.notificationNumber" required></td>
+                </tr>
+                <tr>
+                  <td>Ngày thông báo</td>
+                  <td><input class="datePicker" type="date" name="EndDate" id="notificationDate" required [(ngModel)] = "dataAdd.notificationDate" required></td>
+                </tr>
+                <tr>
                     <td>
                         <div>Nguồn kinh phí:</div><br>
                         <div>- Bên mời:</div><br>
@@ -111,8 +119,7 @@
         <div class="buttons">
             <button type="reset">Reset Form</button>
             <button type="submit">Submit Form</button>
-            <button>Export Form</button>
-            <a href="" style=" background-color: #efefef; color: black; text-decoration: none;font-size: 17px; border: solid black 1px; font-family: Arial, Helvetica, sans-serif; height: 28px; width: 150px; text-align: center;margin-top: 20px ; margin-left: 20px;">
+            <a href="/data-table" style=" background-color: #efefef; color: black; text-decoration: none;font-size: 17px; border: solid black 1px; font-family: Arial, Helvetica, sans-serif; height: 28px; width: 150px; text-align: center;margin-top: 20px ; margin-left: 20px;">
                 Back to home
               </a>
         </div>

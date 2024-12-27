@@ -5,12 +5,14 @@ import { RegisterComponent } from './register/register.component';
 
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+import {AddComponent} from "./add/add.component";
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'data-table', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: 'data-table',component:DatatableComponent},
   {path: 'login',component:LoginComponent},
-  {path: 'register',component:RegisterComponent}
+  {path: 'register',component:RegisterComponent},
+  {path: 'add-data',component:AddComponent}
 
 
 ];
