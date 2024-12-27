@@ -18,14 +18,11 @@ export class AddComponent implements OnInit{
   message: string = '';
   private apiUrl = "http://localhost:8080/add"
   constructor(private router : Router){
-    
+
   }
 
   ngOnInit(): void {
-    
-  }
-  onSubmit(){
-    console.log(this.dataAdd);
+
   }
 
   saveData(){
@@ -33,6 +30,7 @@ export class AddComponent implements OnInit{
       (response) => {
         this.message = 'User added successfully!';
         console.log(this.dataAdd);
+
       },
       (error) => {
         console.error('Error adding user:', error);
@@ -47,6 +45,7 @@ export class AddComponent implements OnInit{
       return this.httpClient.post(this.apiUrl, dataAdd);
     }
 }
+
 export class DataAdd{
   fullname:string="";
   unit:string="";
@@ -59,6 +58,8 @@ export class DataAdd{
   invitationUnit:string="";
   partyMember:string="";
   foreignTripCount:number=0;
+  notificationNumber:string="";
+  notificationDate:string="";
   startDate:string="";
   endDate:string="";
 }

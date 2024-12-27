@@ -19,7 +19,7 @@ export class DatatableComponent implements OnInit {
   filteredData: any[] = [];
   data: any[] = [];
   currentPage = 1;
-  itemsPerPage = 14;
+  itemsPerPage = 13;
   totalItems = 0;
   pageInput = 1;
 
@@ -28,7 +28,7 @@ export class DatatableComponent implements OnInit {
   startDate = '';
   endDate = '';
   showCheckbox :boolean = false;
-  selectdItem: any []= [];
+
   ngOnInit(): void {
     this.fetchData();
   }
@@ -50,7 +50,6 @@ export class DatatableComponent implements OnInit {
 
   selectAll(event : any ){
     const checked = event.target.checked
-    this.originalData.forEach(item => item.selected = checked)
     this.data.forEach(item => item.selected = checked)
 
   }
@@ -59,7 +58,11 @@ export class DatatableComponent implements OnInit {
     this.pageInput = page; // Đồng bộ giá trị input với trang hiện tại
     const startIndex = (page - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-
+    this.filteredData.sort((a: any, b: any) => {
+      const dateA = new Date(a.startDate).getTime();
+      const dateB = new Date(b.startDate).getTime();
+      return dateB - dateA;
+    });
     this.data = this.filteredData.slice(startIndex, endIndex);
     this.totalItems = this.filteredData.length;
   }
@@ -88,26 +91,26 @@ export class DatatableComponent implements OnInit {
     return Math.ceil(this.totalItems / this.itemsPerPage);
   }
 
-  // Search and Reset Logic
 
   filterData() {
-    const term = this.searchTerm.toLowerCase();
+    const term = this.searchTerm.toLowerCase() || '';
     const start = this.startDate ? new Date(this.startDate).getTime() : null;
     const end = this.endDate ? new Date(this.endDate).getTime() : null;
-
     this.filteredData = this.originalData.filter((item) => {
-      const nameMatch = item.fullName.toLowerCase().includes(term);
-      const itemStartDate = new Date(item.startDate).getTime();
-      const itemEndDate = new Date(item.endDate).getTime();
+      const nameMatch = item.fullName?.toLowerCase().includes(term) || false;
+      const countryMatch = item.country?.toLowerCase().includes(term) || false;
+      const unitMatch = item.unit?.toLowerCase().includes(term) || false;
+      const notiMatch = item.notificationDate?.toLowerCase().includes(term) || false;
+      const itemStartDate = item.startDate ? new Date(item.startDate).getTime() : null;
+      const itemEndDate = item.endDate ? new Date(item.endDate).getTime() : null;
       const dateInRange =
-        (!start || itemStartDate >= start) &&
-        (!end || itemEndDate <= end);
-
-      return nameMatch && dateInRange;
+        (!start || (itemStartDate && itemStartDate >= start)) &&
+        (!end || (itemEndDate && itemEndDate <= end));
+      return (nameMatch || countryMatch || unitMatch || notiMatch) && dateInRange;
     });
-
-    this.loadPage(1); // Quay về trang đầu sau khi lọc
+    this.loadPage(1);
   }
+
 
   resetFilters() {
     this.searchTerm = '';
@@ -116,10 +119,11 @@ export class DatatableComponent implements OnInit {
     this.filteredData = [...this.originalData];
     this.loadPage(1); // Tải lại trang đầu tiên
   }
-  exportSelected() {
+
+  exportExcel() {
     const selectedData = this.originalData.filter(item => item.selected);
     if (selectedData.length === 0) {
-      alert('Vui long chon 1 o');
+      alert('Vui long chọn');
       return;
     }
 

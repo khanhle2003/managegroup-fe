@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,7 @@ export class RegisterComponent {
     email: '',
     password: ''
   };
+  private router: any;
 
   constructor(private http: HttpClient) {}
 
@@ -26,5 +28,6 @@ export class RegisterComponent {
       next: (response) => console.log('Success:', response),
       
     });
+    this.router.navigate(['/data-table']);
   }
 }
