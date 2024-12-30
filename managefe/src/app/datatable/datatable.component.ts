@@ -55,7 +55,7 @@ export class DatatableComponent implements OnInit {
   }
   loadPage(page: number) {
     this.currentPage = page;
-    this.pageInput = page; // Đồng bộ giá trị input với trang hiện tại
+    this.pageInput = page;
     const startIndex = (page - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.filteredData.sort((a: any, b: any) => {
@@ -91,7 +91,6 @@ export class DatatableComponent implements OnInit {
     return Math.ceil(this.totalItems / this.itemsPerPage);
   }
 
-
   filterData() {
     const term = this.searchTerm.toLowerCase() || '';
     const start = this.startDate ? new Date(this.startDate).getTime() : null;
@@ -117,7 +116,7 @@ export class DatatableComponent implements OnInit {
     this.startDate = '';
     this.endDate = '';
     this.filteredData = [...this.originalData];
-    this.loadPage(1); // Tải lại trang đầu tiên
+    this.loadPage(1);
   }
 
   exportExcel() {
