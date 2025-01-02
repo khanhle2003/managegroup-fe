@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { DatatableComponent } from './datatable/datatable.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { DatatableComponent } from '../components/datatable/datatable.component';
+import { LoginComponent } from '../auth/login/login.component';
+import { RegisterComponent } from '../auth/register/register.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import {AddComponent} from "./add/add.component";
-import { ExportComponent } from './export/export.component';
+import {AddComponent} from "../components/add/add.component";
+import { ExportComponent } from '../components/export/export.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
