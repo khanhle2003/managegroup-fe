@@ -13,16 +13,13 @@ import { RouterModule } from '@angular/router';
 })
 export class DatatableComponent implements OnInit {
   httpClient = inject(HttpClient);
-
-  //Variables
   originalData: any[] = [];
   filteredData: any[] = [];
   data: any[] = [];
   currentPage = 1;
-  itemsPerPage = 13;
+  itemsPerPage = 12;
   totalItems = 0;
   pageInput = 1;
-
   // Filters
   searchTerm = '';
   startDate = '';
@@ -59,10 +56,37 @@ export class DatatableComponent implements OnInit {
     const startIndex = (page - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.filteredData.sort((a: any, b: any) => {
-      const dateA = new Date(a.startDate).getTime();
-      const dateB = new Date(b.startDate).getTime();
-      return dateB - dateA;
+      const parseDate = (date: string | null | undefined) => {
+        // Kiểm tra nếu giá trị null hoặc undefined
+        if (!date) {
+          return 0; // Giá trị null hoặc undefined sẽ được xử lý như ngày cũ nhất
+        }
+        // Kiểm tra nếu ngày có định dạng dd/MM/yyyy
+        if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(date)) {
+          const [day, month, year] = date.split('/').map(Number);
+          return new Date(year, month - 1, day).getTime();
+        }
+        // Kiểm tra nếu ngày có định dạng yyyy-MM-dd
+        if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+          return new Date(date).getTime();
+        }
+        // Kiểm tra nếu ngày có định dạng yyyy-MM-dd HH:mm:ss
+        if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(date)) {
+          return new Date(date).getTime();
+        }
+        // Trường hợp không khớp định dạng nào (xử lý lỗi nhẹ)
+        console.warn(`Invalid date format: ${date}`);
+        return 0; // Giá trị không hợp lệ sẽ được xử lý như ngày cũ nhất
+      };
+
+      const dateA = parseDate(a.notificationDate);
+      const dateB = parseDate(b.notificationDate);
+
+      return dateB - dateA; // Sắp xếp từ mới đến cũ
     });
+
+
+
     this.data = this.filteredData.slice(startIndex, endIndex);
     this.totalItems = this.filteredData.length;
   }
