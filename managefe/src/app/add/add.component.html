@@ -1,5 +1,10 @@
 <div class="form-container">
   <form (ngSubmit)="saveData()">
+    <div class="form-actions">
+        <button type="reset" class="btn btn-reset">Làm mới</button>
+        <button type="submit" class="btn btn-submit">Gửi đơn</button>
+        <a href="/data-table" class="btn btn-back">Quay lại trang chủ</a>
+    </div>
       <section class="form-section">
           <h2 class="section-title">Thông tin cá nhân</h2>
           <div class="form-row">
@@ -172,11 +177,7 @@
           </div>
       </section>
 
-      <div class="form-actions">
-          <button type="reset" class="btn btn-reset">Làm mới</button>
-          <button type="submit" class="btn btn-submit">Gửi đơn</button>
-          <a href="/data-table" class="btn btn-back">Quay lại trang chủ</a>
-      </div>
+      
   </form>
 
   <p class="message" *ngIf="message">{{ message }}</p>
