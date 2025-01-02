@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {Component, inject, OnInit} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-datatable',
@@ -25,11 +25,13 @@ export class DatatableComponent implements OnInit {
   startDate = '';
   endDate = '';
   showCheckbox :boolean = false;
-
+  router = inject(Router);
   ngOnInit(): void {
     this.fetchData();
   }
 
+  goToDetailPage(id: number) {
+    this.router.navigate(['/user-detail', id]); }
   fetchData() {
     this.httpClient.get('http://localhost:8080/auth/qldoan').subscribe((data: any) => {
       this.originalData = data;
