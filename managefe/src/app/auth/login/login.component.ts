@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { JwtDeocderService } from '../../components/services/jwt-deocder.service';
+import { JwtDeocderService } from '../../services/jwt-deocder.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
