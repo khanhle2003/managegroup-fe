@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "primeng": "^19.0.0"
+    "@primeng/themes": "^19.0.2",
+    "primeng": "^19.0.2"
   }
 }

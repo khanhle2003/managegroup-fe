@@ -1,37 +1,32 @@
-<div class="toolbar" style="display: flex; align-items: center; justify-content: space-between; background-color: #f1f1f1; padding: 10px; margin-bottom: 20px; border-radius: 5px;">
 
-  <div style="display: flex; gap: 10px;">
-
-    <button (click)="exportExcel()" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">Xuất DL</button>
-  </div>
-  <div>
-    <a href="/login" style="padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border: none; border-radius: 5px; cursor: pointer;">logout</a>
-  </div>
-</div>
-
-<div class="search-container" style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 20px;">
+<div class="search-container" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-bottom: 5px; margin-top: 20px;">
   <div style="display: flex; align-items: center; gap: 5px;">
-    <button (click)="hideCheckbox()" style="padding: 10px 20px; background-color: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer;">Chọn DL</button>
-    <label for="startDate">Từ ngày:</label>
+    <a href="/add-data" style="padding: 5px 10px; background-color: #3db7df; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm</a>
+    <button (click)="hideCheckbox()" style="padding: 5px 10px; background-color: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer;">Chọn DL</button>
+    <button (click)="exportExcel()" style="padding: 5px 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">Xuất DL</button>
+    <button (click)="exportAllExcel()" style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Xuất tất cả DL</button>
+
+    <label for="startDate">Từ ngày</label>
     <input
       id="startDate"
       type="date"
       [(ngModel)]="startDate"
       (keyup.enter)="filterData()"
-      style="padding: 5px;"
+      style="padding: 10px; width: 150px;"
     />
   </div>
 
   <div style="display: flex; align-items: center; gap: 5px;">
-    <label for="endDate">Đến ngày:</label>
+    <label for="endDate">Đến ngày</label>
     <input
       id="endDate"
       type="date"
       [(ngModel)]="endDate"
       (keyup.enter)="filterData()"
-      style="padding: 5px;"
+      style="padding: 10px; width: 150px;"
     />
   </div>
+
   <div style="display: flex; align-items: center; gap: 20px;">
     <label for="searchName"></label>
     <input
@@ -43,15 +38,34 @@
       style="padding: 10px; width: 300px;"
     />
   </div>
+
   <div style="display: flex; align-items: center; gap: 10px;">
-    <button (click)="filterData()" style="padding: 10px 20px;">Tìm kiếm</button>
-    <button (click)="resetFilters()" style="padding: 10px 20px; margin: 0 10px;">Reset</button>
+    <button (click)="filterData()" style="padding: 5px 10px; display: flex; align-items: center; gap: 8px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+        <path d="M10 2a8 8 0 015.938 13.379l4.621 4.622a1 1 0 01-1.414 1.414l-4.622-4.621A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"></path>
+      </svg>
+
+    </button>
+    <button (click)="resetFilters()" style="padding: 5px 10px; margin: 0 10px; background-color: #d54d4d; color: white; border: none; border-radius: 4px; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+    <path d="M12 4V1L8 5l4 4V6c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"></path>
+  </svg>
+
+</button>
   </div>
+
+  <div>
+<a href="/login" style="padding: 5px 10px; background-color: #000000; color: white; text-decoration: none; border: none; border-radius: 5px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+    <path d="M10 2h4a2 2 0 012 2v4h-2V4h-4v16h4v-4h2v4a2 2 0 01-2 2h-4a2 2 0 01-2-2V4a2 2 0 012-2zm6.293 9l-1.414 1.414L19.586 16H9v2h10.586l-4.707 4.707L16.293 22 22 16.293 16.293 9z"></path>
+  </svg>
+Đăng xuất
+</a>  </div>
 </div>
 
-<div style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 20px 0; border: 1px solid #ddd; border-radius: 8px;">
-  <table class="data-table" style="width: 100%; border-collapse: collapse; margin-bottom: 5px;">
-    <thead style="position: sticky; top: 0; background-color: white; z-index: 1;">
+<div style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 5px 0; border: 1px solid #ffffff; border-radius: 10px;margin-top: 20;">
+  <table class="data-table" style="width: 100%; border-collapse: separate; border-spacing: 2px;">
+    <thead style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
       <tr>
         <th *ngIf="showCheckbox">
           <input type="checkbox" (change)="selectAll($event)">
@@ -59,7 +73,7 @@
         <th>Họ và Tên</th>
         <th>Đơn vị</th>
         <th>Quốc gia</th>
-        <th>Mục đích chuyến đi</th>
+        <th>Mục đích</th>
         <th>Chức vụ</th>
         <th>Tự túc</th>
         <th>Nhà tài trợ</th>
@@ -68,7 +82,7 @@
         <th>Đơn vị mời</th>
         <th>Đoàn</th>
         <th>Đảng viên</th>
-        <th>Số chuyến đi nước ngoài</th>
+        <th>Số chuyến</th>
         <th>Số thông báo</th>
         <th>Ngày thông báo</th>
         <th>Thành phố</th>
@@ -82,7 +96,7 @@
     <td *ngIf="showCheckbox">
       <input type="checkbox" [(ngModel)]="item.selected">
     </td>
- <td (click)="goToDetailPage(item.id)" style="cursor: pointer;">{{ item.fullName }}</td>   
+ <td (click)="goToDetailPage(item.id)" style="cursor: pointer;">{{ item.fullName }}</td>
     <td>{{ item.unit }}</td>
     <td>{{ item.country }}</td>
     <td>{{ item.tripPurpose }}</td>
@@ -105,7 +119,7 @@
 </table>
 </div>
 <div class="pagination" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-  <button (click)="prevPage()" [disabled]="currentPage === 1" style="padding: 10px 20px;">Trang trước</button>
+  <button (click)="prevPage()" [disabled]="currentPage === 1" style="padding: 10px 20px;border-radius: 20px;">Trang trước</button>
 
   <span>Trang
     <input
@@ -119,6 +133,5 @@
     / {{ getTotalPages() }}
   </span>
 
-  <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()" style="padding: 10px 20px;">Trang sau</button>
-  <button (click)="goToPage()" style="padding: 10px 20px;">Đi</button>
+  <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()" style="padding: 10px 20px;border-radius: 20px;">Trang sau</button>
 </div>

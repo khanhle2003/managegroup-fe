@@ -5,8 +5,6 @@ import { RegisterComponent } from '../auth/register/register.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import {AddComponent} from "../components/add/add.component";
-import { ExportComponent } from '../components/layout/export/export.component';
-import { AppComponent } from '../components/layout/app.component';
 import { MainComponent } from '../components/layout/main/main.component';
 import { UserDetailComponent } from '../components/user-detail/user-detail.component';
 
@@ -19,7 +17,6 @@ export const routes: Routes = [
     children: [
       {path: 'data-table', component: DatatableComponent},
       {path: 'add-data', component: AddComponent},
-      {path: 'export', component: ExportComponent},
       {path:'user-detail/:id', component:UserDetailComponent}
     ]
   },
