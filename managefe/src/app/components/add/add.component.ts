@@ -79,4 +79,7 @@ export class DataAdd{
   notificationDate:string="";
   startDate:string="";
   endDate:string="";
+  phoneNumber:string="";
+  email:string="";
+  gender:string="";
 }
