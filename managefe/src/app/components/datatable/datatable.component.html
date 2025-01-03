@@ -40,13 +40,27 @@
   </div>
 
   <div style="display: flex; align-items: center; gap: 10px;">
-    <button (click)="filterData()" style="padding: 5px 10px;background-color: rgb(53, 215, 126);">Tìm kiếm</button>
-    <button (click)="resetFilters()" style="padding: 5px 10px; margin: 0 10px;background-color: #d54d4d;">Reset</button>
+    <button (click)="filterData()" style="padding: 5px 10px; display: flex; align-items: center; gap: 8px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+        <path d="M10 2a8 8 0 015.938 13.379l4.621 4.622a1 1 0 01-1.414 1.414l-4.622-4.621A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"></path>
+      </svg>
+
+    </button>
+    <button (click)="resetFilters()" style="padding: 5px 10px; margin: 0 10px; background-color: #d54d4d; color: white; border: none; border-radius: 4px; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+    <path d="M12 4V1L8 5l4 4V6c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"></path>
+  </svg>
+
+</button>
   </div>
 
   <div>
-    <a href="/login" style="padding: 5px 10px; background-color: #000000; color: white; text-decoration: none; border: none; border-radius: 5px; cursor: pointer;">Logout</a>
-  </div>
+<a href="/login" style="padding: 5px 10px; background-color: #000000; color: white; text-decoration: none; border: none; border-radius: 5px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+    <path d="M10 2h4a2 2 0 012 2v4h-2V4h-4v16h4v-4h2v4a2 2 0 01-2 2h-4a2 2 0 01-2-2V4a2 2 0 012-2zm6.293 9l-1.414 1.414L19.586 16H9v2h10.586l-4.707 4.707L16.293 22 22 16.293 16.293 9z"></path>
+  </svg>
+Đăng xuất
+</a>  </div>
 </div>
 
 <div style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 5px 0; border: 1px solid #ffffff; border-radius: 10px;margin-top: 20;">
