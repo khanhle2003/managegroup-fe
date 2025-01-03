@@ -63,6 +63,7 @@ export class AddComponent implements OnInit{
     }
 }
 
+export class ButtonBasicDemo { }
 export class DataAdd{
   fullname:string="";
   unit:string="";

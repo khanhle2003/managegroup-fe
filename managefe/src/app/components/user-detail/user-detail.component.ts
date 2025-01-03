@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../services/user-detail.service';
 @Component({
@@ -19,20 +18,19 @@ export class UserDetailComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.subscribe(params => {
-            this.id = +params['id']; 
-            this.getUserData(); 
+            this.id = +params['id'];
+            this.getUserData();
         });
     }
 
     getUserData() {
         this.userService.getUserById(this.id).subscribe(
             data => {
-                this.userData = data; 
+                this.userData = data;
             },
             error => {
-                console.error('Error fetching user data:', error); 
+                console.error('Error fetching user data:', error);
             }
         );
       }
     }
-   
