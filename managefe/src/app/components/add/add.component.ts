@@ -5,10 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
+
+
 @Component({
   selector: 'app-add',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule],
+  imports: [CommonModule, HttpClientModule, FormsModule,],
   templateUrl: './add.component.html',
   styleUrl: './add.component.css'
 })
@@ -17,8 +19,23 @@ export class AddComponent implements OnInit{
   dataAdd: DataAdd = new DataAdd();
   message: string = '';
   private apiUrl = "http://localhost:8080/add"
+    private fileApiUrl = "http://localhost:8080/savedata";
   constructor(private router : Router){
 
+  }
+
+
+  saveToNotepad() {
+    this.httpClient.post(this.fileApiUrl, this.dataAdd).subscribe({
+      next: (response) => {
+        console.log('Notepad saved successfully');
+        this.message += ' and Notepad file created!';
+      },
+      error: (error) => {
+        console.error('Error saving notepad:', error);
+        this.message += ' but failed to create Notepad file.';
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -30,7 +47,7 @@ export class AddComponent implements OnInit{
       (response) => {
         this.message = 'User added successfully!';
         console.log(this.dataAdd);
-
+      this.saveToNotepad
       },
       (error) => {
         console.error('Error adding user:', error);
@@ -46,6 +63,7 @@ export class AddComponent implements OnInit{
     }
 }
 
+export class ButtonBasicDemo { }
 export class DataAdd{
   fullname:string="";
   unit:string="";

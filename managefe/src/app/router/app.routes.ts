@@ -5,17 +5,22 @@ import { RegisterComponent } from '../auth/register/register.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import {AddComponent} from "../components/add/add.component";
-import { ExportComponent } from '../components/export/export.component';
+import { MainComponent } from '../components/layout/main/main.component';
+import { UserDetailComponent } from '../components/user-detail/user-detail.component';
 
 export const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full' },
-  {path: 'data-table',component:DatatableComponent},
-  {path: 'login',component:LoginComponent},
-  {path: 'register',component:RegisterComponent},
-  {path: 'add-data',component:AddComponent},
-  {path: 'exportE',component:ExportComponent},
-
-
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {
+    path: '',
+    component: MainComponent,
+    children: [
+      {path: 'data-table', component: DatatableComponent},
+      {path: 'add-data', component: AddComponent},
+      {path:'user-detail/:id', component:UserDetailComponent}
+    ]
+  },
+  {path: '**', redirectTo: 'login'}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

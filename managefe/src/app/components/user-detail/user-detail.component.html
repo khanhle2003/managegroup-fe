@@ -1,0 +1,43 @@
+<div class="user-profile" *ngIf="userData">
+    <h2 class="profile-header" style="display: cente;">Thông tin người dùng</h2>
+    <div class="profile-content">
+        <div class="info-group">
+            <p class="info-item"><strong>ID:</strong> {{ userData.id }}</p>
+            <p class="info-item"><strong>Họ và tên:</strong> {{ userData.fullName }}</p>
+            <p class="info-item"><strong>Đơn vị:</strong> {{ userData.unit }}</p>
+            <p class="info-item"><strong>Quốc gia:</strong> {{ userData.country }}</p>
+        </div>
+
+        <div class="info-group">
+            <p class="info-item"><strong>Mục đích chuyến đi:</strong> {{ userData.tripPurpose }}</p>
+            <p class="info-item"><strong>Chức vụ:</strong> {{ userData.jobTitle || '' }}</p>
+            <p class="info-item"><strong>Tự túc:</strong> {{ userData.selfFunded || '' }}</p>
+            <p class="info-item"><strong>Người tài trợ:</strong> {{ userData.sponsor || '' }}</p>
+        </div>
+
+        <div class="info-group">
+            <p class="info-item"><strong>Bệnh viện:</strong> {{ userData.hospital }}</p>
+            <p class="info-item"><strong>HD BC:</strong> {{ userData.hdBc || '' }}</p>
+            <p class="info-item"><strong>Đơn vị mời:</strong> {{ userData.invitationUnit || '' }}</p>
+            <p class="info-item"><strong>Đoàn:</strong> {{ userData.doan || '' }}</p>
+        </div>
+
+        <div class="info-group">
+            <p class="info-item"><strong>Thành viên đảng:</strong> {{ userData.partyMember || '' }}</p>
+            <p class="info-item"><strong>Số chuyến đi nước ngoài:</strong> {{ userData.foreignTripCount || '' }}</p>
+            <p class="info-item"><strong>Số thông báo:</strong> {{ userData.notificationNumber || '' }}</p>
+            <p class="info-item"><strong>Ngày thông báo:</strong> {{ userData.notificationDate || '' }}</p>
+        </div>
+
+        <div class="info-group">
+            <p class="info-item"><strong>Thành phố:</strong> {{ userData.city || '' }}</p>
+            <p class="info-item"><strong>Ngày bắt đầu:</strong> {{ userData.startDate | date: 'shortDate' }}</p>
+            <p class="info-item"><strong>Ngày kết thúc:</strong> {{ userData.endDate | date: 'shortDate' }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="loading" *ngIf="!userData">
+    <p>Đang tải dữ liệu...</p>
+</div>
+
