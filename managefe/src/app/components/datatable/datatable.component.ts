@@ -164,20 +164,19 @@ export class DatatableComponent implements OnInit {
     );
   }
 
-
   exportAllExcel() {
     if (this.originalData.length === 0) {
       alert('Không có dữ liệu để xuất');
       return;
     }
 
+    const dataWithoutId = this.originalData.map(({ id, ...rest }) => rest);
 
-    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.originalData);
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dataWithoutId);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Dữ liệu');
 
-
-    const fileName = `danh_sach_du_lieu_${new Date().toLocaleDateString()}.xlsx`
+    const fileName = `danh_sach_du_lieu_${new Date().toLocaleDateString()}.xlsx`;
 
     XLSX.writeFile(wb, fileName);
   }

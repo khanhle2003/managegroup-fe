@@ -1,4 +1,3 @@
-
 <div class="search-container" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-bottom: 5px; margin-top: 20px;">
   <div style="display: flex; align-items: center; gap: 5px;">
     <a href="/add-data" style="padding: 5px 10px; background-color: #3db7df; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm</a>
@@ -88,6 +87,9 @@
         <th>Thành phố</th>
         <th>Ngày bắt đầu</th>
         <th>Ngày kết thúc</th>
+        <th>Email</th>
+        <th>Giới tính</th>
+        <th>Số điện thoại</th>
       </tr>
     </thead>
     <tbody>
@@ -114,6 +116,9 @@
     <td>{{ item.city || '' }}</td>
     <td>{{ item.startDate | date: 'shortDate' }}</td>
     <td>{{ item.endDate | date: 'shortDate' }}</td>
+    <td>{{ item.email || '' }}</td>
+    <td>{{ item.gender | date: 'shortDate' }}</td>
+    <td>{{ item.phoneNumber ? '0' + item.phoneNumber : '' }}</td>
   </tr>
   </tbody>
 </table>

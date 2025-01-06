@@ -1,14 +1,14 @@
 <div class="form-container">
   <form (ngSubmit)="saveData()">
     <div class="form-actions">
-        <div style="max-height:72px;">
-          <a href="/data-table" style="margin-left: 10px; padding: 8px 16px; background-color: #6c757d; color: white; text-decoration: none; border: none; border-radius: 4px; display: flex; align-items: center; gap: 8px; cursor: pointer;" class="btn btn-back">
+        <div style="max-height:72px;display: flex;" >
+          <a href="/data-table"  class="btn btn-back" style="margin-left: 10px;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
               <path d="M11 19l-7-7 7-7v4h8v6h-8v4z"></path>
             </svg>
             Quay lại
           </a>
-            <button style="margin-left: 5px; margin-top: 5px;" type="reset" class="btn btn-reset">
+            <button style="margin-left: 10px ;" class="btn btn-reset">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="13" height="13" style="vertical-align: middle; margin-right: 5px;">
                 <path d="M0 0h24v24H0z" fill="none"/>
                 <path d="M12 4V1L8 5l4 4V6c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z" fill="currentColor"/>
@@ -36,7 +36,7 @@
               </div>
               <div class="form-group">
                   <label for="gender">Giới tính:</label>
-                  <select name="gender" id="gender">
+                  <select     #gender="ngModel" name="gender" id="gender" [(ngModel)]="dataAdd.gender">
                       <option value="male">Nam</option>
                       <option value="female">Nữ</option>
                   </select>
@@ -46,11 +46,11 @@
           <div class="form-row">
               <div class="form-group">
                   <label for="phoneNumber">Số điện thoại:</label>
-                  <input type="number" name="phoneNumber" id="phoneNumber" required>
+                  <input type="number" name="phoneNumber" id="phoneNumber" [(ngModel)]="dataAdd.phoneNumber" required>
               </div>
               <div class="form-group">
                   <label for="email">Email:</label>
-                  <input type="email" name="email" id="email" required>
+                  <input type="email" name="email" id="email" [(ngModel)]="dataAdd.email" required>
               </div>
           </div>
 
@@ -148,22 +148,7 @@
           <div class="form-group">
               <label>Mục đích chuyến đi:</label>
               <div class="radio-group purpose-group">
-                  <div class="radio-option">
-                      <input type="radio" name="TripPurpose" id="TripPurpose1" value="congtac" [(ngModel)]="dataAdd.tripPurpose" required>
-                      <label for="TripPurpose1">Công tác</label>
-                  </div>
-                  <div class="radio-option">
-                      <input type="radio" name="TripPurpose" id="TripPurpose2" value="hoctap" [(ngModel)]="dataAdd.tripPurpose" required>
-                      <label for="TripPurpose2">Học tập/Tập huấn</label>
-                  </div>
-                  <div class="radio-option">
-                      <input type="radio" name="TripPurpose" id="TripPurpose3" value="viecrieng" [(ngModel)]="dataAdd.tripPurpose" required>
-                      <label for="TripPurpose3">Việc riêng</label>
-                  </div>
-                  <div class="radio-option">
-                      <input type="radio" name="TripPurpose" id="TripPurpose4" value="nghikoluong" [(ngModel)]="dataAdd.tripPurpose" required>
-                      <label for="TripPurpose4">Nghỉ không lương</label>
-                  </div>
+                      <input type="text" name="TripPurpose" id="TripPurpose1"  [(ngModel)]="dataAdd.tripPurpose" required>
               </div>
           </div>
       </section>

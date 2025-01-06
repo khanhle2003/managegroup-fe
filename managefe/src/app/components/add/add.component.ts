@@ -80,4 +80,7 @@ export class DataAdd{
   notificationDate:string="";
   startDate:string="";
   endDate:string="";
+  phoneNumber : number = 0;
+  email : string = "";
+  gender : string  = "";
 }

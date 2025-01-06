@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@primeng/themes": "^19.0.2",
-    "primeng": "^19.0.2"
+    "primeng": "^19.0.2",
+    "xlsx": "^0.18.5"
   }
 }
