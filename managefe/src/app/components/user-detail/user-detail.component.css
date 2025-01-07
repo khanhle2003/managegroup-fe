@@ -81,3 +81,6 @@ select:focus {
   background: #2563eb;
   transform: translateY(-2px);
 }
+.btn-back svg {
+    margin-bottom: 5px;
+}
