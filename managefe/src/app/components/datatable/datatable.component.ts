@@ -75,7 +75,6 @@ export class DatatableComponent implements OnInit {
         if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(date)) {
           return new Date(date).getTime();
         }
-        console.warn(`Invalid date format: ${date}`);
         return 0;
       };
 
@@ -170,9 +169,53 @@ export class DatatableComponent implements OnInit {
       return;
     }
 
+
     const dataWithoutId = this.originalData.map(({ id, ...rest }) => rest);
 
-    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dataWithoutId);
+    const headers = {
+      fullname: "Họ và tên",
+      unit: "Đơn vị",
+      country: "Quốc gia",
+      tripPurpose: "Mục đích chuyến đi",
+      jobTitle: "Chức danh",
+      selfFunded: "Tự tài trợ",
+      sponsor: "Nhà tài trợ",
+      hospital: "Bệnh viện",
+      hdBc: "HD BC",
+      invitationUnit: "Đơn vị mời",
+      doan: "Đoàn",
+      partyMember: "Đảng viên",
+      foreignTripCount: "Số lần đi nước ngoài",
+      notificationNumber: "Số thông báo",
+      notificationDate: "Ngày thông báo",
+      city: "Thành phố",
+      startDate: "Ngày bắt đầu",
+      endDate: "Ngày kết thúc"
+    };
+
+    const dataWithHeaders = [headers, ...dataWithoutId.map(item => ({
+      fullname: item.fullName,
+      unit: item.unit,
+
+      country: item.country,
+      tripPurpose: item.tripPurpose,
+      jobTitle: item.jobTitle || '',
+      selfFunded: item.selfFunded || '',
+      sponsor: item.sponsor || '',
+      hospital: item.hospital,
+      hdBc: item.hdBc || '',
+      invitationUnit: item.invitationUnit || '',
+      doan: item.doan || '',
+      partyMember: item.partyMember || '',
+      foreignTripCount: item.foreignTripCount || '',
+      notificationNumber: item.notificationNumber || '',
+      notificationDate: item.notificationDate || '',
+      city: item.city || '',
+      startDate: item.startDate,
+      endDate: item.endDate
+    }))];
+
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dataWithHeaders, { skipHeader: true });
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Dữ liệu');
 

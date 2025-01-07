@@ -23,7 +23,7 @@ export class AddComponent implements OnInit{
   constructor(private router : Router){
 
   }
-
+  
 
   saveToNotepad() {
     this.httpClient.post(this.fileApiUrl, this.dataAdd).subscribe({
@@ -45,13 +45,13 @@ export class AddComponent implements OnInit{
   saveData(){
     this.addData(this.dataAdd).subscribe(
       (response) => {
-        this.message = 'User added successfully!';
+        alert('thêm thành công');
         console.log(this.dataAdd);
       this.saveToNotepad
       },
       (error) => {
         console.error('Error adding user:', error);
-        this.message = 'Failed to add user.';
+        this.message = 'Thêm thất bại';
       }
     );
   }
@@ -80,7 +80,6 @@ export class DataAdd{
   notificationDate:string="";
   startDate:string="";
   endDate:string="";
-
   phoneNumber : number = 0;
   email : string = "";
   gender : string  = "";

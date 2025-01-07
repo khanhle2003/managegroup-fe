@@ -11,13 +11,12 @@
             Quay lại
           </a>
 
-            <button style="margin-left: 10px ;" class="btn btn-reset">
-
+            <button style="margin-left: 10px ;" type="reset" class="btn btn-reset">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="13" height="13" style="vertical-align: middle; margin-right: 5px;">
                 <path d="M0 0h24v24H0z" fill="none"/>
                 <path d="M12 4V1L8 5l4 4V6c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z" fill="currentColor"/>
               </svg>
-              làm mới
+              Làm mới
             </button>
         </div>
         <button type="submit" style="margin-right: 8px; margin-top: 5px; padding: 10px 20px" class="btn btn-submit">
@@ -32,18 +31,20 @@
           <div class="form-row">
               <div class="form-group">
                   <label for="FullName">Họ và tên:</label>
-                  <input type="text" name="FullName" id="FullName" [(ngModel)]="dataAdd.fullname" required>
+                  <input type="text" name="FullName" id="FullName"  [(ngModel)]="dataAdd.fullname" required>
+                  <div *ngIf="!dataAdd.fullname" class="error-message">Họ và tên không được để trống</div>
               </div>
               <div class="form-group">
                   <label for="dob">Ngày sinh:</label>
                   <input type="date" name="dob" id="dob" required>
+
               </div>
               <div class="form-group">
                   <label for="gender">Giới tính:</label>
                   <select     #gender="ngModel" name="gender" id="gender" [(ngModel)]="dataAdd.gender">
-
-                      <option value="male">Nam</option>
-                      <option value="female">Nữ</option>
+                    <div *ngIf="!dataAdd.gender" class="error-message">Giới tính không được để trống</div>
+                      <option value="Nam">Nam</option>
+                      <option value="Nữ">Nữ</option>
                   </select>
               </div>
           </div>
@@ -51,16 +52,16 @@
           <div class="form-row">
               <div class="form-group">
                   <label for="phoneNumber">Số điện thoại:</label>
-                  <input type="number" name="phoneNumber" id="phoneNumber" [(ngModel)]="dataAdd.phoneNumber" required>
+                  <input type="text" name="phoneNumber" id="phoneNumber" [(ngModel)]="dataAdd.phoneNumber" required>
+                  <div *ngIf="!dataAdd.phoneNumber" class="error-message">Số điện thoại không được để trống</div>
               </div>
               <div class="form-group">
                   <label for="email">Email:</label>
                   <input type="email" name="email" id="email" [(ngModel)]="dataAdd.email" required>
+                  <div *ngIf="!dataAdd.email" class="error-message">Email không được để trống</div>
               </div>
           </div>
-
       </section>
-
       <section class="form-section">
           <div class="form-row">
               <div class="form-group">
@@ -97,6 +98,7 @@
               <div class="form-group">
                   <label for="JobTitle">Chức danh nghề nghiệp:</label>
                   <input type="text" name="JobTitle" id="JobTitle" [(ngModel)]="dataAdd.jobTitle" required>
+                  <div *ngIf="!dataAdd.jobTitle" class="error-message"> không được để trống</div>
               </div>
           </div>
 
@@ -132,6 +134,7 @@
               <div class="form-group">
                   <label for="Country">Quốc gia/Vùng lãnh thổ đến:</label>
                   <input type="text" name="Country" id="Country" [(ngModel)]="dataAdd.country" required>
+                  <div *ngIf="!dataAdd.country" class="error-message"> không được để trống</div>
               </div>
               <div class="form-group">
                   <label for="InvitationUnit">Tên cơ quan/Tổ chức/Cá nhân mời (nếu có):</label>
@@ -164,6 +167,7 @@
               <div class="form-group">
                   <label for="notificationNumber">Số thông báo:</label>
                   <input type="text" name="notificationNumber" id="notificationNumber" [(ngModel)]="dataAdd.notificationNumber" required>
+                  <div *ngIf="!dataAdd.notificationNumber" class="error-message"> không được để trống</div>
               </div>
               <div class="form-group">
                   <label for="notificationDate">Ngày thông báo:</label>

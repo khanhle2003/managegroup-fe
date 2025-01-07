@@ -16,7 +16,7 @@ body {
   background-size: 300% 300%;
   animation: gradientShift 15s ease infinite;
   color: #333;
-  
+
   /* Improved centering with flexbox */
   min-height: 100vh;
   display: flex;
@@ -34,7 +34,7 @@ body {
   width: 100%;
   max-width: 420px; /* Match form max-width */
   padding: 20px;
-  
+
   /* Added z-index to ensure it stays above other elements */
   z-index: 10;
 }
@@ -43,14 +43,14 @@ body {
   background: rgba(255, 255, 255, 0.95);
   padding: 3rem;
   border-radius: 20px;
-  box-shadow: 
+  box-shadow:
     0 10px 25px rgba(0, 0, 0, 0.1),
     0 2px 10px rgba(0, 0, 0, 0.05);
   width: 100%;
   transform: translateY(0);
   transition: all 0.3s ease;
   animation: formAppear 0.6s ease-out;
-  
+
   /* Ensure the form maintains its shape */
   margin: 0 auto;
 }
@@ -64,7 +64,7 @@ body {
 
 .form:hover {
   transform: translateY(-5px);
-  box-shadow: 
+  box-shadow:
     0 15px 30px rgba(0, 0, 0, 0.15),
     0 5px 15px rgba(0, 0, 0, 0.08);
 }
@@ -103,6 +103,7 @@ input[type="password"] {
   font-size: 1rem;
   transition: all 0.3s ease;
   background: #f8fafc;
+  margin-bottom: 0.5rem;
 }
 
 input[type="email"]:focus,
@@ -179,7 +180,7 @@ button[type="submit"]:active {
   .container {
     padding: 15px;
   }
-  
+
   .form {
     padding: 2rem;
   }
@@ -193,7 +194,7 @@ button[type="submit"]:active {
   .container {
     padding: 10px;
   }
-  
+
   .form {
     padding: 1.5rem;
   }
