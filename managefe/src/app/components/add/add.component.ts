@@ -85,4 +85,12 @@ export class DataAdd{
   email : string = "";
   gender : string  = "";
 
+
+partyBranch: string = "";
+partyPosition: string ="";
+jobName:string = "";
+restCount:string = "";
+alternative:string = "";
+submitDay:string ="";
+employee:string ="";
 }
