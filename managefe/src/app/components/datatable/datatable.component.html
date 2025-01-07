@@ -121,10 +121,10 @@
     <td>{{ item.partyMember || '' }}</td>
     <td>{{ item.foreignTripCount || '' }}</td>
     <td>{{ item.notificationNumber || '' }}</td>
-    <td>{{ item.notificationDate | date:'yyyy-MM-dd' }}</td>
+    <td>{{ item.notificationDate || '' }}</td>
     <td>{{ item.city || '' }}</td>
-    <td>{{ item.startDate | date: 'yyyy-MM-dd' }}</td>
-    <td>{{ item.endDate | date: 'yyyy-MM-dd' }}</td>
+    <td>{{ item.startDate | date: 'dd/MM/yyyy' }}</td>
+    <td>{{ item.endDate | date: 'dd/MM/yyyy' }}</td>
     <td>{{ item.email || '' }}</td>
     <td>{{ item.gender || '' }}</td>
     <td>{{ item.phoneNumber ? '0' + item.phoneNumber : '' }}</td>
