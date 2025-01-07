@@ -63,6 +63,7 @@ label {
   font-size: 1rem;
 }
 
+/* Cải tiến các input và select */
 input[type="text"],
 input[type="number"],
 input[type="email"],
@@ -185,4 +186,10 @@ select:focus {
   .form-row {
     flex-direction: column;
   }
+}
+.btn-back svg,
+.btn-reset svg,
+.btn-submit svg
+{
+  margin-bottom: 5px;
 }

@@ -14,7 +14,11 @@
             <p class="info-item"><strong>ID:</strong> {{ userData.id }}</p>
             <p class="info-item"><strong>Họ và tên:</strong> {{ userData.fullName }}</p>
             <p class="info-item"><strong>Đơn vị:</strong> {{ userData.unit }}</p>
-            <p class="info-item"><strong>Quốc gia:</strong> {{ userData.country }}</p>
+            <p class="info-item"><strong>Email:</strong> {{ userData.email }}</p>
+            <p class="info-item"><strong>Sdt:</strong> {{ userData.phoneNumber }}</p>
+            <p class="info-item"><strong>Giới tính :</strong> {{ userData.gender }}</p>
+            
+            
         </div>
 
         <div class="info-group">
@@ -39,6 +43,7 @@
         </div>
 
         <div class="info-group">
+            <p class="info-item"><strong>Quốc gia:</strong> {{ userData.country }}</p>
             <p class="info-item"><strong>Thành phố:</strong> {{ userData.city || '' }}</p>
             <p class="info-item"><strong>Ngày bắt đầu:</strong> {{ userData.startDate | date: 'shortDate' }}</p>
             <p class="info-item"><strong>Ngày kết thúc:</strong> {{ userData.endDate | date: 'shortDate' }}</p>

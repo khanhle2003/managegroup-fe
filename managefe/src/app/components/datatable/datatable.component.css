@@ -193,15 +193,31 @@ label {
       min-width: 100%;
   }
 }
-.data-table th:first-child {
-  position: sticky;
-  left: 0;
-  z-index: 2;
-  background-color: #0065ca;
+
+.dropdown-content{
+  display:flex;
+  flex-direction: column;
+  
 }
-.data-table td:first-child {
-  position: sticky;
-  left: 0;
-  z-index: 2;
-  background-color: rgb(255, 255, 255);
+.dropdown-content a {
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none; 
+  color: #000; 
+  transition: background-color 0.2s;
 }
+.dropdown-content a:hover {
+  background-color: #f1f1f1; }
+
+  .data-table th[data-header="Họ và Tên"] {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background-color: #0065ca;
+  }  .data-table td[data-header="Họ và Tên"] {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+
+  }
+

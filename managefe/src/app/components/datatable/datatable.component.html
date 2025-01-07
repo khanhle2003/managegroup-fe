@@ -1,9 +1,18 @@
-<div class="search-container" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-bottom: 5px; margin-top: 20px;">
+<div class="search-container" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-bottom: 5px; margin-top: 50px;">
   <div style="display: flex; align-items: center; gap: 5px;">
     <a href="/add-data" style="padding: 5px 10px; background-color: #3db7df; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm</a>
     <button (click)="hideCheckbox()" style="padding: 5px 10px; background-color: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer;">Chọn DL</button>
-    <button (click)="exportExcel()" style="padding: 5px 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">Xuất DL</button>
-    <button (click)="exportAllExcel()" style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Xuất tất cả DL</button>
+    <div class="dropdown" style="position: relative; display: inline-block;">
+        <button (click)="toggleDropdown()" style="padding: 5px 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Xuất DL
+        </button>
+        <div class="dropdown-content" *ngIf="isDropdownOpen" style="min-width: 180px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 9999;">
+            <a  (click)="exportExcel()">Xuất Excel</a>
+            <a  (click)="exportSelectedToWord()">Xuất Word</a>
+            <a  (click)="exportAllExcel()">Xuất tất cả(excel)</a>
+        </div>
+    </div>
+
 
     <label for="startDate">Từ ngày</label>
     <input
@@ -53,7 +62,7 @@
 </button>
   </div>
 
-  <div>
+  <div style = "margin-left: 100px;">
 <a href="/login" style="padding: 5px 10px; background-color: #000000; color: white; text-decoration: none; border: none; border-radius: 5px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
     <path d="M10 2h4a2 2 0 012 2v4h-2V4h-4v16h4v-4h2v4a2 2 0 01-2 2h-4a2 2 0 01-2-2V4a2 2 0 012-2zm6.293 9l-1.414 1.414L19.586 16H9v2h10.586l-4.707 4.707L16.293 22 22 16.293 16.293 9z"></path>
@@ -62,14 +71,14 @@
 </a>  </div>
 </div>
 
-<div style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 5px 0; border: 1px solid #ffffff; border-radius: 10px;margin-top: 20;">
+<div style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 50px 40px 0 40px; border: 1px solid #ffffff; border-radius: 10px;margin-top: 20; ">
   <table class="data-table" style="width: 100%; border-collapse: separate; border-spacing: 2px;">
     <thead style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
       <tr>
-        <th *ngIf="showCheckbox">
-          <input type="checkbox" (change)="selectAll($event)">
-        </th>
-        <th>Họ và Tên</th>
+        <th *ngIf="showCheckbox" data-header="Họ và Tên" class="sticky-header">
+          <input type="checkbox" [checked]="headerChecked" (change)="selectAll($event)">
+     </th>
+        <th data-header = "Họ và Tên">Họ và Tên</th>
         <th>Đơn vị</th>
         <th>Quốc gia</th>
         <th>Mục đích</th>
@@ -94,11 +103,11 @@
     </thead>
     <tbody>
   <tr
-    *ngFor="let item of data">
+    *ngFor="let item of data" data-header="Họ và Tên">
     <td *ngIf="showCheckbox">
       <input type="checkbox" [(ngModel)]="item.selected">
     </td>
- <td (click)="goToDetailPage(item.id)" style="cursor: pointer;">{{ item.fullName }}</td>
+ <td data-header="Họ và Tên" (click)="goToDetailPage(item.id)" style="cursor: pointer;">{{ item.fullName }}</td>
     <td>{{ item.unit }}</td>
     <td>{{ item.country }}</td>
     <td>{{ item.tripPurpose }}</td>
@@ -112,12 +121,12 @@
     <td>{{ item.partyMember || '' }}</td>
     <td>{{ item.foreignTripCount || '' }}</td>
     <td>{{ item.notificationNumber || '' }}</td>
-    <td>{{ item.notificationDate || '' }}</td>
+    <td>{{ item.notificationDate | date:'yyyy-MM-dd' }}</td>
     <td>{{ item.city || '' }}</td>
-    <td>{{ item.startDate | date: 'shortDate' }}</td>
-    <td>{{ item.endDate | date: 'shortDate' }}</td>
+    <td>{{ item.startDate | date: 'yyyy-MM-dd' }}</td>
+    <td>{{ item.endDate | date: 'yyyy-MM-dd' }}</td>
     <td>{{ item.email || '' }}</td>
-    <td>{{ item.gender | date: 'shortDate' }}</td>
+    <td>{{ item.gender || '' }}</td>
     <td>{{ item.phoneNumber ? '0' + item.phoneNumber : '' }}</td>
   </tr>
   </tbody>
