@@ -66,15 +66,19 @@
               <div class="form-group">
                   <div class="checkbox-group">
                       <div class="checkbox-option">
-                          <input type="checkbox" name="dangvien" id="dangvien" value="Yes">
+                          <input type="checkbox" name="dangvien" id="dangvien" value="V" [(ngModel)]="dataAdd.partyBranch" >
                           <label for="dangvien">Đảng viên</label>
                       </div>
                   </div>
               </div>
               <div class="form-group">
-                  <label for="PartyMember">Chức vụ Đảng (nếu có):</label>
-                  <input type="text" name="PartyMember" id="PartyMember" [(ngModel)]="dataAdd.partyMember">
+                  <label for="PartyMer">Chức vụ Đảng (nếu có):</label>
+                  <input type="text" name="PartyMember" id="PartyMember" [(ngModel)]="dataAdd.partyPosition">
               </div>
+              <div class="form-group">
+                <label for="PartyMember">Chi bộ:</label>
+                <input type="text" name="PartyMember" id="PartyMember" [(ngModel)]="dataAdd.partyMember">
+            </div>
           </div>
       </section>
 
@@ -85,11 +89,11 @@
                   <label>Loại nhân viên:</label>
                   <div class="radio-group">
                       <div class="radio-option">
-                          <input type="radio" name="jobType" id="nvHopDong" value="nvHopDong" required>
+                          <input type="radio" name="jobType" id="nvHopDong" value="Nhân viên hợp đồng" [(ngModel)]="dataAdd.employee" required>
                           <label for="nvHopDong">Nhân viên hợp đồng</label>
                       </div>
                       <div class="radio-option">
-                          <input type="radio" name="jobType" id="vienChuc" value="vienChuc" required>
+                          <input type="radio" name="jobType" id="vienChuc" value="Viên chức" [(ngModel)]="dataAdd.employee" required>
                           <label for="vienChuc">Viên chức</label>
                       </div>
                   </div>
@@ -103,11 +107,11 @@
           <div class="form-row">
               <div class="form-group">
                   <label for="position">Chức vụ chính quyền (nếu có):</label>
-                  <input type="text" name="position" id="position">
+                  <input type="text" name="position" id="position"[(ngModel)]="dataAdd.jobName">
               </div>
               <div class="form-group">
                   <label for="Unit">Đơn vị công tác:</label>
-                  <input type="text" name="Unit" id="Unit" [(ngModel)]="dataAdd.unit" required>
+                  <input type="text" name="Unit" id="Unit"  required [(ngModel)]="dataAdd.unit">
               </div>
           </div>
       </section>
@@ -192,9 +196,21 @@
 
       <section class="form-section">
           <div class="form-group">
-              <label for="ForeignTripCount">Số lần xin đi nước ngoài trong năm 2024:</label>
+              <label >Số lần xin đi nước ngoài trong năm:</label>
               <input type="number" name="ForeignTripCount" id="ForeignTripCount" [(ngModel)]="dataAdd.foreignTripCount" required>
           </div>
+          <div class="form-group">
+            <label >Số ngày da nghỉ phép trong năm:</label>
+            <input type="text" name="ForeignTripCount" id="ForeignTripCount" [(ngModel)]="dataAdd.restCount" required>
+        </div>
+        <div class="form-group">
+            <label >Người được ủy quyền:</label>
+            <input type="text" name="ForeignTripCount" id="ForeignTripCount" [(ngModel)]="dataAdd.alternative" required>
+        </div>
+        <div class="form-group">
+            <label >Ngày nộp báo cáo kết quả:</label>
+            <input type="number" name="ForeignTripCount" id="ForeignTripCount" [(ngModel)]="dataAdd.submitDay" required>
+        </div>
       </section>
 
 
