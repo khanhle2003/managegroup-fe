@@ -17,7 +17,7 @@
                 <path d="M0 0h24v24H0z" fill="none"/>
                 <path d="M12 4V1L8 5l4 4V6c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z" fill="currentColor"/>
               </svg>
-              làm mới
+              Làm mới
             </button>
         </div>
         <button type="submit" style="margin-right: 8px; margin-top: 5px; padding: 10px 20px" class="btn btn-submit">
@@ -36,7 +36,7 @@
               </div>
               <div class="form-group">
                   <label for="dob">Ngày sinh:</label>
-                  <input type="date" name="dob" id="dob" required>
+                  <input type="date" name="dob" id="dob" [(ngModel)]="dataAdd.birthDate" required>
               </div>
               <div class="form-group">
                   <label for="gender">Giới tính:</label>
