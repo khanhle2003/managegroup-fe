@@ -1,0 +1,13 @@
+<div class="import-excel">
+    <button (click)="onImportExcel()" class="btn btn-primary">
+      Import Excel
+    </button>
+    <input
+      type="file"
+      #fileInput
+      style="display: none;"
+      (change)="handleFileInput($event)"
+      accept=".xlsx, .xls"
+    />
+  </div>
+  

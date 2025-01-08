@@ -5,15 +5,22 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import * as XLSX from 'xlsx';
 import { firstValueFrom, NotFoundError } from 'rxjs';
+import { ImportExcelComponent } from "../import-excel/import-excel.component";
 
 @Component({
   selector: 'app-datatable',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule, RouterModule],
+  imports: [CommonModule, HttpClientModule, FormsModule, RouterModule, ImportExcelComponent],
   templateUrl: './datatable.component.html',
   styleUrls: ['./datatable.component.css'],
 })
 export class DatatableComponent implements OnInit {
+onImportExcel() {
+throw new Error('Method not implemented.');
+}
+handleFileInput($event: Event) {
+throw new Error('Method not implemented.');
+}
   httpClient = inject(HttpClient);
   originalData: any[] = [];
   filteredData: any[] = [];

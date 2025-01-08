@@ -27,6 +27,7 @@
     "primeicons": "^7.0.0",
     "primeng": "^17.3.2",
     "rxjs": "~7.8.0",
+    "save-dev": "^0.0.1-security",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",
     "zone.js": "~0.14.3"
