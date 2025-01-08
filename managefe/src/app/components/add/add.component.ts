@@ -93,4 +93,5 @@ restCount:string = "";
 alternative:string = "";
 submitDay:string ="";
 employee:string ="";
+birthDate:string= "";
 }
