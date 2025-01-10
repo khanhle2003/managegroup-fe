@@ -2,7 +2,7 @@
   <div style="display: flex; align-items: center; gap: 5px;">
     <a href="/add-data" style="padding: 5px 10px; background-color: #3db7df; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm</a>
     <button (click)="hideCheckbox()" style="padding: 5px 10px; background-color: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer;">Chọn DL</button>
-    <app-import-excel></app-import-excel>
+    <app-excel-import></app-excel-import>
     <div class="dropdown" style="position: relative; display: inline-block;">
         <button (click)="toggleDropdown()" style="padding: 5px 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
             Xuất DL
@@ -12,7 +12,7 @@
             <a  (click)="exportSelectedToWord()">Xuất Word</a>
             <a  (click)="exportAllExcel()">Xuất tất cả(excel)</a>
         </div>
-        
+
     </div>
 
 
@@ -73,7 +73,7 @@
 </a>  </div>
 </div>
 
-<div style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 50px 40px 0 40px; border: 1px solid #ffffff; border-radius: 10px;margin-top: 20; ">
+<div style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 50px 40px 0 40px; border: 1px solid #ffffff; border-radius: 10px;margin-top: 20px; ">
   <table class="data-table" style="width: 100%; border-collapse: separate; border-spacing: 2px;">
     <thead style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
       <tr>

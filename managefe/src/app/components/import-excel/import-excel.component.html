@@ -1,13 +1,16 @@
-<div class="import-excel">
-    <button (click)="onImportExcel()" class="btn btn-primary">
-      Import Excel
+<div class="container">
+  <form (submit)="onSubmit()" enctype="multipart/form-data">
+    <div class="form-group">
+      <input
+        type="file"
+        id="file"
+        (change)="onFileChange($event)"
+        class="form-control"
+        accept=".xlsx, .xls"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!file">
+      Upload
     </button>
-    <input
-      type="file"
-      #fileInput
-      style="display: none;"
-      (change)="handleFileInput($event)"
-      accept=".xlsx, .xls"
-    />
-  </div>
-  
+  </form>
+</div>
