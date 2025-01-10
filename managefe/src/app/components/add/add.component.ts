@@ -64,34 +64,42 @@ export class AddComponent implements OnInit{
 }
 
 export class ButtonBasicDemo { }
-export class DataAdd{
-  fullname:string="";
-  unit:string="";
-  country:string="";
-  tripPurpose:string="";
-  jobTitle:string="";
-  selfFunded:string="";
-  sponsor:string="";
-  hospital:string=""
-  invitationUnit:string="";
-  partyMember:string="";
-  foreignTripCount:number=0;
-  notificationNumber:string="";
-  notificationDate:string="";
-  startDate:string="";
-  endDate:string="";
-
-  phoneNumber : number = 0;
-  email : string = "";
-  gender : string  = "";
-
-
-partyBranch: string = "";
-partyPosition: string ="";
-jobName:string = "";
-restCount:string = "";
-alternative:string = "";
-submitDay:string ="";
-employee:string ="";
-birthDate:string= "";
+export class DataAdd {
+  fullname: string = "";                // Họ và tên
+  gender: string = "";                  // Giới tính
+  birthDate: string = "";               // Ngày sinh
+  partyBranch: string = "";             // Chi bộ
+  partyPosition: string = "";           // Chức vụ Đảng
+  jobTitle: string = "";                // Chức danh nghề nghiệp
+  jobName: string = "";                 // Tên công việc
+  unit: string = "";                    // Đơn vị công tác
+  phoneNumber: number = 0;              // Số điện thoại
+  email: string = "";                   // Email
+  country: string = "";                 // Quốc gia
+  invitationUnit: string = "";          // Tên cơ quan/Tổ chức/Cá nhân mời
+  moiDichDanh: string = "";             // Mời đi
+  tripPurpose: string = "";             // Mục đích chuyến đi
+  startDate: string = "";               // Ngày bắt đầu
+  monthBegin: string = "";              // Tháng bắt đầu
+  endDate: string = "";                 // Ngày kết thúc
+  thoigiandichuyen: string = "";        // Thời gian đi chuyến
+  notificationNumber: string = "";      // Số thông báo
+  notificationDate: string = "";        // Ngày thông báo
+  foreignTripCount: number = 0;         // Số lần xin đi nước ngoài trong năm
+  selfFunded: string = "";              // Cá nhân tự túc
+  sponsor: string = "";                 // Bên mời
+  hospital: string = "";                // Bệnh viện tài trợ
+  giaTri: string = "";                  // Giá trị
+  restCount: string = "";               // Số ngày đã nghỉ phép trong năm
+  alternative: string = "";             // Người được ủy quyền
+  submitDay: string = "";               // Ngày nộp báo cáo kết quả
+  ngayXindi: string = "";               // Ngày xin đi
+  ngayPnhanHS: string = "";             // Ngày nhận hồ sơ
+  ngaychuyenHSsangP: string = "";       // Ngày chuyển hồ sơ sang phòng
+  photoHochieu: string = "";            // Ngày hết hạn hộ chiếu
+  noiDung: string = "";                 // Nội dung
+  tenBaoCao: string = "";               // Tên báo cáo
+  hoanHuy: string = "";                 // Hoãn/hủy
+  Khac: string = "";                    // Khác
+  Employee:string ="";
 }
