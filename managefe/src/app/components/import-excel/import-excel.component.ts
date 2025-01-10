@@ -1,7 +1,10 @@
+import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
+
   selector: 'app-excel-import',
   templateUrl: 'import-excel.component.html',
   styleUrls: ['import-excel.component.css'],
@@ -19,6 +22,7 @@ export class ExcelImportComponent {
       this.file = target.files[0];
     }
   }
+
 
   onSubmit(): void {
     if (!this.file) {
@@ -40,4 +44,26 @@ export class ExcelImportComponent {
       },
     });
   }
+
+
+
+
+  saveToDatabase() {
+    if (this.excelData.length === 0) {
+      console.error('Không có dữ liệu để lưu');
+      return;
+    }
+
+    const apiUrl = 'http://localhost:8080/api/excel/upload'; // Thay đổi endpoint phù hợp với backend của bạn
+    this.http.post(apiUrl, this.excelData).subscribe({
+      next: (response) => {
+        console.log('Dữ liệu đã được lưu thành công:', response);
+        alert('Lưu dữ liệu thành công!');
+      },
+      error: (error) => {
+        console.error('Lỗi khi lưu dữ liệu:', error);
+        alert('Có lỗi xảy ra khi lưu dữ liệu!');
+      },
+    });
+}
 }
