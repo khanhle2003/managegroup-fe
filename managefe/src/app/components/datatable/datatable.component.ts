@@ -5,12 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import * as XLSX from 'xlsx';
 import { firstValueFrom, NotFoundError } from 'rxjs';
-import { ImportExcelComponent } from "../import-excel/import-excel.component";
+import { ExcelImportComponent } from '../import-excel/import-excel.component';
 
 @Component({
   selector: 'app-datatable',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule, RouterModule, ImportExcelComponent],
+  imports: [CommonModule, HttpClientModule, FormsModule, RouterModule,ExcelImportComponent ],
   templateUrl: './datatable.component.html',
   styleUrls: ['./datatable.component.css'],
 })
@@ -36,7 +36,7 @@ throw new Error('Method not implemented.');
   showCheckbox: boolean = false;
   router = inject(Router);
   isDropdownOpen : boolean = false;
-headerChecked : boolean = false; 
+headerChecked : boolean = false;
 toggleDropdown(){
   this.isDropdownOpen = !this.isDropdownOpen
 }
@@ -68,12 +68,12 @@ toggleDropdown(){
   }
   checkPageCheckboxState() {
     const currentPageItems = this.data.filter(item => item !== null);
-    this.headerChecked = currentPageItems.length > 0 && 
+    this.headerChecked = currentPageItems.length > 0 &&
                         currentPageItems.every(item => item.selected);
   }
 
 
-  selectAll(event: any) 
+  selectAll(event: any)
   {
     this.headerChecked = event.target.checked;
     this.data.forEach(item => {
@@ -269,8 +269,8 @@ toggleDropdown(){
   }
 
   private downloadWord(response: Blob, id: number, notificationDate: String, fullName: String) {
-    const blob = new Blob([response], { 
-      type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' 
+    const blob = new Blob([response], {
+      type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
     });
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -287,7 +287,7 @@ toggleDropdown(){
       const JSZip = (await import('jszip')).default;
       const zip = new JSZip();
 
-     
+
       responses.forEach((blob, index) => {
         zip.file(`user_data_${ids[index]}.docx`, blob);
       });
@@ -348,5 +348,5 @@ toggleDropdown(){
       loadingElement.parentNode.removeChild(loadingElement);
     }
   }
-  
+
 }

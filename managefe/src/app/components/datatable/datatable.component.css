@@ -197,13 +197,13 @@ label {
 .dropdown-content{
   display:flex;
   flex-direction: column;
-  
+
 }
 .dropdown-content a {
   text-align: center;
   cursor: pointer;
-  text-decoration: none; 
-  color: #000; 
+  text-decoration: none;
+  color: #000;
   transition: background-color 0.2s;
 }
 .dropdown-content a:hover {
@@ -218,6 +218,6 @@ label {
     position: sticky;
     left: 0;
     z-index: 2;
-
+background-color: #ffffff;
   }
 

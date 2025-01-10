@@ -1,38 +1,43 @@
 import { Component } from '@angular/core';
-import * as XLSX from 'xlsx';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-import-excel',
-  standalone: true,
-  imports: [],
-  templateUrl: './import-excel.component.html',
-  styleUrl: './import-excel.component.css'
+  selector: 'app-excel-import',
+  templateUrl: 'import-excel.component.html',
+  styleUrls: ['import-excel.component.css'],
+  standalone: true
 })
-export class ImportExcelComponent {
-  onImportExcel() {
-    const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
-    if (fileInput) {
-      fileInput.click(); // Mở hộp thoại chọn file
+export class ExcelImportComponent {
+  file: File | null = null;
+
+  constructor(private http: HttpClient) {}
+
+  // Handle file change event
+  onFileChange(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    if (target.files && target.files.length > 0) {
+      this.file = target.files[0];
     }
   }
 
-  handleFileInput(event: Event) {
-    const input = event.target as HTMLInputElement;
-
-    if (input?.files?.length) {
-      const file = input.files[0];
-      const reader = new FileReader();
-
-      reader.onload = (e: any) => {
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const sheetName = workbook.SheetNames[0]; // Lấy tên sheet đầu tiên
-        const sheet = workbook.Sheets[sheetName];
-        const jsonData = XLSX.utils.sheet_to_json(sheet); // Chuyển sheet thành JSON
-        console.log('Excel Data:', jsonData);
-      };
-
-      reader.readAsArrayBuffer(file);
+  onSubmit(): void {
+    if (!this.file) {
+      alert('Please select a file!');
+      return;
     }
+
+    const formData = new FormData();
+    formData.append('file', this.file);
+
+    this.http.post('http://localhost:8080/api/import', formData).subscribe({
+      next: (response) => {
+        alert('File uploaded successfully!');
+        console.log(response);
+      },
+      error: (err) => {
+        console.error('Error uploading file:', err);
+        alert('Error uploading file. Please try again.');
+      },
+    });
   }
 }
