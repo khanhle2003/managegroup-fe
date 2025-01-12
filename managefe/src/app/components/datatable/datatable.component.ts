@@ -51,7 +51,7 @@ toggleDropdown(){
   }
 
   fetchData() {
-    this.httpClient.get('http://localhost:8080/auth/qldoan').subscribe((data: any) => {
+    this.httpClient.get('http://localhost:8080/qldoan').subscribe((data: any) => {
       this.originalData = data;
       this.filteredData = [...this.originalData];
       this.loadPage(1);

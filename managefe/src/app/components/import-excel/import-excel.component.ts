@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
 
@@ -12,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ExcelImportComponent {
   file: File | null = null;
+  excelData: any[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -37,6 +37,7 @@ export class ExcelImportComponent {
       next: (response) => {
         alert('File uploaded successfully!');
         console.log(response);
+        this.excelData = response as any[];
       },
       error: (err) => {
         console.error('Error uploading file:', err);
