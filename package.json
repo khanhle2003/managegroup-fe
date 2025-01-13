@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@ctrl/tinycolor": "^4.1.0",
     "@primeng/themes": "^19.0.2",
     "primeng": "^19.0.2",
     "xlsx": "^0.18.5"

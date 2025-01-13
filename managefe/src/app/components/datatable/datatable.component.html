@@ -144,53 +144,53 @@
       </tr>
     </thead>
     <tbody>
-      <tr
-        *ngFor="let item of data" data-header="Họ và Tên">
-        <td>
-          <input type="checkbox" [(ngModel)]="item.selected">
-        </td>
-        <td data-header="Họ và Tên" (click)="goToDetailPage(item.id)"
-          style="cursor: pointer;">{{ item.fullName }}</td>
 
-        <td>{{ item.birthDate || '' }}</td>
-        <td>{{ item.gender || '' }}</td>
-        <td>{{ item.partyBranch || '' }}</td>
-        <td>{{ item.partyPosition || '' }}</td>
-        <td>{{ item.jobTitle || '' }}</td>
-        <td>{{ item.jobName || '' }}</td>
-        <td>{{ item.unit }}</td>
-        <td>{{ item.phoneNumber || '' }}</td>
-        <td>{{ item.email || '' }}</td>
-        <td>{{ item.country || '' }}</td>
-        <td>{{ item.invitationUnit || '' }}</td>
-        <td>{{ item.moiDichDanh || '' }}</td>
-        <td>{{ item.tripPurpose || '' }}</td>
-        <td>{{ item.startDate || '' }}</td>
-        <td>{{ item.monthBegon || '' }}</td>
-        <td>{{ item.endDate || '' }}</td>
-        <td>{{ item.thoigiandichuyen || '' }}</td>
-        <td>{{ item.selfFunded || '' }}</td>
-        <td>{{ item.sponsor || '' }}</td>
-        <td>{{ item.hospital || '' }}</td>
-        <td>{{ item.giaTri || '' }}</td>
-        <td>{{ item.foreignTripCount || '' }}</td>
-        <td>{{ item.ngayXindi || '' }}</td>
-        <td>{{ item.ngayPnhanHS || '' }}</td>
-        <td>{{ item.notificationNumber || '' }}</td>
-        <td>{{ item.notificationDate || '' }}</td>
-        <td>{{ item.ngaychuyenHSsangP || '' }}</td>
-        <td>{{ item.alternative || '' }}</td>
-        <td>{{ item.soNghiPhep || '' }}</td>
-        <td>{{ item.ngayNghiPhep || '' }}</td>
-        <td>{{ item.submitDay || '' }}</td>
-        <td>{{ item.photoHochieu || '' }}</td>
-        <td>{{ item.noiDung || '' }}</td>
-        <td>{{ item.tenBaoCao || '' }}</td>
-        <td>{{ item.hoanHuy || '' }}</td>
-        <td>{{ item.khac || '' }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <tr
+    *ngFor="let item of data" data-header="Họ và Tên">
+    <td>
+      <input type="checkbox" [(ngModel)]="item.selected">
+    </td>
+ <td data-header="Họ và Tên" (click)="goToDetailPage(item.id)" style="cursor: pointer;" class="hoverable">{{ item.fullName }} </td>
+    <td>{{ item.birthDate || '' }}</td>
+    <td>{{ item.gender || '' }}</td>
+    <td>{{ item.partyBranch || '' }}</td>
+    <td>{{ item.partyPosition || '' }}</td>
+    <td>{{ item.jobTitle || '' }}</td>
+    <td>{{ item.jobName || '' }}</td>
+    <td>{{ item.unit }}</td>
+    <td>{{ item.phoneNumber || '' }}</td>
+    <td>{{ item.email || '' }}</td>
+    <td>{{ item.country || '' }}</td>
+    <td>{{ item.invitationUnit || '' }}</td>
+    <td>{{ item.moiDichDanh || '' }}</td>
+    <td>{{ item.tripPurpose || '' }}</td>
+    <td>{{ item.startDate || '' }}</td>
+    <td>{{ item.monthBegon || '' }}</td>
+    <td>{{ item.endDate || '' }}</td>
+    <td>{{ item.thoigiandichuyen || '' }}</td>
+    <td>{{ item.selfFunded || '' }}</td>
+    <td>{{ item.sponsor || '' }}</td>
+    <td>{{ item.hospital || '' }}</td>
+    <td>{{ item.giaTri || '' }}</td>
+    <td>{{ item.foreignTripCount || '' }}</td>
+    <td>{{ item.ngayXindi || '' }}</td>
+    <td>{{ item.ngayPnhanHS || '' }}</td>
+    <td>{{ item.notificationNumber || '' }}</td>
+    <td>{{ item.notificationDate || '' }}</td>
+    <td>{{ item.ngaychuyenHSsangP || '' }}</td>
+    <td>{{ item.alternative || '' }}</td>
+    <td>{{ item.soNghiPhep || '' }}</td>
+    <td>{{ item.ngayNghiPhep || '' }}</td>
+    <td>{{ item.submitDay || '' }}</td>
+    <td>{{ item.photoHochieu || '' }}</td>
+    <td>{{ item.noiDung || '' }}</td>
+    <td>{{ item.tenBaoCao || '' }}</td>
+    <td>{{ item.hoanHuy || '' }}</td>
+    <td>{{ item.khac || '' }}</td>
+  </tr>
+  </tbody>
+</table>
+
 </div>
 <div class="pagination"
   style="display: flex; justify-content: center; align-items: center; gap: 10px;">
