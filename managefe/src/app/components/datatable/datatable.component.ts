@@ -244,6 +244,7 @@ toggleDropdown(){
           })
         );
         if (!(response instanceof Blob)) {
+          console.error('Phản hồi từ server không phải Blob:', response);
           throw new Error('Response is not a Blob');
         }
         return response;

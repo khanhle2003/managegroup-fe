@@ -3,21 +3,18 @@
   <div style="display: flex; align-items: center; gap: 5px;">
     <app-excel-import> </app-excel-import>
     <a href="/add-data" style="padding: 5px 10px; background-color: #3db7df; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm</a>
-    <button (click)="hideCheckbox()" style="padding: 5px 10px; background-color: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer;">Chọn DL</button>
+
 
     <div class="dropdown" style="position: relative; display: inline-block;">
         <button (click)="toggleDropdown()" style="padding: 5px 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
-            Xuất DL
+          Xuất DL
         </button>
         <div class="dropdown-content" *ngIf="isDropdownOpen" style="min-width: 180px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 9999;">
             <a  (click)="exportExcel()">Xuất Excel</a>
             <a  (click)="exportSelectedToWord()">Xuất Word</a>
             <a  (click)="exportAllExcel()">Xuất tất cả(excel)</a>
         </div>
-
     </div>
-
-
     <label for="startDate">Từ ngày</label>
     <input
       id="startDate"
@@ -79,7 +76,7 @@
   <table class="data-table" style="width: 100%; border-collapse: separate; border-spacing: 2px;">
     <thead style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
       <tr>
-        <th *ngIf="showCheckbox" data-header="Họ và Tên" class="sticky-header">
+        <th  data-header="checkbox" class="sticky-header">
           <input type="checkbox" [checked]="headerChecked" (change)="selectAll($event)">
      </th>
         <th data-header="Họ và Tên">Họ và Tên</th>
@@ -124,7 +121,7 @@
     <tbody>
   <tr
     *ngFor="let item of data" data-header="Họ và Tên">
-    <td *ngIf="showCheckbox">
+    <td>
       <input type="checkbox" [(ngModel)]="item.selected">
     </td>
  <td data-header="Họ và Tên" (click)="goToDetailPage(item.id)" style="cursor: pointer;">{{ item.fullName }}</td>
