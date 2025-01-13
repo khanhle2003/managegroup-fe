@@ -26,7 +26,7 @@ throw new Error('Method not implemented.');
   filteredData: any[] = [];
   data: any[] = [];
   currentPage = 1;
-  itemsPerPage = 12;
+  itemsPerPage = 13;
   totalItems = 2;
   pageInput = 1;
   // Filters
@@ -148,13 +148,17 @@ toggleDropdown(){
       const nameMatch = item.fullName?.toLowerCase().includes(term) || false;
       const countryMatch = item.country?.toLowerCase().includes(term) || false;
       const unitMatch = item.unit?.toLowerCase().includes(term) || false;
-      const notiMatch = item.notificationDate?.toLowerCase().includes(term) || false;
+      const notidateMatch = item.notificationDate?.toLowerCase().includes(term) || false;
+      const phoneMatch = item.phone?.toLowerCase().includes(term) || false;
+      const emailMatch = item.email?.toLowerCase().includes(term) || false;
+      const tripmatch = item.tripPurpose?.toLowerCase().includes(term) || false;
+      const notinumbermatch = item.notificationNumber?.toLowerCase().includes(term) || false;
       const itemStartDate = item.startDate ? new Date(item.startDate).getTime() : null;
       const itemEndDate = item.endDate ? new Date(item.endDate).getTime() : null;
       const dateInRange =
         (!start || (itemStartDate && itemStartDate >= start)) &&
         (!end || (itemEndDate && itemEndDate <= end));
-      return (nameMatch || countryMatch || unitMatch || notiMatch) && dateInRange;
+      return (nameMatch || countryMatch || unitMatch || notidateMatch || phoneMatch || emailMatch || notinumbermatch || tripmatch) && dateInRange;
     });
     this.loadPage(1);
   }
@@ -208,20 +212,6 @@ toggleDropdown(){
 
     XLSX.writeFile(wb, fileName);
   }
-
-
-
-
-
-
-
-
-
-
-//wword
-
-
-
 
   async exportSelectedToWord() {
     const selectedIds = this.filteredData
