@@ -81,10 +81,6 @@ button {
   color: white;
 }
 
-button:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
 
 /* Input styles */
 input[type="date"],
@@ -111,6 +107,7 @@ label {
 }
 
 .data-table {
+  table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
 }
@@ -121,6 +118,7 @@ label {
   z-index: 1;
   background-color: #0065ca;
   color: white;
+  
 }
 
 .data-table th,
@@ -130,9 +128,7 @@ label {
   border-bottom: 10px solid #e0e0e0;
 }
 
-.data-table tbody tr:hover {
-  background-color: #b2c0cf;
-}
+
 
 .data-table td {
   white-space: nowrap;
@@ -220,4 +216,9 @@ label {
     z-index: 2;
 background-color: #ffffff;
   }
+
+.data-table th {
+  width: 150px;
+  height: 50px;
+}
 

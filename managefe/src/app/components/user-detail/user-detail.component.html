@@ -11,49 +11,64 @@
 
     <div class="profile-content">
         <div class="info-group">
-            <p class="info-item"><strong>ID:</strong> {{ userData.id }}</p>
+            <h3>Thông tin cá nhân</h3>
+    
             <p class="info-item"><strong>Họ và tên:</strong> {{
                 userData.fullName }}</p>
             <p class="info-item"><strong>Giới tính:</strong> {{ userData.gender
                 }}</p>
             <p class="info-item"><strong>Ngày sinh:</strong> {{
                 userData.birthDate }}</p>
+        </div>
 
+        <div class="info-group">
+            <h3>Thông tin Đảng</h3>
             <p class="info-item"><strong>Đảng viên:</strong> {{
-                userData.partyMember }}</p>
+                userData.partyBranch }}</p>
             <p class="info-item"><strong>Chức vụ Đảng:</strong> {{
                 userData.partyPosition }}</p>
+        </div>
 
+        <div class="info-group">
+            <h3>Thông tin công việc</h3>
             <p class="info-item"><strong>Chức danh nghề nghiệp:</strong> {{
                 userData.jobTitle }}</p>
             <p class="info-item"><strong>Chức vụ chính quyền:</strong> {{
                 userData.jobName }}</p>
-
             <p class="info-item"><strong>Đơn vị công tác:</strong> {{
                 userData.unit }}</p>
+        </div>
+
+        <div class="info-group">
+            <h3>Thông tin liên hệ</h3>
             <p class="info-item"><strong>Số điện thoại:</strong> {{
                 userData.phoneNumber }}</p>
             <p class="info-item"><strong>Email:</strong> {{ userData.email
                 }}</p>
-
             <p class="info-item"><strong>Quốc gia đến:</strong> {{
                 userData.country }}</p>
+        </div>
+
+        <div class="info-group">
+            <h3>Thông tin chuyến đi</h3>
             <p class="info-item"><strong>Đơn vị mời:</strong> {{
                 userData.invitationUnit }}</p>
             <p class="info-item"><strong>Mời đích danh:</strong> {{
                 userData.MoiDichDanh }}</p>
             <p class="info-item"><strong>Mục đích chuyến đi:</strong> {{
                 userData.tripPurpose }}</p>
-
             <p class="info-item"><strong>Ngày bắt đầu:</strong> {{
                 userData.startDate }}</p>
-
             <p class="info-item"><strong>Tháng bắt đầu:</strong> {{
                 userData.monthBegin }}</p>
             <p class="info-item"><strong>Ngày kết thúc:</strong> {{
                 userData.endDate }}</p>
             <p class="info-item"><strong>Thời gian di chuyển:</strong> {{
                 userData.Thoigiandichuyen }}</p>
+        </div>
+
+        <div class="info-group">
+            <h3>Thông tin tài chính</h3>
             <p class="info-item"><strong>Tự túc:</strong> {{ userData.selfFunded
                 }}</p>
             <p class="info-item"><strong>Nhà tài trợ:</strong> {{
@@ -62,10 +77,14 @@
                 userData.Hospital }}</p>
             <p class="info-item"><strong>Giá trị:</strong> {{ userData.GiaTri
                 }}</p>
+        </div>
+
+        <div class="info-group">
+            <h3>Thông tin khác</h3>
             <p class="info-item"><strong>Số chuyến đi nước ngoài:</strong> {{
                 userData.foreignTripCount }}</p>
             <p class="info-item"><strong>Ngày xin đi:</strong> {{
-                userData.NgayXinDi }}</p>
+                userData.ngayXindi }}</p>
             <p class="info-item"><strong>Ngày chuyển hồ sơ sang phòng:</strong>
                 {{ userData.NgayPnhanHS }}</p>
             <p class="info-item"><strong>Số thông báo:</strong> {{
@@ -75,29 +94,20 @@
             <p class="info-item"><strong>Người tiếp nhận:</strong> {{
                 userData.alternative }}</p>
             <p class="info-item"><strong>Số nghỉ phép:</strong> {{
-                userData.SoNghiPhep }}</p>
+                userData.soNghiPhep }}</p>
             <p class="info-item"><strong>Ngày nghỉ phép:</strong> {{
-                userData.NgayNghiPhep }}</p>
-
-            <p class="info-item"><strong>Người tiếp nhận:</strong> {{
-                userData.alternative }}</p>
-            <p class="info-item"><strong>Số nghỉ phép:</strong> {{
-                userData.SoNghiPhep }}</p>
-            <p class="info-item"><strong>Ngày nghỉ phép:</strong> {{
-                userData.NgayNghiPhep }}</p>
-
+                userData.ngayNghiPhep }}</p>
             <p class="info-item"><strong>Ngày nộp:</strong> {{
                 userData.submitDay }}</p>
             <p class="info-item"><strong>Ngày hết hạn hộ chiếu:</strong> {{
-                userData.PhotoHoChieu }}</p>
-            <p class="info-item"><strong>Nội dung:</strong> {{ userData.NoiDung
+                userData.photoHoChieu }}</p>
+            <p class="info-item"><strong>Nội dung:</strong> {{ userData.noiDung
                 }}</p>
-
             <p class="info-item"><strong>Tên báo cáo:</strong> {{
-                userData.TenBaoCao }}</p>
-            <p class="info-item"><strong>Hoãn/ Huỷ:</strong> {{ userData.HoanHuy
+                userData.tenBaoCao }}</p>
+            <p class="info-item"><strong>Hoãn/ Huỷ:</strong> {{ userData.hoanHuy
                 }}</p>
-            <p class="info-item"><strong>Khác:</strong> {{ userData.Khac }}</p>
+            <p class="info-item"><strong>Khác:</strong> {{ userData.khac }}</p>
         </div>
     </div>
 </div>

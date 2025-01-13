@@ -45,13 +45,13 @@ export class AddComponent implements OnInit{
   saveData(){
     this.addData(this.dataAdd).subscribe(
       (response) => {
-        this.message = 'User added successfully!';
+     alert("add success");
         console.log(this.dataAdd);
       this.saveToNotepad
       },
       (error) => {
         console.error('Error adding user:', error);
-        this.message = 'Failed to add user.';
+        alert("add fail");
       }
     );
   }
