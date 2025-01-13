@@ -118,7 +118,7 @@ label {
   z-index: 1;
   background-color: #0065ca;
   color: white;
-  
+
 }
 
 .data-table th,
@@ -214,7 +214,7 @@ label {
     position: sticky;
     left: 0;
     z-index: 2;
-background-color: #ffffff;
+    background-color: #ffffff;
   }
 
 .data-table th {

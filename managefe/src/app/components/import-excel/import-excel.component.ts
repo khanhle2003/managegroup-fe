@@ -1,32 +1,42 @@
 import { HttpClient } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-
   selector: 'app-excel-import',
   templateUrl: 'import-excel.component.html',
   styleUrls: ['import-excel.component.css'],
-  standalone: true
+  standalone: true,
 })
 export class ExcelImportComponent {
   file: File | null = null;
-  excelData: any[] = [];
 
   constructor(private http: HttpClient) {}
 
-  // Handle file change event
+  /**
+   * Khi nhấn nút Upload
+   * @param fileInput - Tham chiếu đến input file
+   */
+  onUploadClick(fileInput: HTMLInputElement): void {
+
+    fileInput.click();
+  }
+
+
   onFileChange(event: Event): void {
     const target = event.target as HTMLInputElement;
     if (target.files && target.files.length > 0) {
       this.file = target.files[0];
+      console.log('File đã chọn:', this.file.name);
+
+
+      this.uploadFile();
     }
   }
 
 
-  onSubmit(): void {
+  uploadFile(): void {
     if (!this.file) {
-      alert('Please select a file!');
+      alert('Vui lòng chọn tệp trước!');
       return;
     }
 
@@ -35,36 +45,12 @@ export class ExcelImportComponent {
 
     this.http.post('http://localhost:8080/api/import', formData).subscribe({
       next: (response) => {
-        alert('File uploaded successfully!');
-        console.log(response);
-        this.excelData = response as any[];
+        console.log('Tệp đã được tải lên:', response);
+        alert('Tệp đã được import thành công!');
       },
       error: (err) => {
-        console.error('Error uploading file:', err);
-        alert('Error uploading file. Please try again.');
+        console.error('Lỗi khi import file:', err);
       },
     });
   }
-
-
-
-
-  saveToDatabase() {
-    if (this.excelData.length === 0) {
-      console.error('Không có dữ liệu để lưu');
-      return;
-    }
-
-    const apiUrl = 'http://localhost:8080/api/excel/upload'; // Thay đổi endpoint phù hợp với backend của bạn
-    this.http.post(apiUrl, this.excelData).subscribe({
-      next: (response) => {
-        console.log('Dữ liệu đã được lưu thành công:', response);
-        alert('Lưu dữ liệu thành công!');
-      },
-      error: (error) => {
-        console.error('Lỗi khi lưu dữ liệu:', error);
-        alert('Có lỗi xảy ra khi lưu dữ liệu!');
-      },
-    });
-}
 }
