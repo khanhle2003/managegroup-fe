@@ -222,3 +222,11 @@ label {
   height: 50px;
 }
 
+.data-table th[data-header="checkbox"] {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background-color: #ffffff;
+  width:30px;
+  height: 50px;
+}
