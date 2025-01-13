@@ -125,7 +125,7 @@ label {
 .data-table td {
   padding: 5px;
   text-align: left;
-  border-bottom: 3px solid #e0e0e0;
+  border-bottom: 10px solid #e0e0e0;
 }
 
 
@@ -205,6 +205,17 @@ label {
 .dropdown-content a:hover {
   background-color: #f1f1f1; }
 
+  .data-table th[data-header="Họ và Tên"] {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background-color: #0065ca;
+  }  .data-table td[data-header="Họ và Tên"] {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background-color: #ffffff;
+  }
 
 .data-table th {
   width: 150px;
@@ -218,48 +229,4 @@ label {
   background-color: #ffffff;
   width:30px;
   height: 50px;
-}
-
-.data-table th[data-header="Họ và Tên"] {
-  position: sticky;
-  left: 0;
-  z-index: 2;
-  background-color: #0065ca;
-  width: 173px;
-height: 50px;
-}
-.data-table th[data-header="Giới tính"] {
-  left: 0;
-  z-index: 2;
-  background-color: #0065ca;
-  width: 83px;
-height: 50px;
-}
-.data-table th[data-header="Ngày sinh"] {
-  left: 0;
-  z-index: 2;
-  background-color: #0065ca;
-  width: 93px;
-height: 50px;
-}
-.data-table th[data-header="Chi bộ"] {
-  left: 0;
-  z-index: 2;
-  background-color: #0065ca;
-  width: 100px;
-height: 50px;
-}
-.data-table th[data-header="Chức vụ Đảng"] {
-  left: 0;
-  z-index: 2;
-  background-color: #0065ca;
-  width: 120px;
-height: 50px;
-}
-.data-table th[data-header="Chức vụ nghề nghiệp"] {
-  left: 0;
-  z-index: 2;
-  background-color: #0065ca;
-  width: 100px;
-height: 50px;
 }
