@@ -229,7 +229,6 @@ label {
 height: 50px;
 }
 .data-table th[data-header="Giới tính"] {
-  position: sticky;
   left: 0;
   z-index: 2;
   background-color: #0065ca;
@@ -237,7 +236,6 @@ height: 50px;
 height: 50px;
 }
 .data-table th[data-header="Ngày sinh"] {
-  position: sticky;
   left: 0;
   z-index: 2;
   background-color: #0065ca;
@@ -245,10 +243,24 @@ height: 50px;
 height: 50px;
 }
 .data-table th[data-header="Chi bộ"] {
-  position: sticky;
   left: 0;
   z-index: 2;
   background-color: #0065ca;
   width: 100px;
 height: 50px;
 }
+.data-table th[data-header="Chức vụ Đảng"] {
+  left: 0;
+  z-index: 2;
+  background-color: #0065ca;
+  width: 120px;
+height: 50px;
+}
+.data-table th[data-header="Chức vụ nghề nghiệp"] {
+  left: 0;
+  z-index: 2;
+  background-color: #0065ca;
+  width: 100px;
+height: 50px;
+}
+
