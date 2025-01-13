@@ -1,41 +1,59 @@
+<div
+  style="display: flex; justify-content: flex-end; align-items: flex-start; padding: 10px; margin-bottom: 0;">
+  <a href="/login"
+    style="padding: 5px 10px; background-color: #000000; color: white; text-decoration: none; border: none; border-radius: 5px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
+      height="16" fill="currentColor">
+      <path
+        d="M10 2h4a2 2 0 012 2v4h-2V4h-4v16h4v-4h2v4a2 2 0 01-2 2h-4a2 2 0 01-2-2V4a2 2 0 012-2zm6.293 9l-1.414 1.414L19.586 16H9v2h10.586l-4.707 4.707L16.293 22 22 16.293 16.293 9z"></path>
+    </svg>
+    Đăng xuất
+  </a>
+</div>
 
-<div class="search-container" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-bottom: 5px; margin-top: 50px;">
+<div class="search-container"
+  style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-bottom: 5px;">
   <div style="display: flex; align-items: center; gap: 5px;">
-    <app-excel-import> </app-excel-import>
-    <a href="/add-data" style="padding: 5px 10px; background-color: #3db7df; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm</a>
 
+    <a href="/add-data"
+      style="padding: 5px 10px; background-color: #3db7df; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm</a>
+    <app-excel-import> </app-excel-import>
 
     <div class="dropdown" style="position: relative; display: inline-block;">
-        <button (click)="toggleDropdown()" style="padding: 5px 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
-          Xuất DL
-        </button>
-        <div class="dropdown-content" *ngIf="isDropdownOpen" style="min-width: 180px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 9999;">
-            <a  (click)="exportExcel()">Xuất Excel</a>
-            <a  (click)="exportSelectedToWord()">Xuất Word</a>
-            <a  (click)="exportAllExcel()">Xuất tất cả(excel)</a>
-        </div>
+      <div class="dropdown-content" *ngIf="isDropdownOpen"
+        style="min-width: 180px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 9999;">
+        <a (click)="exportExcel()">Xuất Excel</a>
+        <a (click)="exportSelectedToWord()">Xuất Word</a>
+        <a (click)="exportAllExcel()">Xuất tất cả(excel)</a>
+      </div>
     </div>
+
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 5px;">
     <label for="startDate">Từ ngày</label>
     <input
       id="startDate"
       type="date"
       [(ngModel)]="startDate"
       (keyup.enter)="filterData()"
-      style="padding: 10px; width: 150px;"
-    />
-  </div>
-
-  <div style="display: flex; align-items: center; gap: 5px;">
+      style="padding: 10px; width: 150px;" />
     <label for="endDate">Đến ngày</label>
     <input
       id="endDate"
       type="date"
       [(ngModel)]="endDate"
       (keyup.enter)="filterData()"
-      style="padding: 10px; width: 150px;"
-    />
+      style="padding: 10px; width: 150px;" />
   </div>
 
+  <button (click)="toggleDropdown()"
+    style="padding: 5px 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; margin-left: 5px;">
+    Xuất DL
+  </button>
+</div>
+
+<div style="margin-left: 500px">
   <div style="display: flex; align-items: center; gap: 20px;">
     <label for="searchName"></label>
     <input
@@ -44,41 +62,42 @@
       [(ngModel)]="searchTerm"
       placeholder="Nhập dữ liệu cần tìm"
       (keyup.enter)="filterData()"
-      style="padding: 10px; width: 300px;"
-    />
+      style="padding: 10px; width: 300px;" />
+
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <button (click)="filterData()"
+        style="padding: 5px 10px; display: flex; align-items: center; gap: 8px; color:rgb(0, 0, 0)  ">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
+          height="16" fill="currentColor">
+          <path
+            d="M10 2a8 8 0 015.938 13.379l4.621 4.622a1 1 0 01-1.414 1.414l-4.622-4.621A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"></path>
+        </svg>
+
+      </button>
+      <button (click)="resetFilters()"
+        style="padding: 5px 10px; margin: 0 10px; background-color: #d54d4d; color: white; border: none; border-radius: 4px; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
+          height="16" fill="currentColor">
+          <path
+            d="M12 4V1L8 5l4 4V6c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"></path>
+        </svg>
+
+      </button>
+    </div>
   </div>
 
-  <div style="display: flex; align-items: center; gap: 10px;">
-    <button (click)="filterData()" style="padding: 5px 10px; display: flex; align-items: center; gap: 8px;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-        <path d="M10 2a8 8 0 015.938 13.379l4.621 4.622a1 1 0 01-1.414 1.414l-4.622-4.621A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"></path>
-      </svg>
-
-    </button>
-    <button (click)="resetFilters()" style="padding: 5px 10px; margin: 0 10px; background-color: #d54d4d; color: white; border: none; border-radius: 4px; display: flex; align-items: center; gap: 5px; cursor: pointer;">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-    <path d="M12 4V1L8 5l4 4V6c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"></path>
-  </svg>
-
-</button>
-  </div>
-
-  <div style = "margin-left: 100px;">
-<a href="/login" style="padding: 5px 10px; background-color: #000000; color: white; text-decoration: none; border: none; border-radius: 5px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-    <path d="M10 2h4a2 2 0 012 2v4h-2V4h-4v16h4v-4h2v4a2 2 0 01-2 2h-4a2 2 0 01-2-2V4a2 2 0 012-2zm6.293 9l-1.414 1.414L19.586 16H9v2h10.586l-4.707 4.707L16.293 22 22 16.293 16.293 9z"></path>
-  </svg>
-Đăng xuất
-</a>  </div>
 </div>
-
-<div style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 50px 40px 0 40px; border: 1px solid #ffffff; border-radius: 10px;margin-top: 20px; ">
-  <table class="data-table" style="width: 100%; border-collapse: separate; border-spacing: 2px;">
-    <thead style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
+<div
+  style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 50px 40px 0 40px; border: 1px solid #000000; border-radius: 10px;margin-top: 20px; ">
+  <table class="data-table"
+    style="width: 100%; border-collapse: separate; border-spacing: 2px;">
+    <thead
+      style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
       <tr>
-        <th  data-header="checkbox" class="sticky-header">
-          <input type="checkbox" [checked]="headerChecked" (change)="selectAll($event)">
-     </th>
+        <th data-header="checkbox" class="sticky-header">
+          <input type="checkbox" [checked]="headerChecked"
+            (change)="selectAll($event)">
+        </th>
         <th data-header="Họ và Tên">Họ và Tên</th>
         <th data-header="Ngày sinh">Ngày sinh</th>
         <th data-header="Giới tính">Giới tính</th>
@@ -119,66 +138,69 @@
       </tr>
     </thead>
     <tbody>
-  <tr
-    *ngFor="let item of data" data-header="Họ và Tên">
-    <td>
-      <input type="checkbox" [(ngModel)]="item.selected">
-    </td>
- <td data-header="Họ và Tên" (click)="goToDetailPage(item.id)" style="cursor: pointer;">{{ item.fullName }}</td>
-    <td>{{ item.birthDate || '' }}</td>
-    <td>{{ item.gender || '' }}</td>
-    <td>{{ item.partyBranch || '' }}</td>
-    <td>{{ item.partyPosition || '' }}</td>
-    <td>{{ item.jobTitle || '' }}</td>
-    <td>{{ item.jobName || '' }}</td>
-    <td>{{ item.unit }}</td>
-    <td>{{ item.phoneNumber || '' }}</td>
-    <td>{{ item.email || '' }}</td>
-    <td>{{ item.country || '' }}</td>
-    <td>{{ item.invitationUnit || '' }}</td>
-    <td>{{ item.moiDichDanh || '' }}</td>
-    <td>{{ item.tripPurpose || '' }}</td>
-    <td>{{ item.startDate || '' }}</td>
-    <td>{{ item.monthBegon || '' }}</td>
-    <td>{{ item.endDate || '' }}</td>
-    <td>{{ item.thoigiandichuyen || '' }}</td>
-    <td>{{ item.selfFunded || '' }}</td>
-    <td>{{ item.sponsor || '' }}</td>
-    <td>{{ item.hospital || '' }}</td>
-    <td>{{ item.giaTri || '' }}</td>
-    <td>{{ item.foreignTripCount || '' }}</td>
-    <td>{{ item.ngayXindi || '' }}</td>
-    <td>{{ item.ngayPnhanHS || '' }}</td>
-    <td>{{ item.notificationNumber || '' }}</td>
-    <td>{{ item.notificationDate || '' }}</td>
-    <td>{{ item.ngaychuyenHSsangP || '' }}</td>
-    <td>{{ item.alternative || '' }}</td>
-    <td>{{ item.soNghiPhep || '' }}</td>
-    <td>{{ item.ngayNghiPhep || '' }}</td>
-    <td>{{ item.submitDay || '' }}</td>
-    <td>{{ item.photoHochieu || '' }}</td>
-    <td>{{ item.noiDung || '' }}</td>
-    <td>{{ item.tenBaoCao || '' }}</td>
-    <td>{{ item.hoanHuy || '' }}</td>
-    <td>{{ item.khac || '' }}</td>
-  </tr>
-  </tbody>
-</table>
+      <tr
+        *ngFor="let item of data" data-header="Họ và Tên">
+        <td>
+          <input type="checkbox" [(ngModel)]="item.selected">
+        </td>
+        <td data-header="Họ và Tên" (click)="goToDetailPage(item.id)"
+          style="cursor: pointer;" class="hoverable">{{ item.fullName }}</td>
+        <td>{{ item.birthDate || '' }}</td>
+        <td>{{ item.gender || '' }}</td>
+        <td>{{ item.partyBranch || '' }}</td>
+        <td>{{ item.partyPosition || '' }}</td>
+        <td>{{ item.jobTitle || '' }}</td>
+        <td>{{ item.jobName || '' }}</td>
+        <td>{{ item.unit }}</td>
+        <td>{{ item.phoneNumber || '' }}</td>
+        <td>{{ item.email || '' }}</td>
+        <td>{{ item.country || '' }}</td>
+        <td>{{ item.invitationUnit || '' }}</td>
+        <td>{{ item.moiDichDanh || '' }}</td>
+        <td>{{ item.tripPurpose || '' }}</td>
+        <td>{{ item.startDate || '' }}</td>
+        <td>{{ item.monthBegon || '' }}</td>
+        <td>{{ item.endDate || '' }}</td>
+        <td>{{ item.thoigiandichuyen || '' }}</td>
+        <td>{{ item.selfFunded || '' }}</td>
+        <td>{{ item.sponsor || '' }}</td>
+        <td>{{ item.hospital || '' }}</td>
+        <td>{{ item.giaTri || '' }}</td>
+        <td>{{ item.foreignTripCount || '' }}</td>
+        <td>{{ item.ngayXindi || '' }}</td>
+        <td>{{ item.ngayPnhanHS || '' }}</td>
+        <td>{{ item.notificationNumber || '' }}</td>
+        <td>{{ item.notificationDate || '' }}</td>
+        <td>{{ item.ngaychuyenHSsangP || '' }}</td>
+        <td>{{ item.alternative || '' }}</td>
+        <td>{{ item.soNghiPhep || '' }}</td>
+        <td>{{ item.ngayNghiPhep || '' }}</td>
+        <td>{{ item.submitDay || '' }}</td>
+        <td>{{ item.photoHochieu || '' }}</td>
+        <td>{{ item.noiDung || '' }}</td>
+        <td>{{ item.tenBaoCao || '' }}</td>
+        <td>{{ item.hoanHuy || '' }}</td>
+        <td>{{ item.khac || '' }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-<div class="pagination" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-  <button (click)="prevPage()" [disabled]="currentPage === 1" style="padding: 10px 20px;border-radius: 20px;">Trang trước</button>
+<div class="pagination"
+  style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+  <button (click)="prevPage()" [disabled]="currentPage === 1"
+    style="padding: 10px 20px;border-radius: 20px;">Trang trước</button>
 
   <span>Trang
     <input
-      type="number"
+      type="text"
       [(ngModel)]="pageInput"
       (keyup.enter)="goToPage()"
       min="1"
       [max]="getTotalPages()"
-      style="width: 50px; text-align: center;"
-    />
+      style="width: 70px; text-align: center;" />
     / {{ getTotalPages() }}
   </span>
 
-  <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()" style="padding: 10px 20px;border-radius: 20px;">Trang sau</button>
+  <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()"
+    style="padding: 10px 20px;border-radius: 20px;">Trang sau</button>
 </div>
