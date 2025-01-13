@@ -1,3 +1,4 @@
+
 <div>
   <div style="align-items: right;">
     <a href="/login"
@@ -11,9 +12,24 @@
     </a> </div>
 </div>
 
-
 <div class="search-container"
   style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-bottom: 5px; margin-top: px;">
+<div
+  style="display: flex; justify-content: flex-end; align-items: flex-start; padding: 10px; margin-bottom: 0;">
+  <a href="/login"
+    style="padding: 5px 10px; background-color: #000000; color: white; text-decoration: none; border: none; border-radius: 5px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
+      height="16" fill="currentColor">
+      <path
+        d="M10 2h4a2 2 0 012 2v4h-2V4h-4v16h4v-4h2v4a2 2 0 01-2 2h-4a2 2 0 01-2-2V4a2 2 0 012-2zm6.293 9l-1.414 1.414L19.586 16H9v2h10.586l-4.707 4.707L16.293 22 22 16.293 16.293 9z"></path>
+    </svg>
+    Đăng xuất
+  </a>
+</div>
+
+<div class="search-container"
+  style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-bottom: 5px;">
+
   <div style="display: flex; align-items: center; gap: 5px;">
 
     <a href="/add-data"
@@ -85,11 +101,13 @@
 
         </button>
       </div>
+
   </div>
 
 </div>
 <div
   style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 50px 40px 0 40px; border: 1px solid #ffffff; border-radius: 10px;margin-top: 20px; ">
+
   <table class="data-table"
     style="width: 100%; border-collapse: separate; border-spacing: 2px;">
     <thead
@@ -146,6 +164,7 @@
         </td>
         <td data-header="Họ và Tên" (click)="goToDetailPage(item.id)"
           style="cursor: pointer;">{{ item.fullName }}</td>
+
         <td>{{ item.birthDate || '' }}</td>
         <td>{{ item.gender || '' }}</td>
         <td>{{ item.partyBranch || '' }}</td>
@@ -199,6 +218,7 @@
       min="1"
       [max]="getTotalPages()"
       style="width: 57px; text-align: center;" />
+
     / {{ getTotalPages() }}
   </span>
 
