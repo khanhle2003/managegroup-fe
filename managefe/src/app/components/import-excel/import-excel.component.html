@@ -1,16 +1,19 @@
 <div class="container">
-  <form (submit)="onSubmit()" enctype="multipart/form-data">
+  <form enctype="multipart/form-data">
     <div class="form-group">
+      <!-- Input file ẩn -->
       <input
         type="file"
         id="file"
+        #fileInput
         (change)="onFileChange($event)"
-        class="form-control"
+        class="d-none"
         accept=".xlsx, .xls"
       />
+      <!-- Nút Upload -->
+      <button type="button" class="btn btn-primary" (click)="onUploadClick(fileInput)">
+        Upload
+      </button>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!file">
-      Upload
-    </button>
   </form>
 </div>
