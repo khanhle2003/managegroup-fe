@@ -15,6 +15,9 @@
             <a  (click)="exportAllExcel()">Xuất tất cả(excel)</a>
         </div>
     </div>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 5px;">
     <label for="startDate">Từ ngày</label>
     <input
       id="startDate"
@@ -23,9 +26,6 @@
       (keyup.enter)="filterData()"
       style="padding: 10px; width: 150px;"
     />
-  </div>
-
-  <div style="display: flex; align-items: center; gap: 5px;">
     <label for="endDate">Đến ngày</label>
     <input
       id="endDate"
@@ -76,7 +76,7 @@
   <table class="data-table" style="width: 100%; border-collapse: separate; border-spacing: 2px;">
     <thead style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
       <tr>
-        <th  data-header="checkbox" class="sticky-header">
+        <th  data-header="checkbox" >
           <input type="checkbox" [checked]="headerChecked" (change)="selectAll($event)">
      </th>
         <th data-header="Họ và Tên">Họ và Tên</th>
