@@ -24,13 +24,15 @@
     "express": "^4.18.2",
     "jszip": "^3.10.1",
     "managefe": "file:",
+    "ng-zorro-antd": "^17.4.1",
     "primeicons": "^7.0.0",
     "primeng": "^17.3.2",
     "rxjs": "~7.8.0",
     "save-dev": "^0.0.1-security",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",
-    "zone.js": "~0.14.3"
+    "zone.js": "~0.14.3",
+    "@ctrl/tinycolor": "^x.x.x"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.11",
@@ -46,6 +48,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.4.2"
+    "typescript": "~5.4.2",
+    "@ctrl/tinycolor": "^x.x.x"
   }
 }

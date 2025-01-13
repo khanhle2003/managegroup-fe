@@ -13,6 +13,9 @@ export class UserService {
   
     getUserById(id: number): Observable<any> {
         return this.http.get<any>(`${this.apiUrl}/${id}`); 
+     
     }
-
+    fetchData(): Observable<any> {
+      return this.http.get<any>('http://localhost:8080/qldoan'); 
+  }
 }

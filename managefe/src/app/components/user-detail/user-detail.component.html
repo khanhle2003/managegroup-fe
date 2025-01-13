@@ -10,44 +10,28 @@
 <div class="user-profile" *ngIf="userData">
 
     <div class="profile-content">
-        <div class="info-group">
-            <h3>Thông tin cá nhân</h3>
-    
-            <p class="info-item"><strong>Họ và tên:</strong> {{
-                userData.fullName }}</p>
-            <p class="info-item"><strong>Giới tính:</strong> {{ userData.gender
-                }}</p>
-            <p class="info-item"><strong>Ngày sinh:</strong> {{
-                userData.birthDate }}</p>
-        </div>
+        <form>
+            <div class="info-group">
+                <h3>Thông tin cá nhân</h3>
+                <p class="info-item"><strong>Họ và tên:</strong> {{ userData.fullName }}</p>
+                <p class="info-item"><strong>Giới tính:</strong> {{ userData.gender }}</p>
+                <p class="info-item"><strong>Ngày sinh:</strong> {{ userData.birthDate }}</p>
+        
+        
+                <p class="info-item"><strong>Đảng viên:</strong> {{ userData.partyBranch }}</p>
+                <p class="info-item"><strong>Chức vụ Đảng:</strong> {{ userData.partyPosition }}</p>
 
-        <div class="info-group">
-            <h3>Thông tin Đảng</h3>
-            <p class="info-item"><strong>Đảng viên:</strong> {{
-                userData.partyBranch }}</p>
-            <p class="info-item"><strong>Chức vụ Đảng:</strong> {{
-                userData.partyPosition }}</p>
-        </div>
+               
+                <p class="info-item"><strong>Chức danh nghề nghiệp:</strong> {{ userData.jobTitle }}</p>
+                <p class="info-item"><strong>Chức vụ chính quyền:</strong> {{ userData.jobName }}</p>
+                <p class="info-item"><strong>Đơn vị công tác:</strong> {{ userData.unit }}</p>
+       
 
-        <div class="info-group">
-            <h3>Thông tin công việc</h3>
-            <p class="info-item"><strong>Chức danh nghề nghiệp:</strong> {{
-                userData.jobTitle }}</p>
-            <p class="info-item"><strong>Chức vụ chính quyền:</strong> {{
-                userData.jobName }}</p>
-            <p class="info-item"><strong>Đơn vị công tác:</strong> {{
-                userData.unit }}</p>
-        </div>
-
-        <div class="info-group">
-            <h3>Thông tin liên hệ</h3>
-            <p class="info-item"><strong>Số điện thoại:</strong> {{
-                userData.phoneNumber }}</p>
-            <p class="info-item"><strong>Email:</strong> {{ userData.email
-                }}</p>
-            <p class="info-item"><strong>Quốc gia đến:</strong> {{
-                userData.country }}</p>
-        </div>
+                <p class="info-item"><strong>Số điện thoại:</strong> {{ userData.phoneNumber }}</p>
+                <p class="info-item"><strong>Email:</strong> {{ userData.email }}</p>
+               
+            </div>
+        </form>
 
         <div class="info-group">
             <h3>Thông tin chuyến đi</h3>
@@ -65,6 +49,7 @@
                 userData.endDate }}</p>
             <p class="info-item"><strong>Thời gian di chuyển:</strong> {{
                 userData.Thoigiandichuyen }}</p>
+                 <p class="info-item"><strong>Quốc gia đến:</strong> {{ userData.country }}</p>
         </div>
 
         <div class="info-group">
@@ -110,6 +95,101 @@
             <p class="info-item"><strong>Khác:</strong> {{ userData.khac }}</p>
         </div>
     </div>
+    <div style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 50px 40px 0 40px; border: 1px solid #ffffff; border-radius: 10px;margin-top: 20px; ">
+        <table class="data-table" style="width: 100%; border-collapse: separate; border-spacing: 2px;">
+          <thead style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
+            <tr>
+           
+              <th data-header="Họ và Tên">Họ và Tên</th>
+              <th data-header="Ngày sinh">Ngày sinh</th>
+              <th data-header="Giới tính">Giới tính</th>
+              <th data-header="Chi bộ">Đảng viên</th>
+              <th data-header="Chức vụ Đảng">Chức vụ Đảng</th>
+              <th data-header="Chức danh nghề nghiệp">Chức danh nghề nghiệp</th>
+              <th data-header="Chức vụ chính quyền">Chức vụ chính quyền</th>
+              <th data-header="Đơn vị">Đơn vị</th>
+              <th data-header="Số điện thoại">Số điện thoại</th>
+              <th data-header="Email">Email</th>
+              <th data-header="Quốc gia">Quốc gia</th>
+              <th data-header="Đơn vị mời">Đơn vị mời</th>
+              <th data-header="Đơn vị mời">Mời đích danh</th>
+              <th data-header="Mục đích">Mục đích</th>
+              <th data-header="Ngày bắt đầu">Ngày bắt đầu</th>
+              <th data-header="Tháng bắt đầu">Tháng bắt đầu</th>
+              <th data-header="Ngày kết thúc">Ngày kết thúc</th>
+              <th data-header="Thời gian di chuyển">Thời gian di chuyển</th>
+              <th data-header="Tự túc">Tự túc</th>
+              <th data-header="Nhà tài trợ">Nhà tài trợ</th>
+              <th data-header="Bệnh viện">Bệnh viện</th>
+              <th data-header="Giá trị">Giá trị</th>
+              <th data-header="Số chuyến">Số chuyến</th>
+              <th data-header="Ngày xin đi">Ngày xin đi</th>
+              <th data-header="Ngày nhận hồ sơ">Ngày nhận hồ sơ</th>
+              <th data-header="Số thông báo">Số thông báo</th>
+              <th data-header="Ngày thông báo">Ngày thông báo</th>
+              <th data-header="Ngày chuyển hồ sơ sang Phòng">Ngày chuyển hồ sơ sang Phòng</th>
+              <th data-header="Người tiếp nhận">Người tiếp nhận</th>
+              <th data-header="Số nghỉ phép">Số nghỉ phép</th>
+              <th data-header="Ngày nghỉ phép">Ngày nghỉ phép</th>
+              <th data-header="Ngày nộp">Ngày nộp</th>
+              <th data-header="Ảnh hộ chiếu">Ảnh hộ chiếu</th>
+              <th data-header="Nội dung">Nội dung</th>
+              <th data-header="Tên báo cáo">Tên báo cáo</th>
+              <th data-header="Hoãn/Hủy">Hoãn/Hủy</th>
+              <th data-header="Khác">Khác</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let item of data">
+        <tr
+          data-header="Họ và Tên"
+          *ngIf="item.fullName === userData.fullName">
+ 
+
+       <td data-header="Họ và Tên"  style="cursor: pointer;" class="hoverable">{{ item.fullName }} </td>
+          <td>{{ item.birthDate || '' }}</td>
+          <td>{{ item.gender || '' }}</td>
+          <td>{{ item.partyBranch || '' }}</td>
+          <td>{{ item.partyPosition || '' }}</td>
+          <td>{{ item.jobTitle || '' }}</td>
+          <td>{{ item.jobName || '' }}</td>
+          <td>{{ item.unit }}</td>
+          <td>{{ item.phoneNumber || '' }}</td>
+          <td>{{ item.email || '' }}</td>
+          <td>{{ item.country || '' }}</td>
+          <td>{{ item.invitationUnit || '' }}</td>
+          <td>{{ item.moiDichDanh || '' }}</td>
+          <td>{{ item.tripPurpose || '' }}</td>
+          <td>{{ item.startDate || '' }}</td>
+          <td>{{ item.monthBegon || '' }}</td>
+          <td>{{ item.endDate || '' }}</td>
+          <td>{{ item.thoigiandichuyen || '' }}</td>
+          <td>{{ item.selfFunded || '' }}</td>
+          <td>{{ item.sponsor || '' }}</td>
+          <td>{{ item.hospital || '' }}</td>
+          <td>{{ item.giaTri || '' }}</td>
+          <td>{{ item.foreignTripCount || '' }}</td>
+          <td>{{ item.ngayXindi || '' }}</td>
+          <td>{{ item.ngayPnhanHS || '' }}</td>
+          <td>{{ item.notificationNumber || '' }}</td>
+          <td>{{ item.notificationDate || '' }}</td>
+          <td>{{ item.ngaychuyenHSsangP || '' }}</td>
+          <td>{{ item.alternative || '' }}</td>
+          <td>{{ item.soNghiPhep || '' }}</td>
+          <td>{{ item.ngayNghiPhep || '' }}</td>
+          <td>{{ item.submitDay || '' }}</td>
+          <td>{{ item.photoHochieu || '' }}</td>
+          <td>{{ item.noiDung || '' }}</td>
+          <td>{{ item.tenBaoCao || '' }}</td>
+          <td>{{ item.hoanHuy || '' }}</td>
+          <td>{{ item.khac || '' }}</td>
+        </tr>
+    </ng-container>
+        </tbody>
+      </table>
+    </div>
+ 
+
 </div>
 
 <div class="loading" *ngIf="!userData">
