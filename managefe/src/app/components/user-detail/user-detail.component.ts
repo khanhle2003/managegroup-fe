@@ -31,7 +31,25 @@ export class UserDetailComponent implements OnInit {
     showCheckbox: boolean = false;
     router = inject(Router);
     isDropdownOpen : boolean = false;
+    selectedUserId: number =0;
   headerChecked : boolean = false;
+  getUserData() {
+    this.userService.getUserById(this.id).subscribe(
+        data => {
+            this.userData = data;
+            console.log(this.userData);
+            this.selectedUserId = this.id;
+        },
+        error => {
+            console.error('Error fetching user data:', error);
+        }
+    );
+}
+goToEdit() {
+  this.router.navigate(['/edit-user', this.selectedUserId]);
+  console.log(`/edit-user/${this.selectedUserId}`);
+
+}
 
     ngOnInit(): void {
         this.route.params.subscribe(params => {
@@ -52,17 +70,7 @@ export class UserDetailComponent implements OnInit {
 
         });
       }
-    getUserData() {
-        this.userService.getUserById(this.id).subscribe(
-            data => {
-                this.userData = data;
-                console.log(this.userData);
-            },
-            error => {
-                console.error('Error fetching user data:', error);
-            }
-        );
-    }
+
     checkPageCheckboxState() {
         const currentPageItems = this.data.filter(item => item !== null);
         this.headerChecked = currentPageItems.length > 0 &&

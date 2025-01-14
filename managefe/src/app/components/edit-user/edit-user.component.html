@@ -1,0 +1,256 @@
+<div class="form-container">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-actions">
+  
+          <div style="max-height:72px;display: flex;" >
+            <button (click)="goBack($event)"  class="btn btn-back" style="margin-left: 10px;">
+              Quay lại
+            </button>
+  
+            
+          </div>
+          <button type="submit" style="margin-right: 8px; margin-top: 5px; padding: 10px 20px" class="btn btn-submit">
+            Lưu
+          </button>
+      </div>
+        <section class="form-section">
+            <h2 class="section-title">Thông tin cá nhân</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="FullName">Họ và tên:</label>
+                    <input type="text" name="FullName" id="FullName" [(ngModel)]="userData.fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Ngày sinh:</label>
+                    <input type="text" name="dob" id="dob" [(ngModel)]="userData.birthDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Giới tính:</label>
+                    <input type="text" name="gender" id="gender" [(ngModel)]="userData.gender">
+                 </div>
+                 </div>
+            <h2 class="section-title">Thông tin liên hệ</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phoneNumber">Số điện thoại:</label>
+                    <input type="text" name="phoneNumber" id="phoneNumber" [(ngModel)]="userData.phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" [(ngModel)]="userData.email" required>
+                </div>
+            </div>
+  
+        </section>
+  
+        <section class="form-section">
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="dangvien" id="dangvien" value="V" [(ngModel)]="userData.partyBranch" >
+                            <label for="dangvien">Đảng viên</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="PartyMer">Chức vụ Đảng (nếu có):</label>
+                    <input type="text" name="PartyMember" id="PartyMember" [(ngModel)]="userData.partyPosition">
+                </div>
+            </div>
+        </section>
+  
+        <section class="form-section">
+            <h2 class="section-title">Thông tin công việc</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Loại nhân viên:</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="jobType" id="nvHopDong" value="Nhân viên hợp đồng" [(ngModel)]="userData.Employee" required>
+                            <label for="nvHopDong">Nhân viên hợp đồng</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="jobType" id="vienChuc" value="Viên chức" [(ngModel)]="userData.Employee" required>
+                            <label for="vienChuc">Viên chức</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="JobTitle">Chức danh nghề nghiệp:</label>
+                    <input type="text" name="JobTitle" id="JobTitle" [(ngModel)]="userData.jobTitle" required>
+                </div>
+            </div>
+  
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="position">Chức vụ chính quyền (nếu có):</label>
+                    <input type="text" name="position" id="position"[(ngModel)]="userData.jobName">
+                </div>
+                <div class="form-group">
+                    <label for="Unit">Đơn vị công tác:</label>
+                    <input type="text" name="Unit" id="Unit"  required [(ngModel)]="userData.unit">
+                </div>
+            </div>
+        </section>
+  
+        <!-- <section class="form-section">
+            <h2 class="section-title">Thông tin liên hệ</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phoneNumber">Số điện thoại:</label>
+                    <input type="number" name="phoneNumber" id="phoneNumber" [(ngModel)]="userData.phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" [(ngModel)]="userData.email" required>
+                </div>
+            </div>
+        </section> -->
+  
+        <section class="form-section">
+            <h2 class="section-title">Thông tin chuyến đi</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="Country">Quốc gia/Vùng lãnh thổ đến:</label>
+                    <input type="text" name="Country" id="Country" [(ngModel)]="userData.country" required>
+                </div>
+                <div class="form-group">
+                    <label for="InvitationUnit">Tên cơ quan/Tổ chức/Cá nhân mời (nếu có):</label>
+                    <input type="text" name="InvitationUnit" id="InvitationUnit" [(ngModel)]="userData.invitationUnit" required>
+                </div>
+            </div>
+  
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="StartDate">Từ ngày:</label>
+                    <input type="text" name="StartDate" id="StartDate" [(ngModel)]="userData.startDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="EndDate">Đến ngày:</label>
+                    <input type="text" name="EndDate" id="EndDate" [(ngModel)]="userData.endDate" required>
+                </div>
+                <div class="form-group">
+                  <label for="monthBegin">Tháng bắt đầu:</label>
+                  <input type="text" name="monthBegin" id="monthBegin" [(ngModel)]="userData.monthBegin">
+              </div>
+              <div class="form-group">
+                  <label for="thoiGianDiChuyen">Thời gian di chuyến:</label>
+                  <input type="text" name="thoiGianDiChuyen" id="thoiGianDiChuyen" [(ngModel)]="userData.thoigiandichuyen">
+              </div>
+            
+            </div>
+  
+            <div class="form-group">
+                <label>Mục đích chuyến đi:</label>
+                <div class="radio-group purpose-group">
+                        <input type="text" name="TripPurpose" id="TripPurpose1"  [(ngModel)]="userData.tripPurpose" required>
+                </div>
+            </div>
+        </section>
+  
+        <section class="form-section">
+            <h2 class="section-title">Thông tin thông báo</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="notificationNumber">Số thông báo:</label>
+                    <input type="text" name="notificationNumber" id="notificationNumber" [(ngModel)]="userData.notificationNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="notificationDate">Ngày thông báo:</label>
+                    <input type="text" name="notificationDate" id="notificationDate" [(ngModel)]="userData.notificationDate" required>
+                </div>
+            </div>
+        </section>
+  
+        <section class="form-section funding-section">
+            <h2 class="section-title">Nguồn kinh phí</h2>
+            <div class="funding-group">
+                <div class="form-group">
+                    <label for="Sponsor">Bên mời:</label>
+                    <input type="text" name="Sponsor" id="Sponsor" [(ngModel)]="userData.sponsor">
+                </div>
+                <div class="form-group">
+                    <label for="SelfFunded">Cá nhân tự túc:</label>
+                    <input type="text" name="SelfFunded" id="SelfFunded" [(ngModel)]="userData.selfFunded">
+                </div>
+                <div class="form-group">
+                    <label for="Hospital">Bệnh viện tài trợ:</label>
+                    <input type="text" name="Hospital" id="Hospital" [(ngModel)]="userData.hospital">
+                </div>
+                <div class="form-group">
+                  <label for="monthBegin">Giá trị:</label>
+                  <input type="text" name="monthBegin" id="monthBegin" [(ngModel)]="userData.giaTri">
+              </div>
+            </div>
+        </section>
+  
+        <section class="form-section">
+            <div class="form-group">
+                <label >Số lần xin đi nước ngoài trong năm:</label>
+                <input type="number" name="ForeignTripCount" id="ForeignTripCount" [(ngModel)]="userData.foreignTripCount" required>
+            </div>
+            <div class="form-group">
+              <label >Số ngày đã nghỉ phép trong năm:</label>
+              <input type="text"  [(ngModel)]="userData.restCount" required>
+          </div>
+          <div class="form-group">
+              <label >Người được ủy quyền:</label>
+              <input type="text"  [(ngModel)]="userData.alternative" required>
+          </div>
+          <div class="form-group">
+              <label >Ngày nộp báo cáo kết quả:</label>
+              <input type="text" [(ngModel)]="userData.submitDay" required>
+          </div>
+        </section>
+  
+    
+  
+        <section class="form-section">
+            <h2 class="section-title">Thông tin bổ sung</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="photoHochieu">Ngày hết hạn hộ chiếu:</label>
+                    <input type="text" name="photoHochieu" id="photoHochieu" [(ngModel)]="userData.photoHochieu">
+                </div>
+                <div class="form-group">
+                    <label for="noiDung">Nội dung:</label>
+                    <input type="text" name="noiDung" id="noiDung" [(ngModel)]="userData.noiDung">
+                </div>
+                <div class="form-group">
+                    <label for="tenBaoCao">Tên báo cáo:</label>
+                    <input type="text" name="tenBaoCao" id="tenBaoCao" [(ngModel)]="userData.tenBaoCao">
+                </div>
+                <div class="form-group">
+                    <label for="hoanHuy">Hoãn/hủy:</label>
+                    <input type="text" name="hoanHuy" id="hoanHuy" [(ngModel)]="userData.hoanHuy">
+                </div>
+                <div class="form-group">
+                    <label for="khac">Khác:</label>
+                    <input type="text" name="khac" id="khac" [(ngModel)]="userData.Khac">
+                </div>
+                <div class="form-group">
+                  <label for="moiDichDanh">Mời đích danh:</label>
+                  <input type="text" name="moiDichDanh" id="moiDichDanh" [(ngModel)]="userData.moiDichDanh">
+              </div>
+            
+       
+              <div class="form-group">
+                  <label for="ngayXinDI">Ngày xin đi:</label>
+                  <input type="text" name="ngayXinDI" id="ngayXinDI" [(ngModel)]="userData.ngayXindi">
+              </div>
+              <div class="form-group">
+                  <label for="ngayPnhanHS">Ngày phòng nhận hồ sơ:</label>
+                  <input type="text" name="ngayPnhanHS" id="ngayPnhanHS" [(ngModel)]="userData.ngayPnhanHS">
+              </div>
+              <div class="form-group">
+                  <label for="ngaychuyenHSsangP">Ngày chuyển hồ sơ sang phòng:</label>
+                  <input type="text" name="ngaychuyenHSsangP" id="ngaychuyenHSsangP" [(ngModel)]="userData.ngaychuyenHSsangP">
+              </div>
+            </div>
+        </section>
+  
+    </form>
+  
+  </div>
+  

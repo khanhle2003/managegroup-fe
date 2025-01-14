@@ -1,14 +1,14 @@
 <a href="/data-table" class="btn btn-back"
     style="margin-left: 400px; margin-top: 40px;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="16"
-        height="16" fill="currentColor">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="30"
+        height="30" fill="currentColor">
         <path d="M11 19l-7-7 7-7v4h8v6h-8v4z"></path>
     </svg>
     Quay lại
 </a>
 
 <div class="user-profile" *ngIf="userData">
-
+                    <button id="buttonSua" style="background-color: #0b6ed7; color: #ffffff;" (click) = "goToEdit()">Sửa dữ liệu</button>
     <div class="profile-content">
         <form>
             <div class="info-group">
@@ -99,7 +99,7 @@
         <table class="data-table" style="width: 100%; border-collapse: separate; border-spacing: 2px;">
           <thead style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
             <tr>
-                <th >Họ và Tên</th>
+            
               <th data-header="Họ và Tên">Họ và Tên</th>
               <th data-header="Ngày sinh">Ngày sinh</th>
               <th data-header="Giới tính">Giới tính</th>

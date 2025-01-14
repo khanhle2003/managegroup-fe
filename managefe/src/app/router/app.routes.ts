@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import {AddComponent} from "../components/add/add.component";
 import { UserDetailComponent } from '../components/user-detail/user-detail.component';
 import { ExcelImportComponent } from '../components/import-excel/import-excel.component';
+import { EditUserComponent } from '../components/edit-user/edit-user.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -16,7 +17,9 @@ export const routes: Routes = [
   {path: 'add-data', component: AddComponent},
   {path: 'user-detail/:id', component: UserDetailComponent},
   {path: 'app-import-excel', component: ExcelImportComponent},
+  {path: 'edit-user/:id', component: EditUserComponent},
 ]
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
