@@ -105,15 +105,12 @@ export class EditUserComponent implements OnInit {
   }
 
   onSubmit() {
-
     const dataToSubmit = { ...this.userData };
-
 
     if (typeof dataToSubmit.partyBranch === 'boolean') {
       dataToSubmit.partyBranch = dataToSubmit.partyBranch ? 'V' : '';
     }
 
-    // Kiểm tra validate trước khi submit
     // if (!this.validateForm(dataToSubmit)) {
     //   return;
     // }
@@ -172,7 +169,8 @@ export class EditUserComponent implements OnInit {
     this.getUserData();
   }
 
-  goBack() {
-    this.router.navigate(['/detail-user']);
+  goBack(event: MouseEvent) {
+    event.preventDefault();
+    this.router.navigate(['/user-detail', this.userId]);
   }
 }

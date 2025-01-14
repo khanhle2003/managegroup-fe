@@ -3,27 +3,13 @@
       <div class="form-actions">
   
           <div style="max-height:72px;display: flex;" >
-            <a href="/data-table"  class="btn btn-back" style="margin-left: 10px;">
-  
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
-                <path d="M11 19l-7-7 7-7v4h8v6h-8v4z"></path>
-              </svg>
+            <button (click)="goBack($event)"  class="btn btn-back" style="margin-left: 10px;">
               Quay lại
-            </a>
+            </button>
   
-              <button style="margin-left: 10px ;" class="btn btn-reset">
-  
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="13" height="13" style="vertical-align: middle; margin-right: 5px;">
-                  <path d="M0 0h24v24H0z" fill="none"/>
-                  <path d="M12 4V1L8 5l4 4V6c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z" fill="currentColor"/>
-                </svg>
-                Làm mới
-              </button>
+            
           </div>
           <button type="submit" style="margin-right: 8px; margin-top: 5px; padding: 10px 20px" class="btn btn-submit">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
-              <path d="M2 21l21-9-21-9v7l15 2-15 2v7z"></path>
-            </svg>
             Lưu
           </button>
       </div>
@@ -36,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label for="dob">Ngày sinh:</label>
-                    <input type="date" name="dob" id="dob" [(ngModel)]="userData.birthDate" required>
+                    <input type="text" name="dob" id="dob" [(ngModel)]="userData.birthDate" required>
                 </div>
                 <div class="form-group">
                     <label for="gender">Giới tính:</label>
@@ -138,11 +124,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="StartDate">Từ ngày:</label>
-                    <input type="date" name="StartDate" id="StartDate" [(ngModel)]="userData.startDate" required>
+                    <input type="text" name="StartDate" id="StartDate" [(ngModel)]="userData.startDate" required>
                 </div>
                 <div class="form-group">
                     <label for="EndDate">Đến ngày:</label>
-                    <input type="date" name="EndDate" id="EndDate" [(ngModel)]="userData.endDate" required>
+                    <input type="text" name="EndDate" id="EndDate" [(ngModel)]="userData.endDate" required>
                 </div>
                 <div class="form-group">
                   <label for="monthBegin">Tháng bắt đầu:</label>
@@ -172,7 +158,7 @@
                 </div>
                 <div class="form-group">
                     <label for="notificationDate">Ngày thông báo:</label>
-                    <input type="date" name="notificationDate" id="notificationDate" [(ngModel)]="userData.notificationDate" required>
+                    <input type="text" name="notificationDate" id="notificationDate" [(ngModel)]="userData.notificationDate" required>
                 </div>
             </div>
         </section>
@@ -206,15 +192,15 @@
             </div>
             <div class="form-group">
               <label >Số ngày đã nghỉ phép trong năm:</label>
-              <input type="text" name="ForeignTripCount" id="ForeignTripCount" [(ngModel)]="userData.restCount" required>
+              <input type="text"  [(ngModel)]="userData.restCount" required>
           </div>
           <div class="form-group">
               <label >Người được ủy quyền:</label>
-              <input type="text" name="ForeignTripCount" id="ForeignTripCount" [(ngModel)]="userData.alternative" required>
+              <input type="text"  [(ngModel)]="userData.alternative" required>
           </div>
           <div class="form-group">
               <label >Ngày nộp báo cáo kết quả:</label>
-              <input type="date" name="ForeignTripCount" id="ForeignTripCount" [(ngModel)]="userData.submitDay" required>
+              <input type="text" [(ngModel)]="userData.submitDay" required>
           </div>
         </section>
   
@@ -225,7 +211,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="photoHochieu">Ngày hết hạn hộ chiếu:</label>
-                    <input type="date" name="photoHochieu" id="photoHochieu" [(ngModel)]="userData.photoHochieu">
+                    <input type="text" name="photoHochieu" id="photoHochieu" [(ngModel)]="userData.photoHochieu">
                 </div>
                 <div class="form-group">
                     <label for="noiDung">Nội dung:</label>
@@ -251,15 +237,15 @@
        
               <div class="form-group">
                   <label for="ngayXinDI">Ngày xin đi:</label>
-                  <input type="date" name="ngayXinDI" id="ngayXinDI" [(ngModel)]="userData.ngayXindi">
+                  <input type="text" name="ngayXinDI" id="ngayXinDI" [(ngModel)]="userData.ngayXindi">
               </div>
               <div class="form-group">
                   <label for="ngayPnhanHS">Ngày phòng nhận hồ sơ:</label>
-                  <input type="date" name="ngayPnhanHS" id="ngayPnhanHS" [(ngModel)]="userData.ngayPnhanHS">
+                  <input type="text" name="ngayPnhanHS" id="ngayPnhanHS" [(ngModel)]="userData.ngayPnhanHS">
               </div>
               <div class="form-group">
                   <label for="ngaychuyenHSsangP">Ngày chuyển hồ sơ sang phòng:</label>
-                  <input type="date" name="ngaychuyenHSsangP" id="ngaychuyenHSsangP" [(ngModel)]="userData.ngaychuyenHSsangP">
+                  <input type="text" name="ngaychuyenHSsangP" id="ngaychuyenHSsangP" [(ngModel)]="userData.ngaychuyenHSsangP">
               </div>
             </div>
         </section>
