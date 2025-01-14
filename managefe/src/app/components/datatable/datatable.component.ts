@@ -149,7 +149,7 @@ toggleDropdown(){
       const countryMatch = item.country?.toLowerCase().includes(term) || false;
       const unitMatch = item.unit?.toLowerCase().includes(term) || false;
       const notidateMatch = item.notificationDate?.toLowerCase().includes(term) || false;
-      const phoneMatch = item.phone?.toLowerCase().includes(term) || false;
+      const phoneMatch = item.phoneNumber?.toLowerCase().includes(term) || false;
       const emailMatch = item.email?.toLowerCase().includes(term) || false;
       const tripmatch = item.tripPurpose?.toLowerCase().includes(term) || false;
       const notinumbermatch = item.notificationNumber?.toLowerCase().includes(term) || false;
