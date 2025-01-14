@@ -37,9 +37,12 @@ export class UserDetailComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.id = +params['id'];
             this.getUserData();
-
         });
         this.fetchData();
+
+        for (let i = 1; i <= 10; i++) {
+            console.log(i);
+        }
     }
     fetchData() {
         this.httpClient.get('http://localhost:8080/qldoan').subscribe((data: any) => {
