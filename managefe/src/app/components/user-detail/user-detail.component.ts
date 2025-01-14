@@ -4,12 +4,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../services/user-detail.service';
 import { FormsModule } from '@angular/forms';
-import { DragDropModule } from '@angular/cdk/drag-drop'
-import { NzTableModule } from 'ng-zorro-antd/table';
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule, RouterModule ,DragDropModule, NzTableModule],
+  imports: [CommonModule, HttpClientModule, FormsModule, RouterModule ],
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css']
 })
