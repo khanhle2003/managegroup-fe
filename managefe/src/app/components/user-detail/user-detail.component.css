@@ -154,6 +154,7 @@ nz-table {
     cursor: pointer;
     font-weight: 500;
     transition: all 0.2s;
+    margin-bottom: 10px;
   }
   
   .btn-primary {
