@@ -1,5 +1,6 @@
 <div
   style="display: flex; justify-content: flex-end; align-items: flex-start; padding: 10px; margin-bottom: 0;">
+  <h1 style="display: flex; margin-right: 300px;">Danh sách quản lí đoàn ra công tác nước ngoài</h1>
   <a href="/login"
     style="padding: 5px 10px; background-color: #000000; color: white; text-decoration: none; border: none; border-radius: 5px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
@@ -16,17 +17,13 @@
 
   <div style="display: flex; align-items: center; gap: 5px;">
     <div class="dropdown" style="position: relative; display: inline-block;">
-      <div class="dropdown-content" *ngIf="isDropdownOpen"
-        style="min-width: 180px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 9999;">
-        <a (click)="exportExcel()">Xuất Excel</a>
-        <a (click)="exportSelectedToWord()">Xuất Word</a>
-        <a (click)="exportAllExcel()">Xuất tất cả(excel)</a>
-      </div>
+
     </div>
+
 
   </div>
 
-  <div style="display: flex; align-items: center; gap: 5px;">
+  <div style="display: flex; align-items: center; gap: 5px;margin-left: 600px;">
     <label for="startDate">Từ ngày</label>
     <input
       id="startDate"
@@ -42,19 +39,41 @@
       (keyup.enter)="filterData()"
       style="padding: 10px; width: 150px;" />
   </div>
-
+<div style="display: flex; gap: 50px; position: relative; margin-left: 410px;">
   <button (click)="toggleDropdown()"
-    style="padding: 5px 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; margin-left: 5px;">
+    style="padding: 5px 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
     Xuất DL
   </button>
+  <div class="dropdown-content" *ngIf="isDropdownOpen"
+    style="min-width: 90px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 9999; top: 100%; left: 0;">
+    <a (click)="exportExcel()" style="display: block; padding: 5px;">Xuất Excel</a>
+    <a (click)="exportSelectedToWord()" style="display: block; padding: 5px;">Xuất Word</a>
+    <a (click)="exportAllExcel()" style="display: block; padding: 5px;">Xuất tất cả (excel)</a>
+  </div>
+</div>
+
+  <!-- dropdown backup -->
+  <div class="dropdown" style=" position: relative; display: inline-block; margin-right: 10px; margin-left:auto;">
+    <button class="btn btn-primary" style="padding: 5px 10px;" (click)="toggleBackupDropdown()">Sao lưu dữ liệu</button>
+    <div *ngIf="backupStatus" style="min-width: 150px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 20000;" [ngClass]="{ 'success': isBackupSuccess, 'error': !isBackupSuccess }">
+
+      <a (click)="triggerWeeklyBackup()" style="display: block; padding: 5px;">Dữ liệu tuần</a>
+      <a (click)="triggerMonthlyBackup()" style="display: block; padding: 5px;">Dữ liệu tháng</a>
+    </div>
+  </div>
+
 </div>
 
 <div style="margin-left: 45px">
 
     <div style="display: flex; align-items: center; gap: 5px; margin-left: 0px;">
       <a href="/add-data" style="padding: 5px 10px; background-color: #3db7df; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm</a>
+      <button (click)="deleteSelected()"
+      style="padding: 5px 10px; background-color: #d9534f; color: white; border: none; border-radius: 5px; cursor: pointer; margin-left: 15px;">
+Xóa mục đã chọn
+</button>
       <app-excel-import> </app-excel-import>
-<div style="display: flex; align-items: center; gap: 5px; margin-left: 350px;">
+<div style="display: flex; align-items: center; gap: 5px; margin-left: 200px;">
   <label for="searchName"></label>
   <input
     id="searchName"
@@ -192,9 +211,9 @@
 
 </div>
 <div class="pagination"
-  style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+  style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 50px; position: fixed; bottom: 0; width: 100%; padding: 10px;">
   <button (click)="prevPage()" [disabled]="currentPage === 1"
-    style="padding: 10px 20px;border-radius: 20px;">Trang trước</button>
+    style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Trang trước</button>
 
   <span>Trang
     <input
@@ -209,5 +228,6 @@
   </span>
 
   <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()"
-    style="padding: 10px 20px;border-radius: 20px;">Trang sau</button>
+    style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Trang sau</button>
 </div>
+

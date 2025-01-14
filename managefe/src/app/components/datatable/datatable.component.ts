@@ -22,6 +22,10 @@ handleFileInput($event: Event) {
 throw new Error('Method not implemented.');
 }
   httpClient = inject(HttpClient);
+  // chỉnh thời gian tắt khi không sử dụng
+  idleTimeout: any;
+  readonly idleLimit = 1 * 60 * 1000; // 10 phút (milliseconds)
+
   originalData: any[] = [];
   filteredData: any[] = [];
   data: any[] = [];
@@ -33,14 +37,67 @@ throw new Error('Method not implemented.');
   searchTerm = '';
   startDate = '';
   endDate = '';
+  backupStatus: boolean = false;
+  isBackupSuccess: boolean = false;
   showCheckbox: boolean = false;
   router = inject(Router);
   isDropdownOpen : boolean = false;
 headerChecked : boolean = false;
+
+startWatching() {
+  this.resetTimer();
+
+  // Lắng nghe các sự kiện hoạt động của người dùng
+  ['mousemove', 'keydown', 'scroll', 'click'].forEach(event => {
+    window.addEventListener(event, () => this.resetTimer());
+  });
+}
+resetTimer() {
+  clearTimeout(this.idleTimeout);
+  this.idleTimeout = setTimeout(() => this.redirectToIdlePage(), this.idleLimit);
+}
+
+private redirectToIdlePage() {
+  this.router.navigate(['/login']); // Đường dẫn bạn muốn chuyển hướng
+}
+
 toggleDropdown(){
   this.isDropdownOpen = !this.isDropdownOpen
 }
+toggleBackupDropdown(){
+  this.backupStatus = !this.backupStatus;
+}
 
+triggerWeeklyBackup() {
+  this.backupStatus = false;
+  this.httpClient.post(`http://localhost:8080/api/backup/weekly`, {})
+    .subscribe(
+      (response: any) => {
+        this.backupStatus = response;
+        this.isBackupSuccess = true;
+      },
+      (error: any) => {
+        alert('Backup thất bại');
+        this.isBackupSuccess = false;
+      }
+    );
+}
+
+
+triggerMonthlyBackup() {
+  this.backupStatus = false;
+  this.httpClient.post(`http://localhost:8080/api/backup/monthly`, {})
+    .subscribe(
+      (response: any) => {
+        this.backupStatus = response;
+        this.isBackupSuccess = true;
+      },
+      (error: any) => {
+        alert('Backup thất bại');
+        this.isBackupSuccess = false;
+      }
+    );
+}
 
   ngOnInit(): void {
     this.fetchData();
@@ -170,6 +227,37 @@ toggleDropdown(){
     this.filteredData = [...this.originalData];
     this.loadPage(1);
   }
+  deleteSelected() {
+    const confirmed = confirm('Bạn có chắc chắn muốn xóa các mục đã chọn không?');
+
+    if (confirmed) {
+      const selectedItems = this.data.filter(item => item.selected);
+
+      if (selectedItems.length === 0) {
+        alert('Vui lòng chọn ít nhất một mục để xóa');
+        return;
+      }
+
+      selectedItems.forEach(item => {
+        this.httpClient
+          .delete(`http://localhost:8080/api/suadl/${item.id}`)
+          .subscribe(
+            (response: any) => {
+              this.data = this.data.filter(i => i.id !== item.id);
+              this.headerChecked = false;
+              // alert(`Xóa mục ${item.fullName} thành công`);
+              return this.fetchData();
+            },
+            error => {
+              console.error('Error deleting data:', error);
+              // alert(`Xóa mục ${item.fullName} thất bại`);
+              return this.fetchData();
+            }
+          );
+      });
+    }
+  }
+
 
   exportExcel() {
     const selectedData = this.originalData.filter(item => item.selected);
