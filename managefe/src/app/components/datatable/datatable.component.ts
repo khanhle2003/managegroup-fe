@@ -26,7 +26,7 @@ throw new Error('Method not implemented.');
   filteredData: any[] = [];
   data: any[] = [];
   currentPage = 1;
-  itemsPerPage = 12;
+  itemsPerPage = 10;
   totalItems = 2;
   pageInput = 1;
   // Filters

@@ -15,11 +15,6 @@
   style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-bottom: 5px;">
 
   <div style="display: flex; align-items: center; gap: 5px;">
-
-    <a href="/add-data"
-      style="padding: 5px 10px; background-color: #3db7df; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm</a>
-    <app-excel-import> </app-excel-import>
-
     <div class="dropdown" style="position: relative; display: inline-block;">
       <div class="dropdown-content" *ngIf="isDropdownOpen"
         style="min-width: 180px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 9999;">
@@ -54,29 +49,34 @@
   </button>
 </div>
 
-<div style="margin-left: 500px">
-  <div style="display: flex; align-items: center; gap: 20px;">
-    <label for="searchName"></label>
-    <input
-      id="searchName"
-      type="text"
-      [(ngModel)]="searchTerm"
-      placeholder="Nhập dữ liệu cần tìm"
-      (keyup.enter)="filterData()"
-      style="padding: 10px; width: 300px;" />
+<div style="margin-left: 45px">
+
+    <div style="display: flex; align-items: center; gap: 5px; margin-left: 0px;">
+      <a href="/add-data" style="padding: 5px 10px; background-color: #3db7df; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm</a>
+      <app-excel-import> </app-excel-import>
+<div style="display: flex; align-items: center; gap: 5px; margin-left: 350px;">
+  <label for="searchName"></label>
+  <input
+    id="searchName"
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Nhập dữ liệu cần tìm"
+    (keyup.enter)="filterData()"
+    style="padding: 10px; width: 300px;" />
+</div>
 
       <div style="display: flex; align-items: center; gap: 20px;">
         <button (click)="filterData()"
-          style="padding: 5px 10px; display: flex; align-items: center; gap: 8px; color:rgb(0, 0, 0)  ">
+          style="padding: 10px 15px; display: flex; align-items: center; gap: 8px; margin-right: 20px; color:rgb(0, 0, 0)  ">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
             height="16" fill="currentColor">
             <path
               d="M10 2a8 8 0 015.938 13.379l4.621 4.622a1 1 0 01-1.414 1.414l-4.622-4.621A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"></path>
           </svg>
-
         </button>
-        <button (click)="resetFilters()"
-          style="padding: 5px 10px; margin: 0 10px; background-color: #d54d4d; color: white; border: none; border-radius: 4px; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+        <div>
+          <button (click)="resetFilters()"
+          style="padding: 10px 15px; margin: 0 10px; background-color: #d54d4d; color: white; border: none; border-radius: 4px; display: flex; align-items: center; gap: 5px; cursor: pointer;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
             height="16" fill="currentColor">
             <path
@@ -84,6 +84,7 @@
           </svg>
 
         </button>
+        </div>
       </div>
 
   </div>
