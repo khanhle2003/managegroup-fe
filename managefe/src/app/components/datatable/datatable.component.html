@@ -102,6 +102,7 @@
           <input type="checkbox" [checked]="headerChecked"
             (change)="selectAll($event)">
         </th>
+        <th data-header="stt">STT</th>
         <th data-header="Họ và Tên">Họ và Tên</th>
         <th data-header="Ngày sinh">Ngày sinh</th>
         <th data-header="Giới tính">Giới tính</th>
@@ -143,12 +144,12 @@
     </thead>
     <tbody>
 
-  <tr
-    *ngFor="let item of data" data-header="Họ và Tên">
+  <tr *ngFor="let item of data; let index = index" data-header="Họ và Tên">
     <td>
       <input type="checkbox" [(ngModel)]="item.selected">
     </td>
- <td data-header="Họ và Tên" (click)="goToDetailPage(item.id)" style="cursor: pointer;" class="hoverable">{{ item.fullName }} </td>
+    <td>{{ (currentPage - 1) * itemsPerPage + index + 1 }}</td>
+    <td data-header="Họ và Tên" (click)="goToDetailPage(item.id)" style="cursor: pointer;" class="hoverable">{{ item.fullName }} </td>
     <td>{{ item.birthDate || '' }}</td>
     <td>{{ item.gender || '' }}</td>
     <td>{{ item.partyBranch || '' }}</td>
