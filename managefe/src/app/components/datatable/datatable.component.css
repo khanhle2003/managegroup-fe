@@ -1,4 +1,4 @@
-/* Reset and base styles */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,7 +12,6 @@ body {
   padding: 20px;
 }
 
-/* Container styles */
 .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -22,7 +21,6 @@ body {
   padding: 20px;
 }
 
-/* Search section styles */
 .search-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(1100px, 1fr));
@@ -50,7 +48,6 @@ body {
   min-width: 300px;
 }
 
-/* Button styles */
 .button-group {
   display: flex;
   gap: 10px;
@@ -82,7 +79,6 @@ button {
 }
 
 
-/* Input styles */
 input[type="date"],
 input[type="text"],
 input[type="number"] {
@@ -210,6 +206,8 @@ label {
     left: 0;
     z-index: 2;
     background-color: #0065ca;
+    width: 210px;
+    height: 50px;
   }  .data-table td[data-header="Họ và Tên"] {
     position: sticky;
     left: 0;
@@ -232,4 +230,20 @@ label {
 .hoverable:hover {
  text-decoration:underline;
  font-size: 18px;
+}
+.data-table th[data-header="Giới tính"] {
+  width: 100px;
+  height: 50px;
+}
+.data-table th[data-header="Ngày sinh"] {
+  width: 100px;
+  height: 50px;
+}
+.data-table th[data-header="Chi bộ"] {
+  width: 100px;
+  height: 50px;
+}
+.data-table th[data-header="Bệnh viện"] {
+  width: 100px;
+  height: 50px;
 }

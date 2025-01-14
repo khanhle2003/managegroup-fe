@@ -4,12 +4,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../services/user-detail.service';
 import { FormsModule } from '@angular/forms';
-import { DragDropModule } from '@angular/cdk/drag-drop'
-import { NzTableModule } from 'ng-zorro-antd/table';
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule, RouterModule ,DragDropModule, NzTableModule],
+  imports: [CommonModule, HttpClientModule, FormsModule, RouterModule ],
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css']
 })
@@ -39,7 +37,7 @@ export class UserDetailComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.id = +params['id'];
             this.getUserData();
-       
+
         });
         this.fetchData();
     }
@@ -67,8 +65,8 @@ export class UserDetailComponent implements OnInit {
         this.headerChecked = currentPageItems.length > 0 &&
                             currentPageItems.every(item => item.selected);
       }
-    
-    
+
+
       selectAll(event: any)
       {
         this.headerChecked = event.target.checked;
@@ -83,8 +81,8 @@ export class UserDetailComponent implements OnInit {
         this.pageInput = page;
         const startIndex = (page - 1) * this.itemsPerPage;
         const endIndex = startIndex + this.itemsPerPage;
-    
-    
+
+
         this.filteredData.sort((a: any, b: any) => {
           const parseDate = (date: string | null | undefined) => {
             if (!date) return 0;
@@ -98,20 +96,20 @@ export class UserDetailComponent implements OnInit {
             if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(date)) {
               return new Date(date).getTime();
             }
-    
+
             return 0;
           };
-    
+
           const dateA = parseDate(a.notificationDate);
           const dateB = parseDate(b.notificationDate);
           return dateB - dateA;
         });
-    
+
         this.data = this.filteredData.slice(startIndex, endIndex);
         this.totalItems = this.filteredData.length;
         this.checkPageCheckboxState();
       }
-    
+
       goToPage() {
         if (this.pageInput > 0 && this.pageInput <= this.getTotalPages()) {
           this.loadPage(this.pageInput);
@@ -119,23 +117,23 @@ export class UserDetailComponent implements OnInit {
           alert(`Số trang không vượt quá ${this.getTotalPages()}`);
         }
       }
-    
+
       nextPage() {
         if (this.currentPage < this.getTotalPages()) {
           this.loadPage(this.currentPage + 1);
         }
       }
-    
+
       prevPage() {
         if (this.currentPage > 1) {
           this.loadPage(this.currentPage - 1);
         }
       }
-    
+
       getTotalPages(): number {
         return 1;
       }
-    
-      
-    
+
+
+
 }
