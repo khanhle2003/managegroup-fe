@@ -4,7 +4,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import * as XLSX from 'xlsx';
-import { firstValueFrom, NotFoundError } from 'rxjs';
+import { firstValueFrom} from 'rxjs';
 import { ExcelImportComponent } from '../import-excel/import-excel.component';
 
 @Component({
@@ -22,9 +22,6 @@ handleFileInput($event: Event) {
 throw new Error('Method not implemented.');
 }
   httpClient = inject(HttpClient);
-  // chỉnh thời gian tắt khi không sử dụng
-  idleTimeout: any;
-  readonly idleLimit = 20 * 1 * 1000; // 10 phút (milliseconds)
 
   originalData: any[] = [];
   filteredData: any[] = [];
@@ -44,59 +41,43 @@ throw new Error('Method not implemented.');
   isDropdownOpen : boolean = false;
 headerChecked : boolean = false;
 
-startWatching() {
-  this.resetTimer();
-
-  // Lắng nghe các sự kiện hoạt động của người dùng
-  ['mousemove', 'keydown', 'scroll', 'click'].forEach(event => {
-    window.addEventListener(event, () => this.resetTimer());
-  });
-}
-resetTimer() {
-  clearTimeout(this.idleTimeout);
-  this.idleTimeout = setTimeout(() => this.redirectToIdlePage(), this.idleLimit);
-}
-
-private redirectToIdlePage() {
-  this.router.navigate(['/login']); // Đường dẫn bạn muốn chuyển hướng
-}
 
 toggleDropdown(){
   this.isDropdownOpen = !this.isDropdownOpen
 }
-toggleBackupDropdown(){
-  this.backupStatus = !this.backupStatus;
-}
+// toggleBackupDropdown(){
+//   this.backupStatus = !this.backupStatus;
+// }
 
-triggerWeeklyBackup() {
-  this.backupStatus = false;
-  this.httpClient.post(`http://localhost:8080/api/backup/weekly`, {})
-    .subscribe(
-      (response: any) => {
-        this.backupStatus = response;
-        this.isBackupSuccess = true;
-      },
-      (error: any) => {
-        alert('Backup thất bại');
-        this.isBackupSuccess = false;
-      }
-    );
-}
+// triggerWeeklyBackup() {
+//   this.backupStatus = false;
+//   this.httpClient.post(`http://localhost:8080/api/backup/weekly`, {})
+//     .subscribe(
+//       (response: any) => {
+//         this.backupStatus = response;
+//         this.isBackupSuccess = true;
+//       },
+//       (error: any) => {
+//         alert('Backup thất bại');
+//         this.isBackupSuccess = false;
+//       }
+//     );
+// }
 
-triggerMonthlyBackup() {
-  this.backupStatus = false;
-  this.httpClient.post(`http://localhost:8080/api/backup/monthly`, {})
-    .subscribe(
-      (response: any) => {
-        this.backupStatus = response;
-        this.isBackupSuccess = true;
-      },
-      (error: any) => {
-        alert('Backup thất bại');
-        this.isBackupSuccess = false;
-      }
-    );
-}
+// triggerMonthlyBackup() {
+//   this.backupStatus = false;
+//   this.httpClient.post(`http://localhost:8080/api/backup/monthly`, {})
+//     .subscribe(
+//       (response: any) => {
+//         this.backupStatus = response;
+//         this.isBackupSuccess = true;
+//       },
+//       (error: any) => {
+//         alert('Backup thất bại');
+//         this.isBackupSuccess = false;
+//       }
+//     );
+// }
 
   ngOnInit(): void {
     this.fetchData();
