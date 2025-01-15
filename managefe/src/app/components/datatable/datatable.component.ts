@@ -24,7 +24,7 @@ throw new Error('Method not implemented.');
   httpClient = inject(HttpClient);
   // chỉnh thời gian tắt khi không sử dụng
   idleTimeout: any;
-  readonly idleLimit = 1 * 60 * 1000; // 10 phút (milliseconds)
+  readonly idleLimit = 20 * 1 * 1000; // 10 phút (milliseconds)
 
   originalData: any[] = [];
   filteredData: any[] = [];
@@ -82,7 +82,6 @@ triggerWeeklyBackup() {
       }
     );
 }
-
 
 triggerMonthlyBackup() {
   this.backupStatus = false;

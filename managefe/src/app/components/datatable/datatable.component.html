@@ -1,5 +1,5 @@
 <div
-  style="display: flex; justify-content: flex-end; align-items: flex-start; padding: 10px; margin-bottom: 0;">
+  style="display: flex; justify-content: flex-end;background-color: beige; align-items: center; padding: 10px; margin-bottom: 20px;">
   <h1 style="display: flex; margin-right: 300px;">Danh sách quản lí đoàn ra công tác nước ngoài</h1>
   <a href="/login"
     style="padding: 5px 10px; background-color: #000000; color: white; text-decoration: none; border: none; border-radius: 5px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
@@ -23,7 +23,7 @@
 
   </div>
 
-  <div style="display: flex; align-items: center; gap: 5px;margin-left: 600px;">
+  <div style="display: flex; align-items: center; gap: 5px;">
     <label for="startDate">Từ ngày</label>
     <input
       id="startDate"
@@ -38,29 +38,30 @@
       [(ngModel)]="endDate"
       (keyup.enter)="filterData()"
       style="padding: 10px; width: 150px;" />
+      <div style="display: flex; gap: 50px; position: relative; margin-left: 10px;">
+        <button (click)="toggleDropdown()"
+          style="padding: 5px 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+          Xuất Dữ Liệu
+        </button>
+        <div class="dropdown-content" *ngIf="isDropdownOpen"
+          style="min-width: 90px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 9999; top: 100%; left: 0;">
+          <a (click)="exportExcel()" style="display: block; padding: 5px;">Xuất Excel</a>
+          <a (click)="exportSelectedToWord()" style="display: block; padding: 5px;">Xuất Word</a>
+          <a (click)="exportAllExcel()" style="display: block; padding: 5px;">Xuất tất cả (excel)</a>
+        </div>
   </div>
-<div style="display: flex; gap: 50px; position: relative; margin-left: 410px;">
-  <button (click)="toggleDropdown()"
-    style="padding: 5px 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
-    Xuất DL
-  </button>
-  <div class="dropdown-content" *ngIf="isDropdownOpen"
-    style="min-width: 90px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 9999; top: 100%; left: 0;">
-    <a (click)="exportExcel()" style="display: block; padding: 5px;">Xuất Excel</a>
-    <a (click)="exportSelectedToWord()" style="display: block; padding: 5px;">Xuất Word</a>
-    <a (click)="exportAllExcel()" style="display: block; padding: 5px;">Xuất tất cả (excel)</a>
-  </div>
+
 </div>
 
   <!-- dropdown backup -->
-  <div class="dropdown" style=" position: relative; display: inline-block; margin-right: 10px; margin-left:auto;">
+  <!-- <div class="dropdown" style=" position: relative; display: inline-block; margin-right: 10px; margin-left:auto;">
     <button class="btn btn-primary" style="padding: 5px 10px;" (click)="toggleBackupDropdown()">Sao lưu dữ liệu</button>
-    <div *ngIf="backupStatus" style="min-width: 150px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 20000;" [ngClass]="{ 'success': isBackupSuccess, 'error': !isBackupSuccess }">
+    <div *ngIf="backupStatus" style="min-width: 150px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 9999;" [ngClass]="{ 'success': isBackupSuccess, 'error': !isBackupSuccess }">
 
       <a (click)="triggerWeeklyBackup()" style="display: block; padding: 5px;">Dữ liệu tuần</a>
       <a (click)="triggerMonthlyBackup()" style="display: block; padding: 5px;">Dữ liệu tháng</a>
     </div>
-  </div>
+  </div> -->
 
 </div>
 
@@ -113,7 +114,7 @@ Xóa mục đã chọn
   style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 50px 40px 0 40px; border: 1px solid #ffffff; border-radius: 10px;margin-top: 20px; ">
 
   <table class="data-table"
-    style="width: 100%; border-collapse: separate; border-spacing: 2px;">
+    style="width: 100%; border-collapse: separate; border-spacing: 0px;">
     <thead
       style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
       <tr>

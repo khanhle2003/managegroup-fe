@@ -8,7 +8,7 @@
 </a>
 
 <div class="user-profile" *ngIf="userData">
-                    <button id="buttonSua" style="background-color: #0b6ed7; color: #ffffff;" (click) = "goToEdit()">Sửa dữ liệu</button>
+                    <button id="buttonSua" style="background-color: #0b6ed7; color: #ffffff;" (click) = "goToEdit()">Sửa Thông tin</button>
     <div class="profile-content">
         <form>
             <div class="info-group">
@@ -16,20 +16,20 @@
                 <p class="info-item"><strong>Họ và tên:</strong> {{ userData.fullName }}</p>
                 <p class="info-item"><strong>Giới tính:</strong> {{ userData.gender }}</p>
                 <p class="info-item"><strong>Ngày sinh:</strong> {{ userData.birthDate }}</p>
-        
-        
+
+
                 <p class="info-item"><strong>Đảng viên:</strong> {{ userData.partyBranch }}</p>
                 <p class="info-item"><strong>Chức vụ Đảng:</strong> {{ userData.partyPosition }}</p>
 
-               
+
                 <p class="info-item"><strong>Chức danh nghề nghiệp:</strong> {{ userData.jobTitle }}</p>
                 <p class="info-item"><strong>Chức vụ chính quyền:</strong> {{ userData.jobName }}</p>
                 <p class="info-item"><strong>Đơn vị công tác:</strong> {{ userData.unit }}</p>
-       
+
 
                 <p class="info-item"><strong>Số điện thoại:</strong> {{ userData.phoneNumber }}</p>
                 <p class="info-item"><strong>Email:</strong> {{ userData.email }}</p>
-               
+
             </div>
         </form>
 
@@ -99,7 +99,7 @@
         <table class="data-table" style="width: 100%; border-collapse: separate; border-spacing: 2px;">
           <thead style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
             <tr>
-            
+
               <th data-header="Họ và Tên">Họ và Tên</th>
               <th data-header="Ngày sinh">Ngày sinh</th>
               <th data-header="Giới tính">Giới tính</th>
@@ -144,7 +144,7 @@
         <tr
           data-header="Họ và Tên"
           *ngIf="item.fullName === userData.fullName">
- 
+
 
        <td data-header="Họ và Tên"  style="cursor: pointer;" class="hoverable">{{ item.fullName }} </td>
           <td>{{ item.birthDate || '' }}</td>
@@ -188,7 +188,7 @@
         </tbody>
       </table>
     </div>
- 
+
 
 </div>
 
