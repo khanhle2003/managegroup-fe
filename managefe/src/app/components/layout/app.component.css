@@ -2,25 +2,25 @@
     display: flex;
     height: 100vh;
   }
-  
+
   .sidebar {
-    width: 250px;
+    width: 215px;
     background-color: #2c3e50;
     color: white;
     padding: 20px;
-  
+
     .logo {
       padding: 20px 0;
       text-align: center;
       border-bottom: 1px solid #34495e;
     }
-  
+
     .nav-links {
       list-style: none;
       padding: 0;
       margin: 20px 0;
     }
-  
+
     .nav-item {
       display: block;
       padding: 15px 20px;
@@ -28,17 +28,17 @@
       text-decoration: none;
       transition: background-color 0.3s;
       border-radius: 5px;
-  
+
       &:hover {
         background-color: #34495e;
       }
-  
+
       &.active {
         background-color: #3498db;
       }
     }
   }
-  
+
   .main-content {
     flex: 1;
     padding: 20px;
