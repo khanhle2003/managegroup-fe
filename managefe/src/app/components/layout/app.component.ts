@@ -1,15 +1,25 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  imports: [RouterModule], 
 })
 export class AppComponent {
-  title = 'managefe';
+  showSidebar: boolean = false;
 
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.router.events.subscribe(() => {
+      // Kiểm tra URL hiện tại
+      const currentUrl = this.router.url;
+      this.showSidebar = !(currentUrl === '/login' || currentUrl === '/register');
+    });
+  }
+
+  title = 'managefe';
 }

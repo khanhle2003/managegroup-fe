@@ -8,6 +8,7 @@ import {AddComponent} from "../components/add/add.component";
 import { UserDetailComponent } from '../components/user-detail/user-detail.component';
 import { ExcelImportComponent } from '../components/import-excel/import-excel.component';
 import { EditUserComponent } from '../components/edit-user/edit-user.component';
+import { DoanRaComponent } from '../features/doan-ra/doan-ra.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -18,6 +19,17 @@ export const routes: Routes = [
   {path: 'user-detail/:id', component: UserDetailComponent},
   {path: 'app-import-excel', component: ExcelImportComponent},
   {path: 'edit-user/:id', component: EditUserComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {
+    path: 'doan-ra',
+    loadComponent: () => import('../components/datatable/datatable.component')
+      .then(m => m.DatatableComponent)
+  },
+  {
+    path: '',
+    redirectTo: 'doan-ra',
+    pathMatch: 'full'
+  }
 ]
 
 @NgModule({
