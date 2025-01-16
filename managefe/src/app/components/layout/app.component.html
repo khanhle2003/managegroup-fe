@@ -1,19 +1,24 @@
 <div class="dashboard-container">
     <!-- Sidebar Menu -->
     <nav class="sidebar">
-      <div class="logo">
-        <h2>Trang chủ</h2>
-      </div>
+    
       <ul class="nav-links">
         <li>
-          <a routerLink="/doan-ra" 
+            <a routerLink="/main" 
+               routerLinkActive="active"
+               class="nav-item">
+             Trang chủ
+            </a>
+          </li>
+        <li>
+          <a routerLink="/data-table" 
              routerLinkActive="active"
              class="nav-item">
             Quản lí đoàn ra
           </a>
         </li>
         <li>
-          <a routerLink="/doan-vao" 
+          <a
              routerLinkActive="active"
              class="nav-item">
             Quản lí đoàn vào
@@ -22,7 +27,6 @@
       </ul>
     </nav>
   
-    <!-- Main Content -->
     <main class="main-content">
       <router-outlet></router-outlet>
     </main>
