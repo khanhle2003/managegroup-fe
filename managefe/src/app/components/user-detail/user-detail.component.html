@@ -1,14 +1,23 @@
-<a href="/data-table" class="btn btn-back"
-    style="margin-left: 400px; margin-top: 40px;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="30"
-        height="30" fill="currentColor">
-        <path d="M11 19l-7-7 7-7v4h8v6h-8v4z"></path>
+
+<div style="display: flex;; align-items: center; gap: 100px;position: fixed; margin-top: 5px; padding-left: 10px; margin-bottom: px; border-bottom: 1px solid #e5e7eb;
+position: sticky; top: 0; z-index: 100; margin: 5px auto; max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+box-shadow: 0 2px 5px rgba(6, 5, 5, 5); background: #ffffff;">
+  <a href="/data-table" class="btn btn-back" style="display: flex; align-items: center; padding: 2px; margin-right: 480px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="30" height="30" fill="currentColor">
+      <path d="M11 19l-7-7 7-7v4h8v6h-8v4z"></path>
     </svg>
     Quay lại
-</a>
+  </a>
+  <button id="buttonSua" style="background-color: #0b6ed7; color: #ffffff; position: sticky; padding: 5px; margin-top: 10px; ">
+    Sửa Thông tin
+  </button>
+</div>
 
+
+<div style="display: flex; margin-bottom: 10px;"></div>
 <div class="user-profile" *ngIf="userData">
-                    <button id="buttonSua" style="background-color: #0b6ed7; color: #ffffff;" (click) = "goToEdit()">Sửa Thông tin</button>
     <div class="profile-content">
         <form>
             <div class="info-group">
@@ -17,15 +26,12 @@
                 <p class="info-item"><strong>Giới tính:</strong> {{ userData.gender }}</p>
                 <p class="info-item"><strong>Ngày sinh:</strong> {{ userData.birthDate }}</p>
 
-
                 <p class="info-item"><strong>Đảng viên:</strong> {{ userData.partyBranch }}</p>
                 <p class="info-item"><strong>Chức vụ Đảng:</strong> {{ userData.partyPosition }}</p>
-
 
                 <p class="info-item"><strong>Chức danh nghề nghiệp:</strong> {{ userData.jobTitle }}</p>
                 <p class="info-item"><strong>Chức vụ chính quyền:</strong> {{ userData.jobName }}</p>
                 <p class="info-item"><strong>Đơn vị công tác:</strong> {{ userData.unit }}</p>
-
 
                 <p class="info-item"><strong>Số điện thoại:</strong> {{ userData.phoneNumber }}</p>
                 <p class="info-item"><strong>Email:</strong> {{ userData.email }}</p>
@@ -65,7 +71,7 @@
         </div>
 
         <div class="info-group">
-            <h3>Thông tin khác</h3>
+            <h3>Thông tin quản lý</h3>
             <p class="info-item"><strong>Số chuyến đi nước ngoài:</strong> {{
                 userData.foreignTripCount }}</p>
             <p class="info-item"><strong>Ngày xin đi:</strong> {{

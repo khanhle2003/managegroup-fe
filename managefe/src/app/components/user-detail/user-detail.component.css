@@ -51,11 +51,11 @@
         margin: 10px;
         padding: 15px;
     }
-    
+
     .profile-content {
         grid-template-columns: 1fr;
     }
-    
+
     .profile-header {
         font-size: 20px;
     }
@@ -70,6 +70,7 @@ select:focus {
 .btn-submit,
 .btn-reset,
 .btn-back {
+  position: sticky;
   background: #3b82f6;
   color: white;
   border: none;
@@ -94,14 +95,14 @@ nz-table {
     margin: 0;
     padding: 0;
   }
-  
+
   body {
     font-family: 'Arial', Times, serif, sans-serif;
     line-height: 1.6;
     background-color: #ffffff;
     padding: 20px;
   }
-  
+
   /* Container styles */
   .container {
     max-width: 1400px;
@@ -111,7 +112,7 @@ nz-table {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
   }
-  
+
   /* Search section styles */
   .search-container {
     display: grid;
@@ -120,33 +121,33 @@ nz-table {
     margin-bottom: 30px;
     align-items: end;
   }
-  
+
   .search-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
-  
+
   .date-range {
     display: flex;
     gap: 20px;
   }
-  
+
   .date-input {
     flex: 1;
   }
-  
+
   .search-input {
     min-width: 300px;
   }
-  
+
   /* Button styles */
   .button-group {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
   }
-  
+
   button {
     padding: 10px 20px;
     border: none;
@@ -156,38 +157,38 @@ nz-table {
     transition: all 0.2s;
     margin-bottom: 10px;
   }
-  
+
   .btn-primary {
     background-color: #7b8fa5;
     color: white;
   }
-  
+
   .btn-success {
     background-color: #28a745;
     color: white;
   }
-  
+
   .btn-secondary {
     background-color: #6c757d;
     color: white;
   }
-  
-  
+
+
   /* Input styles */
   input[type="date"],
   input[type="text"],
   input[type="number"] {
-    padding: 10px;
+    padding: 1px;
     border: 1px solid #ddd;
     border-radius: 5px;
     width: 100%;
   }
-  
+
   label {
     font-weight: 500;
     color: #555;
   }
-  
+
   /* Table styles */
   .table-container {
     max-height: 72vh;
@@ -196,53 +197,53 @@ nz-table {
     border-radius: 8px;
     margin: 30px 0;
   }
-  
+
   .data-table {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
   }
-  
+
   .data-table thead {
     position: sticky;
     top: 0;
     z-index: 1;
     background-color: #0065ca;
     color: white;
-  
+
   }
-  
+
   .data-table th,
   .data-table td {
     padding: 5px;
     text-align: left;
     border-bottom: 10px solid #e0e0e0;
   }
-  
-  
-  
+
+
+
   .data-table td {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 400px;
   }
-  
+
   /* Pagination styles */
   .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
-  
+
     gap: 15px;
     margin-top: 20px;
   }
-  
+
   .page-input {
     width: 60px;
     text-align: center;
   }
-  
+
   /* Logout button */
   .logout-btn {
     text-decoration: none;
@@ -252,39 +253,39 @@ nz-table {
     border-radius: 5px;
     transition: all 0.2s;
   }
-  
+
   .logout-btn:hover {
     background-color: #c82333;
   }
-  
+
   /* Responsive styles */
   @media (max-width: 768px) {
     .search-container {
         grid-template-columns: 1fr;
     }
-  
+
     .button-group {
         justify-content: center;
     }
-  
+
     .pagination {
         flex-wrap: wrap;
     }
-  
+
     .date-range {
         flex-direction: column;
         gap: 10px;
     }
-  
+
     .search-input {
         min-width: 100%;
     }
   }
-  
+
   .dropdown-content{
     display:flex;
     flex-direction: column;
-  
+
   }
   .dropdown-content a {
     text-align: center;
@@ -296,9 +297,9 @@ nz-table {
   .dropdown-content a:hover {
     background-color: #f1f1f1; }
 
-  
+
   .data-table th {
     width: 150px;
     height: 50px;
   }
-  
+

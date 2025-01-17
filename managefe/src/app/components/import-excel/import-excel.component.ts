@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { DatatableComponent } from '../datatable/datatable.component';
 
 @Component({
   selector: 'app-excel-import',
+   imports: [DatatableComponent,ExcelImportComponent ],
   templateUrl: 'import-excel.component.html',
   styleUrls: ['import-excel.component.css'],
   standalone: true,
@@ -47,6 +49,7 @@ export class ExcelImportComponent {
       next: (response) => {
         console.log('Tệp đã được tải lên:', response);
         alert('Tệp đã được import thành công!');
+        
       },
       error: (err) => {
         console.error('Lỗi khi import file:', err);
