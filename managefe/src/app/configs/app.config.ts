@@ -13,5 +13,5 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 registerLocaleData(en);
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideHttpClient(),provideClientHydration(), importProvidersFrom(FormsModule), provideAnimationsAsync(), provideHttpClient()]
+  providers: [provideRouter(routes), provideHttpClient(),provideClientHydration(), importProvidersFrom(FormsModule), provideAnimationsAsync(), provideHttpClient(), provideAnimationsAsync()]
 };
