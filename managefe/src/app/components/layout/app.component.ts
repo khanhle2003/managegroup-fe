@@ -9,17 +9,17 @@ import { Router, RouterModule } from '@angular/router';
   imports: [RouterModule], 
 })
 export class AppComponent {
-  showSidebar: boolean = false;
+  // showSidebar: boolean = false;
 
-  constructor(private router: Router) {}
+  // constructor(private router: Router) {}
 
-  ngOnInit() {
-    this.router.events.subscribe(() => {
-      // Kiểm tra URL hiện tại
-      const currentUrl = this.router.url;
-      this.showSidebar = !(currentUrl === '/login' || currentUrl === '/register');
-    });
-  }
+  // ngOnInit() {
+  //   this.router.events.subscribe(() => {
+  //     // Kiểm tra URL hiện tại
+  //     const currentUrl = this.router.url;
+  //     this.showSidebar = !(currentUrl === '/login' || currentUrl === '/register');
+  //   });
+  // }
 
   title = 'managefe';
 }

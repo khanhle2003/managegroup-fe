@@ -1,0 +1,22 @@
+<div class="dashboard-container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <ul class="nav-links">
+        <li>
+          <a routerLink="/main" routerLinkActive="active" class="nav-item">Trang chủ</a>
+        </li>
+        <li>
+          <a routerLink="/data-table" routerLinkActive="active" class="nav-item">Quản lí đoàn ra</a>
+        </li>
+        <li>
+          <a routerLink="/other" routerLinkActive="active" class="nav-item">Quản lí đoàn vào</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <!-- Nội dung chính -->
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+  

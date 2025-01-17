@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import * as XLSX from 'xlsx';
 import { firstValueFrom} from 'rxjs';
-import { ExcelImportComponent } from '../import-excel/import-excel.component';
+import { ExcelImportComponent } from '../../../components/import-excel/import-excel.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
