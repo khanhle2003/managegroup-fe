@@ -1,10 +1,6 @@
 
 <div style="display: flex;; align-items: center; gap: 100px;position: fixed; margin-top: 5px; padding-left: 10px; margin-bottom: px; border-bottom: 1px solid #e5e7eb;
-position: sticky;
-top: 0;
-z-index: 100; margin: 5px auto;
-
- max-width: 800px;
+position: sticky; top: 0; z-index: 100; margin: 5px auto; max-width: 800px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 box-shadow: 0 2px 5px rgba(6, 5, 5, 5); background: #ffffff;">
@@ -21,9 +17,7 @@ box-shadow: 0 2px 5px rgba(6, 5, 5, 5); background: #ffffff;">
 
 
 <div style="display: flex; margin-bottom: 10px;"></div>
-
 <div class="user-profile" *ngIf="userData">
-
     <div class="profile-content">
         <form>
             <div class="info-group">
@@ -32,15 +26,12 @@ box-shadow: 0 2px 5px rgba(6, 5, 5, 5); background: #ffffff;">
                 <p class="info-item"><strong>Giới tính:</strong> {{ userData.gender }}</p>
                 <p class="info-item"><strong>Ngày sinh:</strong> {{ userData.birthDate }}</p>
 
-
                 <p class="info-item"><strong>Đảng viên:</strong> {{ userData.partyBranch }}</p>
                 <p class="info-item"><strong>Chức vụ Đảng:</strong> {{ userData.partyPosition }}</p>
-
 
                 <p class="info-item"><strong>Chức danh nghề nghiệp:</strong> {{ userData.jobTitle }}</p>
                 <p class="info-item"><strong>Chức vụ chính quyền:</strong> {{ userData.jobName }}</p>
                 <p class="info-item"><strong>Đơn vị công tác:</strong> {{ userData.unit }}</p>
-
 
                 <p class="info-item"><strong>Số điện thoại:</strong> {{ userData.phoneNumber }}</p>
                 <p class="info-item"><strong>Email:</strong> {{ userData.email }}</p>
