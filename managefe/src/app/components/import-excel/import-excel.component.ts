@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { DatatableComponent } from '../datatable/datatable.component';
+import { DatatableComponent } from '../../layout2/main-layout/datatable/datatable.component';
 
 @Component({
   selector: 'app-excel-import',

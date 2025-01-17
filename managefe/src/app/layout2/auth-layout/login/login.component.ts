@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { JwtDeocderService } from '../../services/jwt-deocder.service';
+import { JwtDeocderService } from '../../../services/jwt-deocder.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -31,7 +31,7 @@ login() {
     responseType: 'text'
   }).subscribe({
     next: (response: any) => {
-      this.router.navigate(['/data-table'], { replaceUrl: true }).then(() => {
+      this.router.navigate(['/main'], { replaceUrl: true }).then(() => {
         location.reload();
       });
 
