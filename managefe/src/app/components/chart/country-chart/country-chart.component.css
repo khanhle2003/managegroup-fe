@@ -1,6 +1,18 @@
-.countrychart{
+.countrychart {
     display: flex;
+    width: 100%;
 }
+
+.chart-section {
+    flex: 7;
+    padding: 10px;
+}
+
+.info-section {
+    flex: 3;
+    padding: 10px;
+}
+
 
 .namechart{
     text-align: center;

@@ -37,7 +37,7 @@ import { SectionCountryComponent } from "./section-country/section-country.compo
             const surfaceBorder = documentStyle.getPropertyValue('--p-content-border-color');
 
             this.data = {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','January', 'February', 'March', 'April', 'May'],
                 datasets: [
                     {
                         label: 'My First dataset',
