@@ -2,14 +2,15 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
+
 @Component({
-  selector: 'app-section-country',
+  selector: 'app-section-invt',
   standalone: true,
   imports: [FormsModule,CommonModule, CheckboxModule],
-  templateUrl: './section-country.component.html',
-  styleUrl: './section-country.component.css'
+  templateUrl: './section-invt.component.html',
+  styleUrl: './section-invt.component.css'
 })
-export class SectionCountryComponent {
+export class SectionInvtComponent {
   selectedCategories: any[] = [];
 
     categories: any[] = [
