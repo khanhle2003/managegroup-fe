@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 
 import { RouterModule, RouterOutlet } from '@angular/router';
-
+import { ChartModule } from 'primeng/chart';
+import { CountryChartComponent } from "../../chart/country-chart/country-chart.component";
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [ RouterOutlet,RouterModule],
+  imports: [RouterModule, ChartModule, CountryChartComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
