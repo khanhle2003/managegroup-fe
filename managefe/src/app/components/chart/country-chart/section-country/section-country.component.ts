@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-section-country',
   standalone: true,
@@ -11,50 +13,24 @@ import { CheckboxModule } from 'primeng/checkbox';
 })
 export class SectionCountryComponent {
   selectedCategories: any[] = [];
+  categories: string[] = [];
 
-    categories: any[] = [
-        { name: 'Accounting', key: 'A' },
-        { name: 'Marketing', key: 'M' },
-        { name: 'Production', key: 'P' },
-        { name: 'Research', key: 'R' },
-        { name: 'Marketing', key: 'M' },
-        { name: 'Production', key: 'P' },
-        { name: 'Research', key: 'R' },
-        { name: 'Marketing', key: 'M' },
-        { name: 'Production', key: 'P' },
-        { name: 'Research', key: 'R' },
-        { name: 'Marketing', key: 'M' },
-        { name: 'Production', key: 'P' },
-        { name: 'Research', key: 'R' },
-        { name: 'Accounting', key: 'A' },
-        { name: 'Marketing', key: 'M' },
-        { name: 'Production', key: 'P' },
-        { name: 'Research', key: 'R' },
-        { name: 'Marketing', key: 'M' },
-        { name: 'Production', key: 'P' },
-        { name: 'Research', key: 'R' },
-        { name: 'Marketing', key: 'M' },
-        { name: 'Production', key: 'P' },
-        { name: 'Research', key: 'R' },
-        { name: 'Marketing', key: 'M' },
-        { name: 'Production', key: 'P' },
-        { name: 'Research', key: 'R' },
-        { name: 'Accounting', key: 'A' },
-        { name: 'Marketing', key: 'M' },
-        { name: 'Production', key: 'P' },
-        { name: 'Research', key: 'R' },
-        { name: 'Marketing', key: 'M' },
-        { name: 'Production', key: 'P' },
-        { name: 'Research', key: 'R' },
-        { name: 'Marketing', key: 'M' },
-        { name: 'Production', key: 'P' },
-        { name: 'Research', key: 'R' },
-        { name: 'Marketing', key: 'M' },
-        { name: 'Production', key: 'P' },
-        { name: 'Research', key: 'R' },
-    ];
+  constructor(private http: HttpClient) {}
 
-    ngOnInit() {
-        this.selectedCategories = [this.categories[1]];
-    }
+  ngOnInit() {
+    this.fetchCountries();
+  }
+
+  fetchCountries() {
+    this.http.get<string[]>('http://localhost:8080/api/data/countries')
+      .subscribe({
+        next: (data: string[]) => {
+          this.categories = data;
+          this.selectedCategories = [this.categories[0]];
+        },
+        error: (error) => {
+          console.error('Error fetching countries:', error);
+        }
+      });
+  }
 }

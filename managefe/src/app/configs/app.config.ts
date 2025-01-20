@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from '../router/app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
@@ -13,5 +14,5 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 registerLocaleData(en);
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideHttpClient(),provideClientHydration(), importProvidersFrom(FormsModule), provideAnimationsAsync(), provideHttpClient(), provideAnimationsAsync()]
+  providers: [provideRouter(routes), provideHttpClient(),provideClientHydration(), importProvidersFrom(FormsModule), provideAnimationsAsync(), provideHttpClient(), provideAnimationsAsync(), importProvidersFrom(HttpClientModule)]
 };
