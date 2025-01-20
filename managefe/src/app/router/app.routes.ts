@@ -13,21 +13,13 @@ import { MainComponent } from '../layout2/main-layout/main/main.component';
 import { AuthLayoutComponent } from '../layout2/auth-layout/auth-layout.component';
 
 export const routes: Routes = [
-
-  // {path: 'login', component: LoginComponent},
-  // {path: 'register', component: RegisterComponent},
-  // {path: 'data-table', component: DatatableComponent},
-  // {path: 'add-data', component: AddComponent},
-  // {path: 'user-detail/:id', component: UserDetailComponent},
-  // {path: 'app-import-excel', component: ExcelImportComponent},
-  // {path: 'edit-user/:id', component: EditUserComponent},
-  // {path: 'main', component: MainComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
 
   {
     path: '',
     component: MainLayoutComponent,
     children: [
-      { path: '', redirectTo: '/main', pathMatch: 'full' },
       {path: 'main', component: MainComponent},
       {path: 'data-table', component: DatatableComponent},
       {path: 'user-detail/:id', component: UserDetailComponent},
