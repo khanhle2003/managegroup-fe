@@ -1,18 +1,18 @@
 body {
-  margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   background: rgba(31, 146, 208, 0.95);
-  height: 100vh;
+  height: 100vh; /* Chiều cao toàn màn hình */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
   overflow: hidden;
 }
 
 .container {
-  width: 400px;
-  background: rgba(255, 255, 255, 0.95);
+  margin-top: 200px;
+  width: 400px; /* Chiều rộng cố định của form */
+  background: rgba(230, 255, 255, 1);
   border-radius: 10px;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
   padding: 40px;
@@ -21,7 +21,7 @@ body {
 }
 
 .form h2 {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: #333;
   font-size: 28px;
   font-weight: bold;
@@ -29,7 +29,7 @@ body {
 }
 
 .form input {
-  width: 85%;
+  width: 85%; /* Đảm bảo form không quá rộng */
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ddd;
@@ -40,7 +40,7 @@ body {
 }
 
 .form button {
-  width: 90%;
+  width: 90%; /* Nút bấm chiếm phần lớn chiều rộng */
   padding: 10px;
   border: none;
   border-radius: 5px;
