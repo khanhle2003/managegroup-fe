@@ -5,10 +5,10 @@ import { RegisterComponent } from '../layout2/auth-layout/register/register.comp
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { MainLayoutComponent } from '../layout2/main-layout/main-layout.component';
-import {AddComponent} from "../components/add/add.component";
-import { UserDetailComponent } from '../components/user-detail/user-detail.component';
-import { ExcelImportComponent } from '../components/import-excel/import-excel.component';
-import { EditUserComponent } from '../components/edit-user/edit-user.component';
+import {AddComponent} from "../layout2/main-layout/add/add.component";
+import { UserDetailComponent } from '../layout2/main-layout/user-detail/user-detail.component';
+import { ExcelImportComponent } from '../layout2/main-layout/import-excel/import-excel.component';
+import { EditUserComponent } from '../layout2/main-layout/edit-user/edit-user.component';
 import { MainComponent } from '../layout2/main-layout/main/main.component';
 import { AuthLayoutComponent } from '../layout2/auth-layout/auth-layout.component';
 
@@ -16,7 +16,6 @@ export const routes: Routes = [
 
   // {path: 'login', component: LoginComponent},
   // {path: 'register', component: RegisterComponent},
-  
   // {path: 'data-table', component: DatatableComponent},
   // {path: 'add-data', component: AddComponent},
   // {path: 'user-detail/:id', component: UserDetailComponent},
@@ -31,6 +30,10 @@ export const routes: Routes = [
       { path: '', redirectTo: '/main', pathMatch: 'full' },
       {path: 'main', component: MainComponent},
       {path: 'data-table', component: DatatableComponent},
+      {path: 'user-detail/:id', component: UserDetailComponent},
+      {path: 'add-data', component: AddComponent},
+      {path: 'edit-user/:id', component: EditUserComponent},
+      {path: 'app-import-excel', component: ExcelImportComponent},
     ],
   },
   {
