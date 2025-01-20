@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { UserService } from '../../services/user-detail.service';
+import { UserService } from '../../../services/user-detail.service';
 import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-user-detail',
