@@ -1,8 +1,7 @@
 .scrollable {
     max-height: 300px; 
     overflow-y: auto;
-    padding: 10px 40px 10px 40px; 
-    margin: 10px 40px 10px 40px;
+
 }
 .title{
     text-align: center;
@@ -28,7 +27,4 @@
 .labelcountrychart{
 margin-bottom: -1px;
 
-}
-.sectioncountry{
-    margin: 10px 40px 10px 40px;
 }
