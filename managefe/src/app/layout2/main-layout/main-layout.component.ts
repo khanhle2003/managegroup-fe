@@ -9,5 +9,10 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './main-layout.component.css'
 })
 export class MainLayoutComponent {
+  isSidebarCollapsed = false;
+
+  toggleSidebar() {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
+  }
 
 }
