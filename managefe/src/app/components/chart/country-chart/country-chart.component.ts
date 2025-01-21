@@ -1,97 +1,108 @@
-import { isPlatformBrowser } from '@angular/common';
-import { ChangeDetectorRef, Component, effect , inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { ChartModule } from 'primeng/chart';
-import { SectionCountryComponent } from "./section-country/section-country.component";
-
-
-@Component({
-  selector: 'app-country-chart',
-  standalone: true,
-  imports: [ChartModule, SectionCountryComponent],
-  templateUrl: './country-chart.component.html',
-  styleUrl: './country-chart.component.css'
-})
-
-  export class CountryChartComponent implements OnInit {
-    data: any;
-
-    options: any;
-
-    platformId = inject(PLATFORM_ID);
+    import { isPlatformBrowser } from '@angular/common';
+    import { ChangeDetectorRef, Component, effect , inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+    import { ChartModule } from 'primeng/chart';
+    import { SectionCountryComponent } from "./section-country/section-country.component";
 
 
 
-    constructor(private cd: ChangeDetectorRef) {}
+    @Component({
+    selector: 'app-country-chart',
+    standalone: true,
+    imports: [ChartModule, SectionCountryComponent],
+    templateUrl: './country-chart.component.html',
+    styleUrls: ['./country-chart.component.css']
+    })
+    export class CountryChartComponent implements OnInit {
+        data: any;
+        options: any;
+        platformId = inject(PLATFORM_ID);
 
+        constructor(private cd: ChangeDetectorRef) {}
 
-
-    ngOnInit() {
-        this.initChart();
-    }
+        ngOnInit() {
+            this.initChart();
+        }
+        ngAfterViewInit() {
+            this.cd.detectChanges();
+          }
+          
 
     initChart() {
         if (isPlatformBrowser(this.platformId)) {
-            const documentStyle = getComputedStyle(document.documentElement);
-            const textColor = documentStyle.getPropertyValue('--p-text-color');
-            const textColorSecondary = documentStyle.getPropertyValue('--p-text-muted-color');
-            const surfaceBorder = documentStyle.getPropertyValue('--p-content-border-color');
+        const documentStyle = getComputedStyle(document.documentElement);
+        const textColor = documentStyle.getPropertyValue('--p-text-color');
+        const textColorSecondary = documentStyle.getPropertyValue('--p-text-muted-color');
+        const surfaceBorder = documentStyle.getPropertyValue('--p-content-border-color');
 
+        this.data = {
+            labels: [],
+            datasets: [{
+              label: 'Số lượng quốc gia',
+              backgroundColor: 'rgba(255, 26, 145, 1)',
+              borderColor: 'rgba(255, 26, 145, 1)',
+             data: []
+            }]
+        };
+
+        this.options = {
+            indexAxis: 'y',
+            maintainAspectRatio: false,
+            aspectRatio: 0.8,
+            plugins: {
+            legend: {
+                labels: {
+                color: textColor
+                }
+            }
+            },
+            scales: {
+            x: {
+                ticks: {
+                color: textColorSecondary,
+                font: {
+                    weight: 500
+                }
+                },
+                grid: {
+                color: surfaceBorder,
+                drawBorder: false
+                }
+            },
+            y: {
+                ticks: {
+                color: textColorSecondary
+                },
+                grid: {
+                color: surfaceBorder,
+                drawBorder: false
+                }
+            }
+            }
+        };
+        this.cd.markForCheck();
+        }
+    }
+
+
+    @ViewChild('chart') chart: any;
+        updateChartData(countries: string[], counts: number[]) {
             this.data = {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','January', 'February', 'March', 'April', 'May'],
+                labels: [...countries],
                 datasets: [
                     {
-                        label: 'My First dataset',
-                        backgroundColor: documentStyle.getPropertyValue('--p-cyan-500'),
-                        borderColor: documentStyle.getPropertyValue('--p-cyan-500'),
-                        data: [65, 59, 80, 81, 56, 55, 40]
-                    },
-                    {
-                        label: 'My Second dataset',
-                        backgroundColor: documentStyle.getPropertyValue('--p-gray-500'),
-                        borderColor: documentStyle.getPropertyValue('--p-gray-500'),
-                        data: [28, 48, 40, 19, 86, 27, 90]
+                        label: 'Số lượng quốc gia',
+                        backgroundColor: 'rgba(255, 26, 145, 1)',
+                        borderColor: 'rgba(255, 26, 145, 1)',
+                        data: [...counts]
                     }
                 ]
             };
-
-            this.options = {
-                indexAxis: 'y',
-                maintainAspectRatio: false,
-                aspectRatio: 0.8,
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: textColor
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        ticks: {
-                            color: textColorSecondary,
-                            font: {
-                                weight: 500
-                            }
-                        },
-                        grid: {
-                            color: surfaceBorder,
-                            drawBorder: false
-                        }
-                    },
-                    y: {
-                        ticks: {
-                            color: textColorSecondary
-                        },
-                        grid: {
-                            color: surfaceBorder,
-                            drawBorder: false
-                        }
-                    }
-                }
-            };
-            this.cd.markForCheck()
+            this.cd.detectChanges();
+            if (this.chart && this.chart.chart) {
+                this.chart.chart.update();
         }
+        
     }
-}
 
 
+    }
