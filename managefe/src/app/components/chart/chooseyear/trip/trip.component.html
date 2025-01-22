@@ -1,0 +1,19 @@
+<div *ngIf="trips.length > 0">
+  <label for="year">Chọn năm:</label>
+  <select id="year" [(ngModel)]="selectedYear" (change)="onYearChange()">
+    <option *ngFor="let year of getUniqueYears()" [value]="year">{{ year }}</option>
+  </select>
+
+  <div *ngIf="selectedYear !== null">
+    <div *ngIf="averageDays !== null">
+      <h4>Trung bình số ngày chênh lệch cho năm {{ selectedYear }}: {{ averageDays | number: '1.0-2' }}</h4>
+    </div>
+    <div *ngIf="averageDays === null">
+      <h4>Không có dữ liệu hợp lệ để tính trung bình cho năm {{ selectedYear }}</h4>
+    </div>
+  </div>
+
+  <div *ngIf="selectedYear === null">
+    <h4>Chọn một năm để xem trung bình số ngày chênh lệch.</h4>
+  </div>
+</div>
