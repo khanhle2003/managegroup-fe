@@ -1,0 +1,8 @@
+<div *ngIf="trips.length > 0">
+    <div *ngIf="averageDays !== null">
+        <h4>Trung bình số ngày chênh lệch: {{ averageDays | number: '1.0-2' }}</h4>
+      </div>
+      <div *ngIf="averageDays === null">
+        <h4>Không có dữ liệu hợp lệ để tính trung bình</h4>
+      </div>
+  </div>
