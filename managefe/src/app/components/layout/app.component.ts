@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { TripComponent } from "../../trip/trip.component";
+import { TripComponent } from "../chart/chooseyear/trip/trip.component";
 
 @Component({
   selector: 'app-root',

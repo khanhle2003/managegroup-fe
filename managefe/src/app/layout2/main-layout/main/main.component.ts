@@ -5,10 +5,11 @@ import { ChartModule } from 'primeng/chart';
 import { CountryChartComponent } from '../../../components/chart/country-chart/country-chart.component';
 import { InvtChartComponent } from '../../../components/chart/invt-chart/invt-chart.component';
 import { ChooseyearComponent } from "../../../components/chart/chooseyear/chooseyear.component";
+import { TripComponent } from '../../../components/chart/chooseyear/trip/trip.component';
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [RouterModule, ChartModule, CountryChartComponent, InvtChartComponent, ChooseyearComponent],
+  imports: [RouterModule, ChartModule, CountryChartComponent, InvtChartComponent, ChooseyearComponent, TripComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
