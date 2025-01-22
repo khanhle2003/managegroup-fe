@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { TripComponent } from "../../trip/trip.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [RouterModule], 
+  imports: [RouterModule, TripComponent], 
 })
 export class AppComponent {
   // showSidebar: boolean = false;
