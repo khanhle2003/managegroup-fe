@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 import { ChartModule } from 'primeng/chart';
@@ -27,7 +27,10 @@ export class InvtChartComponent implements OnInit {
     ngOnInit() {
         this.initChart();
     }
-
+    ngAfterViewInit() {
+        this.cd.detectChanges();
+      }
+      
     initChart() {
         if (isPlatformBrowser(this.platformId)) {
             const documentStyle = getComputedStyle(document.documentElement);
@@ -36,20 +39,16 @@ export class InvtChartComponent implements OnInit {
             const surfaceBorder = documentStyle.getPropertyValue('--p-content-border-color');
 
             this.data = {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','January', 'February', 'March', 'April', 'May'],
+                
+                labels: [],
                 datasets: [
                     {
                         label: 'My First dataset',
                         backgroundColor: documentStyle.getPropertyValue('--p-cyan-500'),
                         borderColor: documentStyle.getPropertyValue('--p-cyan-500'),
-                        data: [65, 59, 80, 81, 56, 55, 40]
-                    },
-                    {
-                        label: 'My Second dataset',
-                        backgroundColor: documentStyle.getPropertyValue('--p-gray-500'),
-                        borderColor: documentStyle.getPropertyValue('--p-gray-500'),
-                        data: [28, 48, 40, 19, 86, 27, 90]
+                        data: []
                     }
+                
                 ]
             };
 
@@ -90,5 +89,33 @@ export class InvtChartComponent implements OnInit {
             };
             this.cd.markForCheck()
         }
+
+
     }
+
+
+    @ViewChild('chart') chart: any;
+        updateChartData(invitationUnits: string[], counts: number[]) {
+            this.data = {
+                labels: invitationUnits.map(unit => unit.length > 10 ? unit.substring(0, 10) + '...' : unit),
+                datasets: [
+                    {
+                        label: 'Số lượng đơn vị',
+                        backgroundColor: 'rgba(255, 26, 145, 1)',
+                        borderColor: 'rgba(255, 26, 145, 1)',
+                        data: [...counts],
+                        tooltip: {
+                            callbacks: {
+                                label: (tooltipItem: { dataIndex: number }) => invitationUnits[tooltipItem.dataIndex]
+                            }
+                        }
+                    }
+                ]
+            };
+            this.cd.detectChanges();
+            if (this.chart && this.chart.chart) {
+                this.chart.chart.update();
+            }
+        }
+
 }
