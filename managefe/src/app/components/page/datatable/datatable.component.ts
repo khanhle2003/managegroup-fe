@@ -5,14 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import * as XLSX from 'xlsx';
 import { firstValueFrom} from 'rxjs';
-import { ExcelImportComponent } from '../import-excel/import-excel.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExcelImportComponent } from '../import-excel/import-excel.component';
 
 @Component({
   selector: 'app-datatable',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule, RouterModule,ExcelImportComponent ],
+  imports: [CommonModule, HttpClientModule, FormsModule, RouterModule, ExcelImportComponent ],
   templateUrl: './datatable.component.html',
   styleUrls: ['./datatable.component.css'],
 })

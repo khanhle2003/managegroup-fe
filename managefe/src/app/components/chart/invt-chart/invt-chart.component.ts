@@ -43,9 +43,9 @@ export class InvtChartComponent implements OnInit {
                 labels: [],
                 datasets: [
                     {
-                        label: 'My First dataset',
-                        backgroundColor: documentStyle.getPropertyValue('--p-cyan-500'),
-                        borderColor: documentStyle.getPropertyValue('--p-cyan-500'),
+                        label: 'Số lượng đơn vị  ',
+                        backgroundColor: 'rgba(255, 26, 145, 1)',
+                        borderColor: 'rgba(255, 26, 145, 1)',
                         data: []
                     }
                 

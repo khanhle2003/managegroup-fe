@@ -20,6 +20,7 @@ export class SectionCountryComponent {
 
   ngOnInit() {
     this.fetchCountries();
+    this.logSelected
   }
 
   fetchCountries() {
@@ -46,7 +47,7 @@ export class SectionCountryComponent {
     
     const requestBody = {
       countries: this.selectedCategories,
-      year: "2024"
+      year: "2012"
     };
   
     this.http.post('http://localhost:8080/api/data/search', requestBody)
@@ -60,11 +61,30 @@ export class SectionCountryComponent {
           } 
         }
       });
+
+    this.http.post('http://localhost:8080/api/data/countrydoanra', requestBody)
+      .subscribe({
+        next: (data: any) => {
+          console.log('Dữ liệu từ API countrydoanra:', data);
+
+          if (data && data.countByCountry) {
+            const countsFromSecondAPI = this.selectedCategories.map(category => data.countByCountry[category] || 0);
+            this.chartComponent.updateChartData(this.selectedCategories, countsFromSecondAPI);
+          } 
+        },
+        error: (error) => {
+          console.error('Lỗi khi lấy dữ liệu từ API countrydoanra:', error);
+        }
+      });
   }
   
   
 
   updateChartData(countries: string[], counts: number[]) {
+
+  }
+  
+  updateChartData3(countries: string[], counts: number[]) {
 
   }
 }
