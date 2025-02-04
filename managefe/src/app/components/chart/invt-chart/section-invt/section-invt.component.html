@@ -3,9 +3,8 @@
 
     <div class="flex flex-col gap-4 scrollable">
         <div *ngFor="let invt of categories" class="flex items-center"  style="margin-top:4px;">
-            <p-checkbox class="-mb-[2px]" [inputId]="invt.key" name="group" [value]="invt" [(ngModel)]="selectedCategories"></p-checkbox>
+            <p-checkbox class="-mb-[2px]"  name="group" [value]="invt" [(ngModel)]="selectedCategories" (onChange)="logSelected()"></p-checkbox>
             <label class="labelcountrychart" title="{{invt}}"> {{ invt }} </label>
         </div>
     </div>
 </div>
-<div style="text-align: center;"><p-button label="Chọn" [raised]="true" severity="info" (onClick)="logSelected()"/></div>

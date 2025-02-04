@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
-import { TripComponent } from "../chart/chooseyear/trip/trip.component";
 
 
 @Component({
@@ -9,7 +8,7 @@ import { TripComponent } from "../chart/chooseyear/trip/trip.component";
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [RouterModule, TripComponent], 
+  imports: [RouterModule], 
 })
 export class AppComponent {
   // showSidebar: boolean = false;

@@ -13,6 +13,9 @@
     styleUrls: ['./country-chart.component.css']
     })
     export class CountryChartComponent implements OnInit {
+      updateChartData2(selectedCategories: any[], counts: any[]) {
+        throw new Error('Method not implemented.');
+      }
         data: any;
         options: any;
         platformId = inject(PLATFORM_ID);
@@ -21,6 +24,7 @@
 
         ngOnInit() {
             this.initChart();
+            
         }
         ngAfterViewInit() {
             this.cd.detectChanges();
@@ -102,7 +106,24 @@
                 this.chart.chart.update();
         }
         
+        
     }
 
-
+    updateChartData3(countries: string[], counts: number[]) {
+        this.data = {
+            labels: [...countries],
+            datasets: [
+                {
+                    label: 'Số lượng quốc gia',
+                    backgroundColor: 'rgba(255, 26, 145, 1)',
+                    borderColor: 'rgba(255, 26, 145, 1)',
+                    data: [...counts]
+                }
+            ]
+        };
+        this.cd.detectChanges();
+        if (this.chart && this.chart.chart) {
+            this.chart.chart.update();
     }
+}
+}

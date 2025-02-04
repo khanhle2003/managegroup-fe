@@ -19,6 +19,7 @@ export class SectionInvtComponent {
    constructor(private http: HttpClient, private chartComponent: InvtChartComponent) {}
     ngOnInit() {
        this.fetchCountries();
+       this.logSelected;
     }
 
 
