@@ -1,8 +1,14 @@
 <router-outlet></router-outlet>
-<p-sidebar [(visible)]="sidebarVisible">
-  <h3>Sidebar</h3>
-  <p>
-      Lorem ipsum dolor sit amet...
-  </p>
+
+<p-sidebar [(visible)]="sidebarVisible" styleClass="custom-sidebar">
+  <h3 class="menu-title">MENU</h3>
+  <p class="link-container">
+    <a routerLink="/main" class="sidebar-link">Trang chủ</a>
+    <a routerLink="/data-table" class="sidebar-link">Quản lí đoàn ra</a>
+  </p>  
 </p-sidebar>
-<p-button (onClick)="sidebarVisible = true" class="p-button">→</p-button>
+
+<p-button (onClick)="sidebarVisible = true" class="toggle-button">→</p-button>
+<div>
+  <p-button (onClick)="sidebarVisible = true" class="toggle-button">→</p-button>
+</div>
