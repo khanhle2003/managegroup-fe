@@ -1,0 +1,54 @@
+/* Container styling */
+.trip-container {
+    max-width: 500px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Label styling */
+  .trip-container label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+  }
+  
+  /* Select dropdown styling */
+  .trip-container select {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .trip-container select:focus {
+    border-color: #007bff;
+  }
+  
+  /* Headings for results */
+  .trip-container h4 {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #444;
+  }
+  
+  /* Optional: Responsive text alignment */
+  @media (max-width: 600px) {
+    .trip-container {
+      padding: 15px;
+    }
+    .trip-container label,
+    .trip-container select,
+    .trip-container h4 {
+      font-size: 14px;
+    }
+  }
+  
