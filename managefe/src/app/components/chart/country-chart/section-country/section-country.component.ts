@@ -50,7 +50,7 @@ export class SectionCountryComponent {
       year: "2012"
     };
   
-    this.http.post('http://localhost:8080/api/data/search', requestBody)
+    this.http.post('http://localhost:8080/api/search/country', requestBody)
       .subscribe({
         next: (response: any) => {
           console.log('Response from API:', response);
@@ -62,7 +62,7 @@ export class SectionCountryComponent {
         }
       });
 
-    this.http.post('http://localhost:8080/api/data/countrydoanra', requestBody)
+    this.http.post('http://localhost:8080/api/search/countrydoanra', requestBody)
       .subscribe({
         next: (data: any) => {
           console.log('Dữ liệu từ API countrydoanra:', data);

@@ -49,7 +49,7 @@ export class SectionInvtComponent {
         year: "2024"
       };
     
-      this.http.post('http://localhost:8080/api/search/invitation', requestBody, {
+      this.http.post('http://localhost:8080/api/data/invitation', requestBody, {
           headers: { 'Content-Type': 'application/json' }
       })
         .subscribe({

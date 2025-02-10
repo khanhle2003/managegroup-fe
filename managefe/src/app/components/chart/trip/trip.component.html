@@ -1,4 +1,4 @@
-<div *ngIf="trips.length > 0">
+<!-- <div *ngIf="trips.length > 0">
   <label for="year">Chọn năm:</label>
   <select id="year" [(ngModel)]="selectedYear" (change)="onYearChange()">
     <option *ngFor="let year of getUniqueYears()" [value]="year">{{ year }}</option>
@@ -16,4 +16,11 @@
   <div *ngIf="selectedYear === null">
     <h4>Chọn một năm để xem trung bình số ngày chênh lệch.</h4>
   </div>
+</div> -->
+
+<div>
+  <label for="year">Chọn năm:</label>
+  <select id="year" [(ngModel)]="selectedYear" (change)="onYearChange()">
+    <option *ngFor="let year of getUniqueYears()" [value]="year">{{ year }}</option>
+  </select>
 </div>
