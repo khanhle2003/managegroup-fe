@@ -8,6 +8,8 @@ import { firstValueFrom} from 'rxjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExcelImportComponent } from '../import-excel/import-excel.component';
+import { count } from 'console';
+import { start } from 'repl';
 
 @Component({
   selector: 'app-datatable',
@@ -272,16 +274,110 @@ toggleDropdown(){
       return;
     }
 
-    const dataWithoutId = this.originalData.map(({ id, ...rest }) => rest);
+    // Định nghĩa tiêu đề mong muốn
+    const headers = {
+      fullName: 'Họ và Tên',
+      birthDate: 'Ngày sinh',
+      gender: 'Giới tính',
+      partyBranch: 'Đảng viên',
+      partyPosition: 'Chức vụ Đảng',
+      jobTitle: 'Chức danh',
+      jobName: 'Chức vụ',
+      unit: 'Đơn vị',
+      phoneNumber: 'Số điện thoại',
+      email: 'Email',
+      country: 'Nước đi công tác',
+      invitationUnit: 'Đơn vị mời',
+      moiDichDanh: 'Mời dịch danh',
+      trippurpose: 'Mục đích công tác',
+      startDate: 'Ngày đi',
+      monthBegon: 'Tháng bắt đầu',
+      endDate: 'Ngày về',
+      thoigiandichuyen: 'Thời gian di chuyển',
+      selfFunded: 'Tự túc',
+      sponsor: 'Người tài trợ',
+      hospital: 'Bệnh viện',
+      giaTri: 'Giá trị',
+      foreignTripCount: 'Số lần đi nước ngoài',
+      ngayXindi: 'Ngày xin đi',
+      ngayPnhanHS: 'Ngày phê duyệt',
+      notificationDate: 'Ngày thông báo',
+      notificationNumber: 'Số thông báo',
+      ngaychuyenHSsangP: 'Ngày chuyển HS',
+      alternative: 'Thay thế',
+      soNghiPhep: 'Số ngày nghỉ phép',
+      ngayNghiPhep: 'Ngày nghỉ phép',
+      submitDay: 'Ngày nộp',
+      photoHochieu: 'Hình ảnh hộ chiếu',
+      noiDung: 'Nội dung',
+      tenBaoCao: 'Tên báo cáo',
+      hoanHuy: 'Hoãn/Hủy',
+      khac: 'Khác',
+    };
 
-    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dataWithoutId);
+    // Chuyển đổi dữ liệu theo tiêu đề
+    const dataFormatted = this.originalData.map(item => {
+      return {
+        'Họ và Tên': item.fullName,
+        'Ngày sinh': item.birthDate,
+        'Giới tính': item.gender,
+        'Đảng viên': item.partyBranch,
+        'Chức vụ Đảng': item.partyPosition,
+        'Chức danh': item.jobTitle,
+        'Chức vụ': item.jobName,
+        'Đơn vị': item.unit,
+        'Số điện thoại': item.phoneNumber,
+        'Email': item.email,
+        'Nước đi công tác': item.country,
+        'Đơn vị mời': item.invitationUnit,
+        'Mời dịch danh': item.moiDichDanh,
+        'Mục đích công tác': item.tripPurpose,
+        'Ngày đi': item.startDate,
+        'Tháng bắt đầu': item.monthBegon,
+        'Ngày về': item.endDate,
+        'Thời gian di chuyển': item.thoigiandichuyen,
+        'Tự túc': item.selfFunded,
+        'Người tài trợ': item.sponsor,
+        'Bệnh viện': item.hospital,
+        'Giá trị': item.giaTri,
+        'Số lần đi nước ngoài': item.foreignTripCount,
+        'Ngày xin đi': item.ngayXindi,
+        'Ngày phê duyệt': item.ngayPnhanHS,
+        'Ngày thông báo': item.notificationDate,
+        'Số thông báo': item.notificationNumber,
+        'Ngày chuyển HS': item.ngaychuyenHSsangP,
+        'Thay thế': item.alternative,
+        'Số ngày nghỉ phép': item.soNghiPhep,
+        'Ngày nghỉ phép': item.ngayNghiPhep,
+        'Ngày nộp': item.submitDay,
+        'Hình ảnh hộ chiếu': item.photoHochieu,
+        'Nội dung': item.noiDung,
+        'Tên báo cáo': item.tenBaoCao,
+        'Hoãn/Hủy': item.hoanHuy,
+        'Khác': item.khac,
+
+      };
+    });
+
+    // Tạo trang tính Excel
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dataFormatted);
+
+    // Chèn tiêu đề cột
+    const range = XLSX.utils.decode_range(ws['!ref'] as string);
+    for (let C = range.s.c; C <= range.e.c; ++C) {
+      const cellAddress = XLSX.utils.encode_col(C) + "1";
+      ws[cellAddress].s = { font: { bold: true } };
+    }
+
+    // Tạo workbook và thêm sheet
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Dữ liệu');
+    XLSX.utils.book_append_sheet(wb, ws, 'Danh sách');
 
+    // Xuất file với tên có định dạng ngày
     const fileName = `danh_sach_du_lieu_${new Date().toLocaleDateString()}.xlsx`;
-
     XLSX.writeFile(wb, fileName);
   }
+
 
   async exportSelectedToWord() {
     const selectedIds = this.filteredData
