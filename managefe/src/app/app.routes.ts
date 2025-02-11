@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { DatatableComponent } from './components/page/datatable/datatable.component';
 import { LoginComponent } from './components/page/login/login.component';
-import { RegisterComponent } from './components/page/register/register.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import {AddComponent} from "./components/page/add/add.component";
@@ -10,6 +9,8 @@ import { EditUserComponent } from './components/page/edit-user/edit-user.compone
 import { ExcelImportComponent } from './components/page/import-excel/import-excel.component';
 import { MainComponent } from './components/page/main/main.component';
 import { LayoutComponent } from './components/page/layout/layout.component';
+import { DoanvaoComponent } from './components/page/doanvao/doanvao.component';
+import { ExcelImportComponent2 } from './components/page/import-excel2/import-excel2.component';
 
 
 export const routes: Routes = [
@@ -26,6 +27,8 @@ export const routes: Routes = [
       {path: 'add-data', component: AddComponent},
       {path: 'edit-user/:id', component: EditUserComponent},
       {path: 'app-import-excel', component: ExcelImportComponent},
+      {path: 'app-import-excel2', component: ExcelImportComponent2},
+      {path: 'doanvao', component: DoanvaoComponent},
     ],
   },
 

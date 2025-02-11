@@ -1,0 +1,192 @@
+<div class="search-container"
+  style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-bottom: 5px;margin-top: 10px;">
+
+  <div style="display: flex; align-items: center; gap: 5px;">
+    <div class="dropdown" style="position: relative; display: inline-block;">
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 5px;">
+    <label for="startDate">Từ ngày</label>
+    <input
+      id="startDate"
+      type="date"
+      [(ngModel)]="startDate"
+      (keyup.enter)="filterData()"
+      style="padding: 10px; width: 150px; margin-right: 10px" />
+    <label for="endDate">Đến ngày</label>
+    <input
+      id="endDate"
+      type="date"
+      [(ngModel)]="endDate"
+      (keyup.enter)="filterData()"
+      style="padding: 10px; width: 150px;" />
+      <div style="display: flex; gap: 50px; position: relative; margin-left: 10px;">
+        <button (click)="toggleDropdown()"
+          style="padding: 5px 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+          Xuất Dữ Liệu
+        </button>
+        <div class="dropdown-content" *ngIf="isDropdownOpen"
+          style="min-width: 90px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 9999; top: 100%; left: 0;">
+          <a (click)="exportExcel()" style="display: block; padding: 5px;">Xuất Excel</a>
+          <!-- <a (click)="exportSelectedToWord()" style="display: block; padding: 5px;">Xuất Word</a>
+          <a (click)="exportAllExcel()" style="display: block; padding: 5px;">Xuất tất cả (excel)</a> -->
+        </div>
+  </div>
+
+</div>
+
+  <!-- dropdown backup -->
+  <!-- <div class="dropdown" style=" position: relative; display: inline-block; margin-right: 10px; margin-left:auto;">
+    <button class="btn btn-primary" style="padding: 5px 10px;" (click)="toggleBackupDropdown()">Sao lưu dữ liệu</button>
+    <div *ngIf="backupStatus" style="min-width: 150px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 9999;" [ngClass]="{ 'success': isBackupSuccess, 'error': !isBackupSuccess }">
+
+      <a (click)="triggerWeeklyBackup()" style="display: block; padding: 5px;">Dữ liệu tuần</a>
+      <a (click)="triggerMonthlyBackup()" style="display: block; padding: 5px;">Dữ liệu tháng</a>
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-left: 45px">
+
+    <div style="display: flex; align-items: center; gap: 5px; margin-left: 0px;">
+      <a href="#" style="padding: 5px 10px; background-color: #3db7df; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm</a>
+      <button (click)="deleteSelected()"
+      style="padding: 5px 10px; background-color: #d9534f; color: white; border: none; border-radius: 5px; cursor: pointer; margin-left: 15px;">
+Xóa mục đã chọn
+</button>-->
+       <app-excel-import2></app-excel-import2>
+<div style="display: flex; align-items: center; gap: 5px; margin-left: 200px;">
+  <label for="searchName"></label>
+  <input
+    id="searchName"
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Nhập dữ liệu cần tìm"
+    (keyup.enter)="filterData()"
+    style="padding: 10px; width: 300px;" />
+</div>
+
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <button (click)="filterData()"
+          style="padding: 10px 15px; display: flex; align-items: center; gap: 8px; margin-right: 20px; color:rgb(0, 0, 0)  ">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
+            height="16" fill="currentColor">
+            <path
+              d="M10 2a8 8 0 015.938 13.379l4.621 4.622a1 1 0 01-1.414 1.414l-4.622-4.621A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"></path>
+          </svg>
+        </button>
+        <div>
+          <button (click)="resetFilters()"
+          style="padding: 10px 15px; margin: 0 10px; background-color: #d54d4d; color: white; border: none; border-radius: 4px; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
+            height="16" fill="currentColor">
+            <path
+              d="M12 4V1L8 5l4 4V6c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"></path>
+          </svg>
+
+        </button>
+        </div>
+      </div>
+
+  </div>
+
+
+<div
+  style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 50px 40px 0 40px; border: 1px solid #ffffff; border-radius: 10px;margin-top: 20px; ">
+<table class="data-table"
+    style="width: 100%; border-collapse: separate; border-spacing: 0px;">
+    <thead
+      style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
+      <tr>
+        <th data-header="checkbox" class="sticky-header">
+          <input type="checkbox" [checked]="headerChecked"
+          (change)="selectAll($event)">
+        </th>
+        <th data-header="stt">STT</th>
+        <th data-header="Họ và Tên">Họ và Tên</th>
+        <th data-header="Ngày sinh">Ngày sinh</th>
+        <th data-header="Giới tính">Giới tính</th>
+        <th data-header="Chi bộ">Chức vụ</th>
+        <th data-header="Chức vụ Đảng">Chức vụ Đảng</th>
+        <th data-header="Chức danh nghề nghiệp">Chức danh nghề nghiệp</th>
+        <th data-header="Chức vụ chính quyền">Chức vụ chính quyền</th>
+        <th data-header="Đơn vị">Đơn vị</th>
+        <th data-header="Số điện thoại">Số điện thoại</th>
+        <th data-header="Email">Email</th>
+        <th data-header="Quốc gia">Quốc gia</th>
+        <th data-header="Đơn vị mời">Đơn vị mời</th>
+        <th data-header="Đơn vị mời">Mời đích danh</th>
+        <th data-header="Mục đích">Mục đích</th>
+        <th data-header="Ngày bắt đầu">Ngày bắt đầu</th>
+        <th data-header="Tháng bắt đầu">Tháng bắt đầu</th>
+        <th data-header="Ngày kết thúc">Ngày kết thúc</th>
+        <th data-header="Thời gian di chuyển">Thời gian di chuyển</th>
+        <th data-header="Tự túc">Tự túc</th>
+        <th data-header="Nhà tài trợ">Nhà tài trợ</th>
+        <th data-header="Bệnh viện">Bệnh viện</th>
+        <th data-header="Giá trị">Giá trị</th>
+        <th data-header="Số chuyến">Số chuyến</th>
+        <th data-header="Ngày xin đi">Ngày xin đi</th>
+        <th data-header="Ngày nhận hồ sơ">Ngày nhận hồ sơ</th>
+        <th data-header="Số thông báo">Số thông báo</th>
+      </tr>
+    </thead>
+    <tbody>
+
+  <tr *ngFor="let item of data; let index = index" data-header="Họ và Tên">
+    <td>
+      <input type="checkbox" [(ngModel)]="item.selected">
+    </td>
+    <td>{{ (currentPage - 1) * itemsPerPage + index + 1 }}</td>
+    <td data-header="Họ và Tên" (click)="goToDetailPage(item.id)" style="cursor: pointer;" class="hoverable">{{ item.hoVaTen }} </td>
+    <td>{{ item.ngaySinh || '' }}</td>
+    <td>{{ item.gioiTinh || '' }}</td>
+    <td>{{ item.chucDanh || '' }}</td>
+    <td>{{ item.chucVu || '' }}</td>
+    <td>{{ item.hoChieu || '' }}</td>
+    <td>{{ item.donViCongTac || '' }}</td>
+    <td>{{ item.sdt || '' }}</td>
+    <td>{{ item.email || '' }}</td>
+    <td>{{ item.quocTich || '' }}</td>
+    <td>{{ item.mucDich || '' }}</td>
+    <td>{{ item.tuNgay || '' }}</td>
+    <td>{{ item.denNgay || '' }}</td>
+    <td>{{ item.tuTuc || '' }}</td>
+    <td>{{ item.taiTro || '' }}</td>
+    <td>{{ item.benhVien || '' }}</td>
+    <td>{{ item.giaTri || '' }}</td>
+    <td>{{ item.soLanToi || '' }}</td>
+    <td>{{ item.ngayGhiTrenTT || '' }}</td>
+    <td>{{ item.ngayPHTQTnhan || '' }}</td>
+    <td>{{ item.bqdpheDuyet || '' }}</td>
+    <td>{{ item.thuNgoNumber || '' }}</td>
+    <td>{{ item.thuNgoDate || '' }}</td>
+    <td>{{ item.baoCaoSauChuyenCongTac || '' }}</td>
+    <td>{{ item.ghiChu || '' }}</td>
+    <td>{{ item.quaTang || '' }}</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+<div class="pagination"
+  style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 50px; position: fixed; bottom: 0; width: 100%; padding: 10px;">
+  <button (click)="prevPage()" [disabled]="currentPage === 1"
+    style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Trang trước</button>
+
+  <span>Trang
+    <input
+      type="text"
+      [(ngModel)]="pageInput"
+      (keyup.enter)="goToPage()"
+      min="1"
+      [max]="getTotalPages()"
+      style="width: 65px; text-align: center;" />
+
+    / {{ getTotalPages() }}
+  </span>
+
+  <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()"
+    style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Trang sau</button>
+</div>
