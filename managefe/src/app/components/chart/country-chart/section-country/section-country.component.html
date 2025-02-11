@@ -1,7 +1,11 @@
+<select id="year" [(ngModel)]="selectedYear">
+  <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+</select>
+<button (click)="logSelected()">Lọc dữ liệu</button>
 <div class="title">Chọn Quốc gia</div>
 <div class="card flex justify-center sectioncountry">
 
- 
+
     <div class="flex flex-col gap-4 scrollable">
         <div *ngFor="let country of categories" class="invitaion flex items-center" style="margin-top:4px;" >
             <p-checkbox class="-mb-[2px]" name="group" [value]="country" [(ngModel)]="selectedCategories" (onChange)="logSelected()"></p-checkbox>

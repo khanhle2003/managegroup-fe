@@ -6,17 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-    private apiUrl = 'http://localhost:8080/auth/qldoan'; 
-    private EditUrl = 'http://localhost:8080/api/suadl'; 
+    private apiUrl = 'http://localhost:8080/qldoan';
+    private EditUrl = 'http://localhost:8080/api/suadl';
     constructor(private http: HttpClient) {}
 
-  
+
     getUserById(id: number): Observable<any> {
-        return this.http.get<any>(`${this.apiUrl}/${id}`); 
-     
+        return this.http.get<any>(`${this.apiUrl}/${id}`);
+
     }
     fetchData(): Observable<any> {
-      return this.http.get<any>('http://localhost:8080/qldoan'); 
+      return this.http.get<any>('http://localhost:8080/qldoan');
   }
   updateUser(id: number, userData: any): Observable<any> {
     return this.http.put<any>(`${this.EditUrl}/${id}`, userData);

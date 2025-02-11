@@ -5,11 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import * as XLSX from 'xlsx';
 import { firstValueFrom} from 'rxjs';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExcelImportComponent } from '../import-excel/import-excel.component';
-import { count } from 'console';
-import { start } from 'repl';
 
 @Component({
   selector: 'app-datatable',
@@ -26,7 +22,6 @@ handleFileInput($event: Event) {
 throw new Error('Method not implemented.');
 }
   httpClient = inject(HttpClient);
-
   originalData: any[] = [];
   filteredData: any[] = [];
   data: any[] = [];
@@ -92,7 +87,7 @@ toggleDropdown(){
   }
 
   fetchData() {
-    this.httpClient.get('http://localhost:8080/qldoan').subscribe((data: any) => {
+    this.httpClient.get('http://localhost:8080/doanra').subscribe((data: any) => {
       this.originalData = data;
       this.filteredData = [...this.originalData];
       this.loadPage(1);
