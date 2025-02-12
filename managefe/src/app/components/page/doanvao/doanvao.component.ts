@@ -73,16 +73,16 @@ export class DoanvaoComponent implements OnInit {
     const start = this.startDate ? new Date(this.startDate).getTime() : null;
     const end = this.endDate ? new Date(this.endDate).getTime() : null;
     this.filteredData = this.originalData.filter((item) => {
-      const nameMatch = item.fullName?.toLowerCase().includes(term) || false;
-      const countryMatch = item.country?.toLowerCase().includes(term) || false;
-      const unitMatch = item.unit?.toLowerCase().includes(term) || false;
+      const nameMatch = item.hoVaTen?.toLowerCase().includes(term) || false;
+      const countryMatch = item.quocTich?.toLowerCase().includes(term) || false;
+      const unitMatch = item.donViCongTac?.toLowerCase().includes(term) || false;
       const notidateMatch = item.notificationDate?.toLowerCase().includes(term) || false;
-      const phoneMatch = item.phoneNumber?.toLowerCase().includes(term) || false;
+      const phoneMatch = item.sdt?.toLowerCase().includes(term) || false;
       const emailMatch = item.email?.toLowerCase().includes(term) || false;
-      const tripmatch = item.tripPurpose?.toLowerCase().includes(term) || false;
-      const notinumbermatch = item.notificationNumber?.toLowerCase().includes(term) || false;
-      const itemStartDate = item.startDate ? new Date(item.startDate).getTime() : null;
-      const itemEndDate = item.endDate ? new Date(item.endDate).getTime() : null;
+      const tripmatch = item.mucDich?.toLowerCase().includes(term) || false;
+      const notinumbermatch = item.thungoNumber?.toLowerCase().includes(term) || false;
+      const itemStartDate = item.tuNgay ? new Date(item.startDate).getTime() : null;
+      const itemEndDate = item.denNgay ? new Date(item.endDate).getTime() : null;
       const dateInRange =
         (!start || (itemStartDate && itemStartDate >= start)) &&
         (!end || (itemEndDate && itemEndDate <= end));
@@ -206,7 +206,7 @@ export class DoanvaoComponent implements OnInit {
 
       selectedItems.forEach(item => {
         this.httpClient
-          .delete(`http://localhost:8080/api/suadl/${item.id}`)
+          .delete(`http://localhost:8080/delete/${item.id}`)
           .subscribe(
             (response: any) => {
               this.data = this.data.filter(i => i.id !== item.id);
