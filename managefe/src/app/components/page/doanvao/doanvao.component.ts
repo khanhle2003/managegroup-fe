@@ -4,7 +4,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { ExcelImportComponent2 } from '../import-excel2/import-excel2.component';
-
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-doanvao',
   standalone: true,
@@ -27,8 +27,8 @@ export class DoanvaoComponent implements OnInit {
 
   // Filters
   searchTerm = '';
-  startDate = '';
-  endDate = '';
+  tuNgay = '';
+  denNgay = '';
   backupStatus: boolean = false;
   isBackupSuccess: boolean = false;
   showCheckbox: boolean = false;
@@ -70,8 +70,8 @@ export class DoanvaoComponent implements OnInit {
   }
   filterData() {
     const term = this.searchTerm.toLowerCase() || '';
-    const start = this.startDate ? new Date(this.startDate).getTime() : null;
-    const end = this.endDate ? new Date(this.endDate).getTime() : null;
+    const start = this.tuNgay ? new Date(this.tuNgay).getTime() : null;
+    const end = this.denNgay ? new Date(this.denNgay).getTime() : null;
     this.filteredData = this.originalData.filter((item) => {
       const nameMatch = item.hoVaTen?.toLowerCase().includes(term) || false;
       const countryMatch = item.quocTich?.toLowerCase().includes(term) || false;
@@ -81,8 +81,8 @@ export class DoanvaoComponent implements OnInit {
       const emailMatch = item.email?.toLowerCase().includes(term) || false;
       const tripmatch = item.mucDich?.toLowerCase().includes(term) || false;
       const notinumbermatch = item.thungoNumber?.toLowerCase().includes(term) || false;
-      const itemStartDate = item.tuNgay ? new Date(item.startDate).getTime() : null;
-      const itemEndDate = item.denNgay ? new Date(item.endDate).getTime() : null;
+      const itemStartDate = item.tuNgay ? new Date(item.tuNgay).getTime() : null;
+      const itemEndDate = item.denNgay ? new Date(item.denNgay).getTime() : null;
       const dateInRange =
         (!start || (itemStartDate && itemStartDate >= start)) &&
         (!end || (itemEndDate && itemEndDate <= end));
@@ -107,12 +107,14 @@ export class DoanvaoComponent implements OnInit {
         link.href = url;
         link.download = 'exported_data.xlsx';
         link.click();
+        this.loadPage(1);
       },
       error => {
         console.error('Export failed:', error);
         alert('Xuất file thất bại');
       }
     );
+    this.loadPage(1);
   }
   goToDetailPage(id: number) {
     this.router.navigate(['/user-detail', id]);
@@ -132,8 +134,8 @@ export class DoanvaoComponent implements OnInit {
   }
   resetFilters() {
     this.searchTerm = '';
-    this.startDate = '';
-    this.endDate = '';
+    this.tuNgay = '';
+    this.denNgay = '';
     this.filteredData = [...this.originalData];
     this.loadPage(1);
   }
@@ -184,8 +186,8 @@ export class DoanvaoComponent implements OnInit {
         return 0;
       };
 
-      const dateA = parseDate(a.notificationDate);
-      const dateB = parseDate(b.notificationDate);
+      const dateA = parseDate(a.thuNgoDate);
+      const dateB = parseDate(b.thuNgoDate);
       return dateB - dateA;
     });
 
@@ -211,16 +213,100 @@ export class DoanvaoComponent implements OnInit {
             (response: any) => {
               this.data = this.data.filter(i => i.id !== item.id);
               this.headerChecked = false;
-              // alert(`Xóa mục ${item.fullName} thành công`);
               return this.fetchData();
             },
             error => {
               console.error('Error deleting data:', error);
-              // alert(`Xóa mục ${item.fullName} thất bại`);
               return this.fetchData();
             }
           );
       });
     }
   }
+  exportAllExcel() {
+    if (this.originalData.length === 0) {
+      alert('Không có dữ liệu để xuất');
+      return;
+    }
+
+    // Định nghĩa tiêu đề mong muốn
+    const headers = {
+      hoVaTen: 'Họ và Tên',
+      ngaySinh: 'Ngày sinh',
+      gioiTinh: 'Giới tính',
+      chucDanh: 'Chức danh',
+      chucVu: 'Chức vụ',
+      donViCongTac: 'Đơn vị công tác',
+      sdt: 'Số điện thoại',
+      email: 'Email',
+      quocTich: 'Quốc Tịch',
+      mucDich: 'Mục đích chuyến đi',
+      tuNgay: 'Từ ngày',
+      denNgay: 'Đến ngày',
+      tuTuc: 'Tự túc',
+      taiTro: 'Tài trợ',
+      benhVien: 'Bệnh viện',
+      giaTri: 'Giá trị',
+      soLanToi: 'Số lần tới bệnh viện',
+      ngayGhiTrenTT: 'Ngày ghi trên TT',
+      ngayPHTQTnhan: 'Ngày PHQT nhận',
+      bqdpheDuyet: 'BGD phê duyệt',
+
+      thuNgoNumber: 'Số thư mời',
+      thuNgoDate: 'Ngày thư mời',
+      baoCaoSauChuyenCongTac: 'Báo cáo sau chuyến công tác',
+      ghiChu: 'Ghi chú',
+      quaTang: 'Quà tặng',
+    };
+
+    // Chuyển đổi dữ liệu theo tiêu đề
+    const dataFormatted = this.originalData.map(item => {
+      return {
+        'Họ và Tên': item.hoVaTen,
+        'Ngày sinh': item.ngaySinh,
+        'Giới tính': item.gioiTinh,
+        'Chức danh': item.chucDanh,
+        'Chức vụ': item.chucVu,
+        'Đơn vị công tác': item.donViCongTac,
+        'Số điện thoại': item.sdt,
+        'Email': item.email,
+        'Quốc Tịch': item.quocTich,
+        'Mục đích chuyến đi': item.mucDich,
+        'Từ ngày': item.tuNgay,
+        'Đến ngày': item.denNgay,
+        'Tự túc': item.tuTuc,
+        'Tài trợ': item.taiTro,
+        'Bệnh viện': item.benhVien,
+        'Giá trị': item.giaTri,
+        'Số lần tới bệnh viện': item.soLanToi,
+        'Ngày ghi trên TT': item.ngayGhiTrenTT,
+        'Ngày PHQT nhận': item.ngayPHTQTnhan,
+        'BGD phê duyệt': item.bqdpheDuyet,
+        'Số thư mời': item.thuNgoNumber,
+        'Ngày thư mời': item.thuNgoDate,
+        'Báo cáo sau chuyến công tác': item.baoCaoSauChuyenCongTac,
+        'Ghi chú': item.ghiChu,
+        'Quà tặng': item.quaTang,
+
+      };
+    });
+
+      // Tạo trang tính Excel
+      const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dataFormatted);
+
+      // Chèn tiêu đề cột
+      const range = XLSX.utils.decode_range(ws['!ref'] as string);
+      for (let C = range.s.c; C <= range.e.c; ++C) {
+        const cellAddress = XLSX.utils.encode_col(C) + "1";
+        ws[cellAddress].s = { font: { bold: true } };
+      }
+
+      // Tạo workbook và thêm sheet
+      const wb: XLSX.WorkBook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Danh sách');
+
+      // Xuất file với tên có định dạng ngày
+      const fileName = `danh_sach_du_lieu_${new Date().toLocaleDateString()}.xlsx`;
+      XLSX.writeFile(wb, fileName);
+    }
 }
