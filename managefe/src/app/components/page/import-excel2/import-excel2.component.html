@@ -1,0 +1,19 @@
+<div class="container">
+  <form enctype="multipart/form-data">
+    <div class="form-group">
+
+      <input
+        type="file"
+        id="file"
+        #fileInput
+        (change)="onFileChange($event)"
+        class="d-none"
+        accept=".xlsx, .xls"
+      />
+
+      <button type="button" class="btn btn-primary" (click)="onUploadClick(fileInput)">
+        Thêm dữ liệu Excel
+      </button>
+    </div>
+  </form>
+</div>

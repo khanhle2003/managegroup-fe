@@ -34,16 +34,9 @@
 
 .custom-sidebar {
   background-color: #f9f9f9;
-  width: 250px;
+  width: 200px;
   padding: 20px;
   border-right: 1px solid #ddd;
-}
-
-.menu-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
 }
 
 

@@ -5,8 +5,10 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { HttpClient } from '@angular/common/http';
 import { CountryChartComponent } from '../country-chart.component';
 import { ButtonModule } from 'primeng/button';
+
 import { forkJoin } from 'rxjs';
 import { YearService } from '../../../../services/years.service';
+
 
 @Component({
   selector: 'app-section-country',
@@ -18,6 +20,7 @@ import { YearService } from '../../../../services/years.service';
 export class SectionCountryComponent {
   selectedCategories: any[] = [];
   categories: string[] = [];
+
   selectedYear: string = "2012";
   
   constructor(
@@ -28,10 +31,12 @@ export class SectionCountryComponent {
     this.yearService.currentYear.subscribe(year => {
       this.selectedYear = year;
     });
+
   }
 
   ngOnInit() {
     this.fetchCountries();
+
   }
 
   fetchCountries() {
@@ -40,7 +45,7 @@ export class SectionCountryComponent {
         next: (data: string[]) => {
           this.categories = data;
           this.selectedCategories = this.categories.slice(0, 10);
-          
+
           const initialCounts = new Array(this.selectedCategories.length).fill(0);
           this.chartComponent.updateChartData(this.selectedCategories, initialCounts, []);
         },
@@ -53,6 +58,7 @@ export class SectionCountryComponent {
   onSelectionChange() {
     if (this.selectedCategories.length > 15) {
       alert('Chọn tối đa 15 nước');
+
       // Revert the last selection by removing the last added item
       this.selectedCategories = this.selectedCategories.slice(0, 15);
       return;
@@ -89,3 +95,4 @@ export class SectionCountryComponent {
   updateChartData(countries: string[], counts: number[], countsFromSecondAPI: number[]) {
   }
 }
+

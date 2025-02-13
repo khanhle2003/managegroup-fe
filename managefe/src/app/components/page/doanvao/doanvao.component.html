@@ -1,4 +1,3 @@
-
 <div class="search-container"
   style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-bottom: 5px;margin-top: 10px;">
 
@@ -7,19 +6,19 @@
     </div>
   </div>
 
-  <div style="display: flex; align-items: center; gap: 5px;">
+  <div style="display: flex; align-items: center; gap: 5px;margin-left: 70px;">
     <label for="startDate">Từ ngày</label>
     <input
       id="startDate"
       type="date"
-      [(ngModel)]="startDate"
+      [(ngModel)]="tuNgay"
       (keyup.enter)="filterData()"
       style="padding: 10px; width: 150px; margin-right: 10px" />
     <label for="endDate">Đến ngày</label>
     <input
       id="endDate"
       type="date"
-      [(ngModel)]="endDate"
+      [(ngModel)]="denNgay"
       (keyup.enter)="filterData()"
       style="padding: 10px; width: 150px;" />
       <div style="display: flex; gap: 50px; position: relative; margin-left: 10px;">
@@ -30,7 +29,7 @@
         <div class="dropdown-content" *ngIf="isDropdownOpen"
           style="min-width: 90px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 9999; top: 100%; left: 0;">
           <a (click)="exportExcel()" style="display: block; padding: 5px;">Xuất Excel</a>
-          <a (click)="exportSelectedToWord()" style="display: block; padding: 5px;">Xuất Word</a>
+          <!-- <a (click)="exportSelectedToWord()" style="display: block; padding: 5px;">Xuất Word</a> -->
           <a (click)="exportAllExcel()" style="display: block; padding: 5px;">Xuất tất cả (excel)</a>
         </div>
   </div>
@@ -45,19 +44,19 @@
       <a (click)="triggerWeeklyBackup()" style="display: block; padding: 5px;">Dữ liệu tuần</a>
       <a (click)="triggerMonthlyBackup()" style="display: block; padding: 5px;">Dữ liệu tháng</a>
     </div>
-  </div> -->
+  </div>
 
 </div>
 
 <div style="margin-left: 45px">
-
+ -->
     <div style="display: flex; align-items: center; gap: 5px; margin-left: 0px;">
-      <a href="/add-data" style="padding: 5px 10px; background-color: #3db7df; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm</a>
+      <a href="#" style="padding: 5px 10px; background-color: #3db7df; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm</a>
       <button (click)="deleteSelected()"
       style="padding: 5px 10px; background-color: #d9534f; color: white; border: none; border-radius: 5px; cursor: pointer; margin-left: 15px;">
 Xóa mục đã chọn
 </button>
-      <app-excel-import> </app-excel-import>
+       <app-excel-import2></app-excel-import2>
 <div style="display: flex; align-items: center; gap: 5px; margin-left: 200px;">
   <label for="searchName"></label>
   <input
@@ -93,57 +92,45 @@ Xóa mục đã chọn
 
   </div>
 
-</div>
+
 <div
   style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 50px 40px 0 40px; border: 1px solid #ffffff; border-radius: 10px;margin-top: 20px; ">
-
-  <table class="data-table"
+<table class="data-table"
     style="width: 100%; border-collapse: separate; border-spacing: 0px;">
     <thead
       style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
       <tr>
         <th data-header="checkbox" class="sticky-header">
           <input type="checkbox" [checked]="headerChecked"
-            (change)="selectAll($event)">
+          (change)="selectAll($event)">
         </th>
         <th data-header="stt">STT</th>
         <th data-header="Họ và Tên">Họ và Tên</th>
         <th data-header="Ngày sinh">Ngày sinh</th>
         <th data-header="Giới tính">Giới tính</th>
-        <th data-header="Chi bộ">Đảng viên</th>
-        <th data-header="Chức vụ Đảng">Chức vụ Đảng</th>
-        <th data-header="Chức danh nghề nghiệp">Chức danh nghề nghiệp</th>
-        <th data-header="Chức vụ chính quyền">Chức vụ chính quyền</th>
-        <th data-header="Đơn vị">Đơn vị</th>
-        <th data-header="Số điện thoại">Số điện thoại</th>
-        <th data-header="Email">Email</th>
-        <th data-header="Quốc gia">Quốc gia</th>
-        <th data-header="Đơn vị mời">Đơn vị mời</th>
-        <th data-header="Đơn vị mời">Mời đích danh</th>
-        <th data-header="Mục đích">Mục đích</th>
-        <th data-header="Ngày bắt đầu">Ngày bắt đầu</th>
-        <th data-header="Tháng bắt đầu">Tháng bắt đầu</th>
-        <th data-header="Ngày kết thúc">Ngày kết thúc</th>
-        <th data-header="Thời gian di chuyển">Thời gian di chuyển</th>
-        <th data-header="Tự túc">Tự túc</th>
-        <th data-header="Nhà tài trợ">Nhà tài trợ</th>
-        <th data-header="Bệnh viện">Bệnh viện</th>
-        <th data-header="Giá trị">Giá trị</th>
-        <th data-header="Số chuyến">Số chuyến</th>
-        <th data-header="Ngày xin đi">Ngày xin đi</th>
-        <th data-header="Ngày nhận hồ sơ">Ngày nhận hồ sơ</th>
-        <th data-header="Số thông báo">Số thông báo</th>
-        <th data-header="Ngày thông báo">Ngày thông báo</th>
-        <th data-header="Ngày chuyển hồ sơ sang Phòng">Ngày chuyển hồ sơ sang phòng</th>
-        <th data-header="Người tiếp nhận">Người tiếp nhận</th>
-        <th data-header="Số nghỉ phép">Số quyết định</th>
-        <th data-header="Ngày nghỉ phép">Ngày quyết định</th>
-        <th data-header="Ngày nộp">Ngày nộp</th>
-        <th data-header="Ảnh hộ chiếu">Ảnh hộ chiếu</th>
-        <th data-header="Nội dung">Nội dung</th>
-        <th data-header="Tên báo cáo">Tên báo cáo</th>
-        <th data-header="Hoãn/Hủy">Hoãn/Hủy</th>
-        <th data-header="Khác">Khác</th>
+        <th data-header="Chi bộ">Chức danh</th>
+        <th data-header="Chức vụ Đảng">Chức vụ</th>
+        <th data-header="Chức danh nghề nghiệp">Hộ chiếu</th>
+        <th data-header="Chức vụ chính quyền">Đơn vị công tác</th>
+        <th data-header="Đơn vị">Số điện thoại</th>
+        <th data-header="Số điện thoại">Email</th>
+        <th data-header="Email">Quốc Tịch</th>
+        <th data-header="Quốc gia">Mục đích chuyến đi</th>
+        <th data-header="Đơn vị mời">Từ ngày</th>
+        <th data-header="Đơn vị mời">Đến ngày</th>
+        <th data-header="Mục đích">Tụ túc</th>
+        <th data-header="Ngày bắt đầu">Tài trợ</th>
+        <th data-header="Tháng bắt đầu">Bệnh viện</th>
+        <th data-header="Ngày kết thúc">Giá trị</th>
+        <th data-header="Thời gian di chuyển">Số lần tới bệnh viện</th>
+        <th data-header="Tự túc">Ngày ghi trên TT</th>
+        <th data-header="Nhà tài trợ">ngày PHQT nhận</th>
+        <th data-header="Bệnh viện">BGD phê duyệt</th>
+        <th data-header="Giá trị">Số thư mời</th>
+        <th data-header="Số chuyến">Ngày thư mời</th>
+        <th data-header="Ngày xin đi">Báo cáo sau chuyến công tác</th>
+        <th data-header="Ngày nhận hồ sơ">Ghi chú</th>
+        <th data-header="Số thông báo">Quà tặng</th>
       </tr>
     </thead>
     <tbody>
@@ -153,47 +140,35 @@ Xóa mục đã chọn
       <input type="checkbox" [(ngModel)]="item.selected">
     </td>
     <td>{{ (currentPage - 1) * itemsPerPage + index + 1 }}</td>
-    <td data-header="Họ và Tên" (click)="goToDetailPage(item.id)" style="cursor: pointer;" class="hoverable">{{ item.fullName }} </td>
-    <td>{{ item.birthDate || '' }}</td>
-    <td>{{ item.gender || '' }}</td>
-    <td>{{ item.partyBranch || '' }}</td>
-    <td>{{ item.partyPosition || '' }}</td>
-    <td>{{ item.jobTitle || '' }}</td>
-    <td>{{ item.jobName || '' }}</td>
-    <td>{{ item.unit }}</td>
-    <td>{{ item.phoneNumber || '' }}</td>
+    <td data-header="Họ và Tên" (click)="goToDetailPage(item.id)" style="cursor: pointer;" class="hoverable">{{ item.hoVaTen }} </td>
+    <td>{{ item.ngaySinh || '' }}</td>
+    <td>{{ item.gioiTinh || '' }}</td>
+    <td>{{ item.chucDanh || '' }}</td>
+    <td>{{ item.chucVu || '' }}</td>
+    <td>{{ item.hoChieu || '' }}</td>
+    <td>{{ item.donViCongTac || '' }}</td>
+    <td>{{ item.sdt || '' }}</td>
     <td>{{ item.email || '' }}</td>
-    <td>{{ item.country || '' }}</td>
-    <td>{{ item.invitationUnit || '' }}</td>
-    <td>{{ item.moiDichDanh || '' }}</td>
-    <td>{{ item.tripPurpose || '' }}</td>
-    <td>{{ item.startDate || '' }}</td>
-    <td>{{ item.monthBegon || '' }}</td>
-    <td>{{ item.endDate || '' }}</td>
-    <td>{{ item.thoigiandichuyen || '' }}</td>
-    <td>{{ item.selfFunded || '' }}</td>
-    <td>{{ item.sponsor || '' }}</td>
-    <td>{{ item.hospital || '' }}</td>
+    <td>{{ item.quocTich || '' }}</td>
+    <td>{{ item.mucDich || '' }}</td>
+    <td>{{ item.tuNgay || '' }}</td>
+    <td>{{ item.denNgay || '' }}</td>
+    <td>{{ item.tuTuc || '' }}</td>
+    <td>{{ item.taiTro || '' }}</td>
+    <td>{{ item.benhVien || '' }}</td>
     <td>{{ item.giaTri || '' }}</td>
-    <td>{{ item.foreignTripCount || '' }}</td>
-    <td>{{ item.ngayXindi || '' }}</td>
-    <td>{{ item.ngayPnhanHS || '' }}</td>
-    <td>{{ item.notificationNumber || '' }}</td>
-    <td>{{ item.notificationDate || '' }}</td>
-    <td>{{ item.ngaychuyenHSsangP || '' }}</td>
-    <td>{{ item.alternative || '' }}</td>
-    <td>{{ item.soNghiPhep || '' }}</td>
-    <td>{{ item.ngayNghiPhep || '' }}</td>
-    <td>{{ item.submitDay || '' }}</td>
-    <td>{{ item.photoHochieu || '' }}</td>
-    <td>{{ item.noiDung || '' }}</td>
-    <td>{{ item.tenBaoCao || '' }}</td>
-    <td>{{ item.hoanHuy || '' }}</td>
-    <td>{{ item.khac || '' }}</td>
+    <td>{{ item.soLanToi || '' }}</td>
+    <td>{{ item.ngayGhiTrenTT || '' }}</td>
+    <td>{{ item.ngayPHTQTnhan || '' }}</td>
+    <td>{{ item.bqdpheDuyet || '' }}</td>
+    <td>{{ item.thuNgoNumber || '' }}</td>
+    <td>{{ item.thuNgoDate || '' }}</td>
+    <td>{{ item.baoCaoSauChuyenCongTac || '' }}</td>
+    <td>{{ item.ghiChu || '' }}</td>
+    <td>{{ item.quaTang || '' }}</td>
   </tr>
   </tbody>
 </table>
-
 </div>
 <div class="pagination"
   style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 50px; position: fixed; bottom: 0; width: 100%; padding: 10px;">
@@ -215,4 +190,3 @@ Xóa mục đã chọn
   <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()"
     style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Trang sau</button>
 </div>
-

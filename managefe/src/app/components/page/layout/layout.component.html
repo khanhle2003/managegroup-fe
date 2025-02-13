@@ -1,17 +1,13 @@
 <router-outlet></router-outlet>
 
 <p-sidebar [(visible)]="sidebarVisible" styleClass="custom-sidebar">
-  <h3 class="menu-title">MENU</h3>
+  <h1 class="sidebar-title">Menu</h1>
   <p class="link-container">
     <a routerLink="/main" class="sidebar-link">Trang chủ</a>
     <a routerLink="/data-table" class="sidebar-link">Quản lí đoàn ra</a>
-    <a href="/login" class="nav-item" style="margin-top: 700px; margin-left: 50px;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
-        <path d="M10 2h4a2 2 0 012 2v4h-2V4h-4v16h4v-4h2v4a2 2 0 01-2 2h-4a2 2 0 01-2-2V4a2 2 0 012-2zm6.293 9l-1.414 1.414L19.586 16H9v2h10.586l-4.707 4.707L16.293 22 22 16.293 16.293 9z"></path>
-      </svg>
-      Đăng xuất
-    </a>
-  </p>  
+    <a routerLink="/doanvao" class="sidebar-link">Quản lí đoàn vào</a>
+    <a routerLink="/login" class="sidebar-link">Đăng xuất</a>
+  </p>
 
 </p-sidebar>
 
