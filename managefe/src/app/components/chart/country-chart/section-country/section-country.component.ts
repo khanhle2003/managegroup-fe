@@ -5,6 +5,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { HttpClient } from '@angular/common/http';
 import { CountryChartComponent } from '../country-chart.component';
 import { ButtonModule } from 'primeng/button';
+import { forkJoin } from 'rxjs';
+import { YearService } from '../../../../services/year.service';
 
 import { forkJoin } from 'rxjs';
 import { YearService } from '../../../../services/years.service';
@@ -31,14 +33,12 @@ export class SectionCountryComponent {
     this.yearService.currentYear.subscribe(year => {
       this.selectedYear = year;
     });
-
   }
 
   ngOnInit() {
     this.fetchCountries();
 
   }
-
   fetchCountries() {
     this.http.get<string[]>('http://localhost:8080/api/data/countries')
       .subscribe({

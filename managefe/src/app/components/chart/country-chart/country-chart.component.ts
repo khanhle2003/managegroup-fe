@@ -24,12 +24,12 @@
 
         ngOnInit() {
             this.initChart();
-            
+
         }
         ngAfterViewInit() {
             this.cd.detectChanges();
           }
-          
+
 
     initChart() {
         if (isPlatformBrowser(this.platformId)) {
@@ -89,6 +89,7 @@
 
 
     @ViewChild('chart') chart: any;
+
         updateChartData(countries: string[], counts: number[],countsFromSecondAPI:number[]) {
             this.data = {
                 labels: [...countries],
@@ -112,9 +113,11 @@
             if (this.chart && this.chart.chart) {
                 this.chart.chart.update();
         }
-        
-        
+
+
     }
 
 
 }
+
+

@@ -12,7 +12,7 @@ import { DatatableComponent } from '../../../components/page/datatable/datatable
 export class ExcelImportComponent {
   file: File | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   /**
    * Khi nhấn nút Upload
@@ -49,7 +49,7 @@ export class ExcelImportComponent {
       next: (response) => {
         console.log('Tệp đã được tải lên:', response);
         alert('Tệp đã được import thành công!');
-        
+
       },
       error: (err) => {
         console.error('Lỗi khi import file:', err);

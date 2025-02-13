@@ -6,7 +6,7 @@
     </div>
   </div>
 
-  <div style="display: flex; align-items: center; gap: 5px;margin-left: 70px;">
+  <div style="display: flex; align-items: center; gap: 5px;">
     <label for="startDate">Từ ngày</label>
     <input
       id="startDate"
@@ -33,30 +33,20 @@
           <a (click)="exportAllExcel()" style="display: block; padding: 5px;">Xuất tất cả (excel)</a>
         </div>
   </div>
-
 </div>
 
-  <!-- dropdown backup -->
-  <!-- <div class="dropdown" style=" position: relative; display: inline-block; margin-right: 10px; margin-left:auto;">
-    <button class="btn btn-primary" style="padding: 5px 10px;" (click)="toggleBackupDropdown()">Sao lưu dữ liệu</button>
-    <div *ngIf="backupStatus" style="min-width: 150px; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 9999;" [ngClass]="{ 'success': isBackupSuccess, 'error': !isBackupSuccess }">
-
-      <a (click)="triggerWeeklyBackup()" style="display: block; padding: 5px;">Dữ liệu tuần</a>
-      <a (click)="triggerMonthlyBackup()" style="display: block; padding: 5px;">Dữ liệu tháng</a>
-    </div>
-  </div>
-
 </div>
-
 <div style="margin-left: 45px">
- -->
-    <div style="display: flex; align-items: center; gap: 5px; margin-left: 0px;">
+
+    <div style="display: flex; align-items: center; gap: 5px;">
       <a href="#" style="padding: 5px 10px; background-color: #3db7df; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm</a>
       <button (click)="deleteSelected()"
       style="padding: 5px 10px; background-color: #d9534f; color: white; border: none; border-radius: 5px; cursor: pointer; margin-left: 15px;">
 Xóa mục đã chọn
 </button>
-       <app-excel-import2></app-excel-import2>
+
+<app-excel-import2></app-excel-import2>
+
 <div style="display: flex; align-items: center; gap: 5px; margin-left: 200px;">
   <label for="searchName"></label>
   <input
@@ -85,17 +75,15 @@ Xóa mục đã chọn
             <path
               d="M12 4V1L8 5l4 4V6c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"></path>
           </svg>
-
         </button>
         </div>
       </div>
-
   </div>
 
 
 <div
-  style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 50px 40px 0 40px; border: 1px solid #ffffff; border-radius: 10px;margin-top: 20px; ">
-<table class="data-table"
+ style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 50px 40px 0 40px; border: 1px solid #ffffff; border-radius: 10px;margin-top: 10px; ">
+  <table class="data-table"
     style="width: 100%; border-collapse: separate; border-spacing: 0px;">
     <thead
       style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
@@ -108,29 +96,29 @@ Xóa mục đã chọn
         <th data-header="Họ và Tên">Họ và Tên</th>
         <th data-header="Ngày sinh">Ngày sinh</th>
         <th data-header="Giới tính">Giới tính</th>
-        <th data-header="Chi bộ">Chức danh</th>
-        <th data-header="Chức vụ Đảng">Chức vụ</th>
-        <th data-header="Chức danh nghề nghiệp">Hộ chiếu</th>
-        <th data-header="Chức vụ chính quyền">Đơn vị công tác</th>
-        <th data-header="Đơn vị">Số điện thoại</th>
-        <th data-header="Số điện thoại">Email</th>
-        <th data-header="Email">Quốc Tịch</th>
-        <th data-header="Quốc gia">Mục đích chuyến đi</th>
-        <th data-header="Đơn vị mời">Từ ngày</th>
-        <th data-header="Đơn vị mời">Đến ngày</th>
-        <th data-header="Mục đích">Tụ túc</th>
-        <th data-header="Ngày bắt đầu">Tài trợ</th>
-        <th data-header="Tháng bắt đầu">Bệnh viện</th>
-        <th data-header="Ngày kết thúc">Giá trị</th>
-        <th data-header="Thời gian di chuyển">Số lần tới bệnh viện</th>
-        <th data-header="Tự túc">Ngày ghi trên TT</th>
-        <th data-header="Nhà tài trợ">ngày PHQT nhận</th>
-        <th data-header="Bệnh viện">BGD phê duyệt</th>
-        <th data-header="Giá trị">Số thư mời</th>
-        <th data-header="Số chuyến">Ngày thư mời</th>
-        <th data-header="Ngày xin đi">Báo cáo sau chuyến công tác</th>
-        <th data-header="Ngày nhận hồ sơ">Ghi chú</th>
-        <th data-header="Số thông báo">Quà tặng</th>
+        <th data-header="Chức danh">Chức danh</th>
+        <th data-header="Chức vụ">Chức vụ</th>
+        <th data-header="Hộ chiếu">Hộ chiếu</th>
+        <th data-header="Đơn vị công tác">Đơn vị công tác</th>
+        <th data-header="Số điện thoại">Số điện thoại</th>
+        <th data-header="Email">Email</th>
+        <th data-header="Quốc Tịch">Quốc Tịch</th>
+        <th data-header="Mục đích chuyến đi">Mục đích chuyến đi</th>
+        <th data-header="Từ ngày">Từ ngày</th>
+        <th data-header="Đến ngày">Đến ngày</th>
+        <th data-header="Tụ túc">Tụ túc</th>
+        <th data-header="Tài trợ">Tài trợ</th>
+        <th data-header="Bệnh viện">Bệnh viện</th>
+        <th data-header="Giá tr">Giá trị</th>
+        <th data-header="Số lần tới bệnh viện">Số lần tới bệnh viện</th>
+        <th data-header="Ngày ghi trên TT">Ngày ghi trên TT</th>
+        <th data-header="ngày PHQT nhận">ngày PHQT nhận</th>
+        <th data-header="BGD phê duyệt">BGD phê duyệt</th>
+        <th data-header="Số thư mời">Số thư mời</th>
+        <th data-header="Ngày thư mời">Ngày thư mời</th>
+        <th data-header="Báo cáo sau chuyến công tác">Báo cáo sau chuyến công tác</th>
+        <th data-header="Ghi chú">Ghi chú</th>
+        <th data-header="Quà tặng">Quà tặng</th>
       </tr>
     </thead>
     <tbody>

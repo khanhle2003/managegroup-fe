@@ -1,5 +1,4 @@
-import { Routes } from '@angular/router';
-import { RouterModule } from '@angular/router';
+import { Routes , RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from '../components/page/login/login.component';
 
@@ -12,11 +11,14 @@ import { LayoutComponent } from '../components/page/layout/layout.component';
 import { ExcelImportComponent } from '../components/page/import-excel/import-excel.component';
 import { ExcelImportComponent2 } from '../components/page/import-excel2/import-excel2.component';
 import { DoanvaoComponent } from '../components/page/doanvao/doanvao.component';
+import { RegisterComponent } from '../components/page/register/register.component';
+
 
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 
   {
     path: '',
