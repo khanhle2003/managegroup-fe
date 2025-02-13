@@ -8,6 +8,10 @@ import { ButtonModule } from 'primeng/button';
 import { forkJoin } from 'rxjs';
 import { YearService } from '../../../../services/year.service';
 
+import { forkJoin } from 'rxjs';
+import { YearService } from '../../../../services/years.service';
+
+
 @Component({
   selector: 'app-section-country',
   standalone: true,
@@ -18,11 +22,12 @@ import { YearService } from '../../../../services/year.service';
 export class SectionCountryComponent {
   selectedCategories: any[] = [];
   categories: string[] = [];
-  selectedYear: string = "2024";
 
+  selectedYear: string = "2012";
+  
   constructor(
-    private http: HttpClient,
-    private chartComponent: CountryChartComponent,
+    private http: HttpClient, 
+    private chartComponent: CountryChartComponent, 
     private yearService: YearService
   ) {
     this.yearService.currentYear.subscribe(year => {
@@ -32,8 +37,8 @@ export class SectionCountryComponent {
 
   ngOnInit() {
     this.fetchCountries();
-  }
 
+  }
   fetchCountries() {
     this.http.get<string[]>('http://localhost:8080/api/data/countries')
       .subscribe({
@@ -53,6 +58,7 @@ export class SectionCountryComponent {
   onSelectionChange() {
     if (this.selectedCategories.length > 15) {
       alert('Chọn tối đa 15 nước');
+
       // Revert the last selection by removing the last added item
       this.selectedCategories = this.selectedCategories.slice(0, 15);
       return;
@@ -65,19 +71,19 @@ export class SectionCountryComponent {
       countries: this.selectedCategories,
       year: this.selectedYear
     };
-
+    
     forkJoin({
       firstAPI: this.http.post('http://localhost:8080/api/search/country', requestBody),
       secondAPI: this.http.post('http://localhost:8080/api/search/countrydoanra', requestBody)
     }).subscribe({
       next: (results: any) => {
-        const firstCounts = this.selectedCategories.map(category =>
+        const firstCounts = this.selectedCategories.map(category => 
           results.firstAPI.countByCountry[category] || 0
         );
-        const secondCounts = this.selectedCategories.map(category =>
+        const secondCounts = this.selectedCategories.map(category => 
           results.secondAPI.countByCountry[category] || 0
         );
-
+        
         this.chartComponent.updateChartData(this.selectedCategories, firstCounts, secondCounts);
       },
       error: (error) => {
@@ -89,3 +95,4 @@ export class SectionCountryComponent {
   updateChartData(countries: string[], counts: number[], countsFromSecondAPI: number[]) {
   }
 }
+

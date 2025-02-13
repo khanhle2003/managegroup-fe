@@ -1,6 +1,6 @@
 <div class="trip-container" *ngIf="trips.length > 0">
   <label for="year">Chọn năm:</label>
-  <select id="year" [(ngModel)]="selectedYear" (change)="onYearChange()">
+  <select id="year" [(ngModel)]="selectedYear" (change)="onYearChange()" >
     <option *ngFor="let year of getUniqueYears()" [value]="year">{{ year }}</option>
   </select>
 
