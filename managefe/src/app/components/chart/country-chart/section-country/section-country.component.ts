@@ -6,6 +6,10 @@ import { HttpClient } from '@angular/common/http';
 import { CountryChartComponent } from '../country-chart.component';
 import { ButtonModule } from 'primeng/button';
 
+import { forkJoin } from 'rxjs';
+import { YearService } from '../../../../services/years.service';
+
+
 @Component({
   selector: 'app-section-country',
   standalone: true,
@@ -16,22 +20,23 @@ import { ButtonModule } from 'primeng/button';
 export class SectionCountryComponent {
   selectedCategories: any[] = [];
   categories: string[] = [];
-  years: number[] = [];
-  selectedYear: number = new Date().getFullYear(); // Mặc định là năm hiện tại
 
-  constructor(private http: HttpClient, private chartComponent: CountryChartComponent) {
-    this.generateYears();
+  selectedYear: string = "2012";
+  
+  constructor(
+    private http: HttpClient, 
+    private chartComponent: CountryChartComponent, 
+    private yearService: YearService
+  ) {
+    this.yearService.currentYear.subscribe(year => {
+      this.selectedYear = year;
+    });
+
   }
 
   ngOnInit() {
     this.fetchCountries();
-  }
 
-  generateYears() {
-    const currentYear = new Date().getFullYear();
-    for (let i = currentYear; i >= 2000; i--) {
-      this.years.push(i);
-    }
   }
 
   fetchCountries() {
@@ -42,7 +47,7 @@ export class SectionCountryComponent {
           this.selectedCategories = this.categories.slice(0, 10);
 
           const initialCounts = new Array(this.selectedCategories.length).fill(0);
-          this.chartComponent.updateChartData(this.selectedCategories, initialCounts);
+          this.chartComponent.updateChartData(this.selectedCategories, initialCounts, []);
         },
         error: (error) => {
           console.error('Error fetching countries:', error);
@@ -50,40 +55,44 @@ export class SectionCountryComponent {
       });
   }
 
-  logSelected() {
+  onSelectionChange() {
     if (this.selectedCategories.length > 15) {
       alert('Chọn tối đa 15 nước');
+
+      // Revert the last selection by removing the last added item
+      this.selectedCategories = this.selectedCategories.slice(0, 15);
       return;
     }
+    this.logSelected();
+  }
 
+  logSelected() {
     const requestBody = {
       countries: this.selectedCategories,
-      year: this.selectedYear // Lấy năm từ dropdown
+      year: this.selectedYear
     };
+    
+    forkJoin({
+      firstAPI: this.http.post('http://localhost:8080/api/search/country', requestBody),
+      secondAPI: this.http.post('http://localhost:8080/api/search/countrydoanra', requestBody)
+    }).subscribe({
+      next: (results: any) => {
+        const firstCounts = this.selectedCategories.map(category => 
+          results.firstAPI.countByCountry[category] || 0
+        );
+        const secondCounts = this.selectedCategories.map(category => 
+          results.secondAPI.countByCountry[category] || 0
+        );
+        
+        this.chartComponent.updateChartData(this.selectedCategories, firstCounts, secondCounts);
+      },
+      error: (error) => {
+        console.error('Error fetching data:', error);
+      }
+    });
+  }
 
-    this.http.post('http://localhost:8080/api/data/search', requestBody)
-      .subscribe({
-        next: (response: any) => {
-          console.log('Response from API:', response);
-          if (response && response.countByCountry) {
-            const counts = this.selectedCategories.map(category => response.countByCountry[category] || 0);
-            this.chartComponent.updateChartData(this.selectedCategories, counts);
-          }
-        }
-      });
-
-    this.http.post('http://localhost:8080/api/data/countrydoanra', requestBody)
-      .subscribe({
-        next: (data: any) => {
-          console.log('Dữ liệu từ API countrydoanra:', data);
-          if (data && data.countByCountry) {
-            const countsFromSecondAPI = this.selectedCategories.map(category => data.countByCountry[category] || 0);
-            this.chartComponent.updateChartData(this.selectedCategories, countsFromSecondAPI);
-          }
-        },
-        error: (error) => {
-          console.error('Lỗi khi lấy dữ liệu từ API countrydoanra:', error);
-        }
-      });
+  updateChartData(countries: string[], counts: number[], countsFromSecondAPI: number[]) {
   }
 }
+
