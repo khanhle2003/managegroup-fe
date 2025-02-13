@@ -89,16 +89,23 @@
 
 
     @ViewChild('chart') chart: any;
-        updateChartData(countries: string[], counts: number[]) {
+        updateChartData(countries: string[], counts: number[],countsFromSecondAPI:number[]) {
             this.data = {
                 labels: [...countries],
                 datasets: [
                     {
-                        label: 'Số lượng quốc gia',
-                        backgroundColor: 'rgba(255, 26, 145, 1)',
-                        borderColor: 'rgba(255, 26, 145, 1)',
+                        label: 'Số lượng quốc gia đoàn ra',
+                        backgroundColor: 'rgba(0, 255, 255, 1)',
+                        borderColor: 'rgba(0, 255, 255, 1)',
                         data: [...counts]
-                    }
+                    }, 
+                        {
+                            label: 'Số lượng quốc gia đoàn vào',
+                            backgroundColor: 'rgba(255, 26, 145, 1)',
+                            borderColor: 'rgba(255, 26, 145, 1)',
+                            data: [...countsFromSecondAPI]
+                        }
+                
                 ]
             };
             this.cd.detectChanges();
@@ -109,21 +116,5 @@
         
     }
 
-    updateChartData3(countries: string[], counts: number[]) {
-        this.data = {
-            labels: [...countries],
-            datasets: [
-                {
-                    label: 'Số lượng quốc gia',
-                    backgroundColor: 'rgba(255, 26, 145, 1)',
-                    borderColor: 'rgba(255, 26, 145, 1)',
-                    data: [...counts]
-                }
-            ]
-        };
-        this.cd.detectChanges();
-        if (this.chart && this.chart.chart) {
-            this.chart.chart.update();
-    }
-}
+
 }

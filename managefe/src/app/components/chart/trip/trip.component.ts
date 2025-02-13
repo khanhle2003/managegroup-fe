@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { YearService } from '../../../services/years.service';
 
 @Component({
   selector: 'app-trip',
@@ -17,7 +18,7 @@ export class TripComponent implements OnInit {
   selectedYear: number | null = null;
   averageDaysByYear: { [key: number]: number | null } = {};
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private yearService: YearService) {}
 
   ngOnInit(): void {
     
@@ -60,6 +61,10 @@ export class TripComponent implements OnInit {
 
   
   private convertToDate(dateString: string): Date | null {
+    if (!dateString) {
+      return null; 
+    }
+    
     const parts = dateString.split('/'); 
     if (parts.length !== 3) {
       return null; 
@@ -93,6 +98,9 @@ export class TripComponent implements OnInit {
   
 
   onYearChange(): void {
+    console.log(this.selectedYear);
+    this.yearService.changeYear(this.selectedYear !== null ? this.selectedYear.toString() : '');
+
     if (this.selectedYear !== null) {
       this.http.get<number>(`http://localhost:8080/auth/qldoan/average-by-year?year=${this.selectedYear}`).subscribe(
         (data) => {
@@ -111,7 +119,7 @@ export class TripComponent implements OnInit {
   getUniqueYears(): number[] {
     const years = this.trips
       .map(trip => new Date(this.convertToDate(trip.notificationDate)!).getFullYear())
-      .filter(year => !isNaN(year)); // Bỏ các giá trị không hợp lệ
+      .filter(year => !isNaN(year));
     return [...new Set(years)];
   }
 }
