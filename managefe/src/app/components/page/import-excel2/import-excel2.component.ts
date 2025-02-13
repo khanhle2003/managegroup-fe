@@ -12,7 +12,7 @@ import { DoanvaoComponent } from '../doanvao/doanvao.component';
 export class ExcelImportComponent2 {
   file: File | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   /**
    * Khi nhấn nút Upload

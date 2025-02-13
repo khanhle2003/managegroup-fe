@@ -68,6 +68,7 @@ export class DoanvaoComponent implements OnInit {
       }
     })
   }
+
   filterData() {
     const term = this.searchTerm.toLowerCase() || '';
     const start = this.tuNgay ? new Date(this.tuNgay).getTime() : null;
@@ -90,35 +91,11 @@ export class DoanvaoComponent implements OnInit {
     });
     this.loadPage(1);
   }
-  exportExcel() {
-    const selectedData = this.originalData.filter(item => item.selected);
-    if (selectedData.length === 0) {
-      alert('Vui lòng chọn dữ liệu');
-      return;
-    }
 
-    this.httpClient.post('http://localhost:8080/api/export/doanvao', selectedData, {
-      responseType: 'blob'
-    }).subscribe(
-      (response: Blob) => {
-        const blob = new Blob([response], { type: 'application/vnd.ms-excel' });
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'exported_data.xlsx';
-        link.click();
-        this.loadPage(1);
-      },
-      error => {
-        console.error('Export failed:', error);
-        alert('Xuất file thất bại');
-      }
-    );
-    this.loadPage(1);
-  }
   goToDetailPage(id: number) {
-    this.router.navigate(['/user-detail', id]);
+    this.router.navigate(['/user-detail2', id]);
   }
+
   hideCheckbox() {
     this.showCheckbox = !this.showCheckbox;
     if (!this.showCheckbox) {
@@ -127,11 +104,13 @@ export class DoanvaoComponent implements OnInit {
       this.headerChecked = false;
     }
   }
+
   checkPageCheckboxState() {
     const currentPageItems = this.data.filter(item => item !== null);
     this.headerChecked = currentPageItems.length > 0 &&
                         currentPageItems.every(item => item.selected);
   }
+
   resetFilters() {
     this.searchTerm = '';
     this.tuNgay = '';
@@ -139,6 +118,7 @@ export class DoanvaoComponent implements OnInit {
     this.filteredData = [...this.originalData];
     this.loadPage(1);
   }
+
   goToPage() {
     if (this.pageInput > 0 && this.pageInput <= this.getTotalPages()) {
       this.loadPage(this.pageInput);
@@ -162,6 +142,7 @@ export class DoanvaoComponent implements OnInit {
   getTotalPages(): number {
     return Math.ceil(this.totalItems / this.itemsPerPage);
   }
+
   loadPage(page: number) {
     this.currentPage = page;
     this.pageInput = page;
@@ -195,6 +176,7 @@ export class DoanvaoComponent implements OnInit {
     this.totalItems = this.filteredData.length;
     this.checkPageCheckboxState();
   }
+
   deleteSelected() {
     const confirmed = confirm('Bạn có chắc chắn muốn xóa các mục đã chọn không?');
 
@@ -205,7 +187,6 @@ export class DoanvaoComponent implements OnInit {
         alert('Vui lòng chọn ít nhất một mục để xóa');
         return;
       }
-
       selectedItems.forEach(item => {
         this.httpClient
           .delete(`http://localhost:8080/delete/${item.id}`)
@@ -223,6 +204,33 @@ export class DoanvaoComponent implements OnInit {
       });
     }
   }
+
+  exportExcel() {
+    const selectedData = this.originalData.filter(item => item.selected);
+    if (selectedData.length === 0) {
+      alert('Vui lòng chọn dữ liệu');
+      return;
+    }
+    this.httpClient.post('http://localhost:8080/api/export/doanvao', selectedData, {
+      responseType: 'blob'
+    }).subscribe(
+      (response: Blob) => {
+        const blob = new Blob([response], { type: 'application/vnd.ms-excel' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'exported_data.xlsx';
+        link.click();
+        this.loadPage(1);
+      },
+      error => {
+        console.error('Export failed:', error);
+        alert('Xuất file thất bại');
+      }
+    );
+    this.loadPage(1);
+  }
+
   exportAllExcel() {
     if (this.originalData.length === 0) {
       alert('Không có dữ liệu để xuất');
@@ -251,7 +259,6 @@ export class DoanvaoComponent implements OnInit {
       ngayGhiTrenTT: 'Ngày ghi trên TT',
       ngayPHTQTnhan: 'Ngày PHQT nhận',
       bqdpheDuyet: 'BGD phê duyệt',
-
       thuNgoNumber: 'Số thư mời',
       thuNgoDate: 'Ngày thư mời',
       baoCaoSauChuyenCongTac: 'Báo cáo sau chuyến công tác',
@@ -306,7 +313,7 @@ export class DoanvaoComponent implements OnInit {
       XLSX.utils.book_append_sheet(wb, ws, 'Danh sách');
 
       // Xuất file với tên có định dạng ngày
-      const fileName = `danh_sach_du_lieu_${new Date().toLocaleDateString()}.xlsx`;
+      const fileName = `Danh sách đoàn vào ngày ${new Date().toLocaleDateString()}.xlsx`;
       XLSX.writeFile(wb, fileName);
     }
 }

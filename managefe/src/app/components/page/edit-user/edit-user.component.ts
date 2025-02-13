@@ -103,7 +103,7 @@ export class EditUserComponent implements OnInit {
       (response) => {
         console.log('Dữ liệu đã được cập nhật:', response);
         alert('Cập nhật thành công!');
-        this.router.navigate(['/doanra']);
+        this.router.navigate(['/user-detail', this.userId]);
       },
       (error) => {
         console.error('Lỗi khi cập nhật dữ liệu:', error);
