@@ -14,12 +14,12 @@ import { UserService } from '../../../services/user-detail.service';
 export class EditUserDvComponent {
     userId!: number;
     userData: any = {
-      HoVaTen: '',
-      NgaySinh: '',
-      GioiTinh: '',
-      ChucDanh: '',
-      ChucVu: '',
-      HoChieu: '',
+      hoVaTen: '',
+      ngaySinh: '',
+      gioiTinh: '',
+      chucDanh: '',
+      chucVu: '',
+      hoChieu: '',
       DonViCongTac: '',
       SDT: '',
       Email: '',
@@ -54,9 +54,10 @@ export class EditUserDvComponent {
     }
   
     getUserData() {
-      this.userService.getUserById(this.userId).subscribe(
+      this.userService.getUserById2(this.userId).subscribe(
         (data) => {
           this.userData = data;
+          console.log('Dữ liệu người dùng:', this.userData);
           this.convertDates();
         },
         (error: any) => {
@@ -82,15 +83,13 @@ export class EditUserDvComponent {
   
     onSubmit() {
       const dataToSubmit = { ...this.userData };
-      if (typeof dataToSubmit.ChucVu === 'boolean') {
-        dataToSubmit.ChucVu = dataToSubmit.ChucVu ? 'V' : '';
-      }
+     
   
       this.userService.updateUser2(this.userId, dataToSubmit).subscribe(
         (response) => {
           console.log('Dữ liệu đã được cập nhật:', response);
           alert('Cập nhật thành công!');
-          this.router.navigate(['/user-detail-dv', this.userId]);
+          this.router.navigate(['/user-detail2', this.userId]);
         },
         (error) => {
           console.error('Lỗi khi cập nhật dữ liệu:', error);
@@ -105,7 +104,7 @@ export class EditUserDvComponent {
   
     goBack(event: MouseEvent) {
       event.preventDefault();
-      this.router.navigate(['/doanvao', this.userId]);
+      this.router.navigate(['/user-detail2', this.userId]);
     }
   
   

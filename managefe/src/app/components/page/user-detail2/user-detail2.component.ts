@@ -47,7 +47,7 @@ export class UserDetail2Component implements OnInit {
     );
 }
 goToEdit() {
-  this.router.navigate(['/edit-user', this.selectedUserId]);
+  this.router.navigate(['/edit-user-dv', this.selectedUserId]);
   console.log(`/edit-user/${this.selectedUserId}`);
 
 }
