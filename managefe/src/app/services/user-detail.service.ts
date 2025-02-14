@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
     private apiUrl = 'http://localhost:8080/qldoan';
+    private apiUrl2 = 'http://localhost:8080/qldoan/detail';
     private EditUrl = 'http://localhost:8080/api/suadl';
     private EditUrl2 = 'http://localhost:8080/api/doanvao/edit';
     constructor(private http: HttpClient) {}
@@ -14,6 +15,10 @@ export class UserService {
 
     getUserById(id: number): Observable<any> {
         return this.http.get<any>(`${this.apiUrl}/${id}`);
+
+    }
+    getUserById2(id: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl2}/${id}`);
 
     }
     fetchData(): Observable<any> {

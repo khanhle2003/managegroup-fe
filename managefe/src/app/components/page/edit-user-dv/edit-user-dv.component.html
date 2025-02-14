@@ -1,149 +1,160 @@
 <div class="form-container">
     <form (ngSubmit)="onSubmit()">
-        <div class="form-actions">
-            <div style="max-height:72px;display: flex;">
-                <button (click)="goBack($event)" class="btn btn-back" style="margin-left: 10px;">
-                    Quay lại
-                </button>
-            </div>
-            <button type="submit" style="margin-right: 8px; margin-top: 5px; padding: 10px 20px" class="btn btn-submit">
-                Lưu
-            </button>
+      <div class="form-actions">
+        <div style="max-height:72px;display: flex;">
+          <button (click)="goBack($event)" class="btn btn-back" style="margin-left: 10px;">
+            Quay lại
+          </button>
         </div>
-        <section class="form-section">
-            <h2 class="section-title">Thông tin cá nhân</h2>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="HoVaTen">Họ và tên:</label>
-                    <input type="text" name="HoVaTen" id="HoVaTen" [(ngModel)]="userData.HoVaTen" required>
-                </div>
-                <div class="form-group">
-                    <label for="NgaySinh">Ngày sinh:</label>
-                    <input type="text" name="NgaySinh" id="NgaySinh" [(ngModel)]="userData.NgaySinh" required>
-                </div>
-                <div class="form-group">
-                    <label for="GioiTinh">Giới tính:</label>
-                    <input type="text" name="GioiTinh" id="GioiTinh" [(ngModel)]="userData.GioiTinh">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="ChucDanh">Chức danh:</label>
-                    <input type="text" name="ChucDanh" id="ChucDanh" [(ngModel)]="userData.ChucDanh" required>
-                </div>
-                <div class="form-group">
-                    <label for="ChucVu">Chức vụ:</label>
-                    <input type="text" name="ChucVu" id="ChucVu" [(ngModel)]="userData.ChucVu" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="HoChieu">Hộ chiếu:</label>
-                    <input type="text" name="HoChieu" id="HoChieu" [(ngModel)]="userData.HoChieu">
-                </div>
-                <div class="form-group">
-                    <label for="DonViCongTac">Đơn vị công tác:</label>
-                    <input type="text" name="DonViCongTac" id="DonViCongTac" [(ngModel)]="userData.DonViCongTac" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="SDT">Số điện thoại:</label>
-                    <input type="text" name="SDT" id="SDT" [(ngModel)]="userData.SDT" required>
-                </div>
-                <div class="form-group">
-                    <label for="Email">Email:</label>
-                    <input type="email" name="Email" id="Email" [(ngModel)]="userData.Email" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="QuocTich">Quốc tịch:</label>
-                    <input type="text" name="QuocTich" id="QuocTich" [(ngModel)]="userData.QuocTich">
-                </div>
-            </div>
-        </section>
-
-        <section class="form-section">
-            <h2 class="section-title">Thông tin chuyến đi</h2>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="MucDich">Mục đích chuyến đi:</label>
-                    <input type="text" name="MucDich" id="MucDich" [(ngModel)]="userData.MucDich" required>
-                </div>
-                <div class="form-group">
-                    <label for="TuNgay">Từ ngày:</label>
-                    <input type="text" name="TuNgay" id="TuNgay" [(ngModel)]="userData.TuNgay" required>
-                </div>
-                <div class="form-group">
-                    <label for="DenNgay">Đến ngày:</label>
-                    <input type="text" name="DenNgay" id="DenNgay" [(ngModel)]="userData.DenNgay" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="TuTuc">Tự túc:</label>
-                    <input type="text" name="TuTuc" id="TuTuc" [(ngModel)]="userData.TuTuc">
-                </div>
-                <div class="form-group">
-                    <label for="TaiTro">Tài trợ:</label>
-                    <input type="text" name="TaiTro" id="TaiTro" [(ngModel)]="userData.TaiTro">
-                </div>
-                <div class="form-group">
-                    <label for="BenhVien">Bệnh viện:</label>
-                    <input type="text" name="BenhVien" id="BenhVien" [(ngModel)]="userData.BenhVien">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="GiaTri">Giá trị:</label>
-                    <input type="text" name="GiaTri" id="GiaTri" [(ngModel)]="userData.GiaTri">
-                </div>
-                <div class="form-group">
-                    <label for="SoLanToi">Số lần đã tới bệnh viện:</label>
-                    <input type="text" name="SoLanToi" id="SoLanToi" [(ngModel)]="userData.SoLanToi">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="NgayGhiTrenTT">Ngày ghi trên TT:</label>
-                    <input type="text" name="NgayGhiTrenTT" id="NgayGhiTrenTT" [(ngModel)]="userData.NgayGhiTrenTT">
-                </div>
-                <div class="form-group">
-                    <label for="NgayPHTQTnhan">Ngày PHTQ nhận:</label>
-                    <input type="text" name="NgayPHTQTnhan" id="NgayPHTQTnhan" [(ngModel)]="userData.NgayPHTQTnhan">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="BGDpheDuyet">BGD phê duyệt:</label>
-                    <input type="text" name="BGDpheDuyet" id="BGDpheDuyet" [(ngModel)]="userData.BGDpheDuyet">
-                </div>
-                <div class="form-group">
-                    <label for="ThuNgoNumber">Số thư ngỏ:</label>
-                    <input type="text" name="ThuNgoNumber" id="ThuNgoNumber" [(ngModel)]="userData.ThuNgoNumber">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="ThuNgoDate">Ngày thư ngỏ:</label>
-                    <input type="text" name="ThuNgoDate" id="ThuNgoDate" [(ngModel)]="userData.ThuNgoDate">
-                </div>
-                <div class="form-group">
-                    <label for="BaoCaoSauChuyenCongTac">Báo cáo sau chuyến công tác:</label>
-                    <input type="text" name="BaoCaoSauChuyenCongTac" id="BaoCaoSauChuyenCongTac" [(ngModel)]="userData.BaoCaoSauChuyenCongTac">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="GhiChu">Ghi chú:</label>
-                    <input type="text" name="GhiChu" id="GhiChu" [(ngModel)]="userData.GhiChu">
-                </div>
-                <div class="form-group">
-                    <label for="QuaTang">Quà tặng:</label>
-                    <input type="text" name="QuaTang" id="QuaTang" [(ngModel)]="userData.QuaTang">
-                </div>
-            </div>
-        </section>
+        <button type="submit" style="margin-right: 8px; margin-top: 5px; padding: 10px 20px" class="btn btn-submit">
+          Lưu
+        </button>
+      </div>
+  
+      <section class="form-section">
+        <h2 class="section-title">Thông tin cá nhân</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="HoVaTen">Họ và tên:</label>
+            <input type="text" name="HoVaTen" id="HoVaTen" [(ngModel)]="userData.hoVaTen" required>
+          </div>
+          <div class="form-group">
+            <label for="NgaySinh">Ngày sinh:</label>
+            <input type="text" name="NgaySinh" id="NgaySinh" [(ngModel)]="userData.ngaySinh" required>
+          </div>
+          <div class="form-group">
+            <label for="GioiTinh">Giới tính:</label>
+            <input type="text" name="GioiTinh" id="GioiTinh" [(ngModel)]="userData.gioiTinh">
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ChucDanh">Chức danh:</label>
+            <input type="text" name="ChucDanh" id="ChucDanh" [(ngModel)]="userData.chucDanh" required>
+          </div>
+          <div class="form-group">
+            <label for="ChucVu">Chức vụ:</label>
+            <input type="text" name="ChucVu" id="ChucVu" [(ngModel)]="userData.chucVu" required>
+          </div>
+          <div class="form-group">
+            <label for="HoChieu">Hộ chiếu:</label>
+            <input type="text" name="HoChieu" id="HoChieu" [(ngModel)]="userData.hoChieu">
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="form-group">
+            <label for="DonViCongTac">Đơn vị công tác:</label>
+            <input type="text" name="DonViCongTac" id="DonViCongTac" [(ngModel)]="userData.donViCongTac" required>
+          </div>
+          <div class="form-group">
+            <label for="SDT">Số điện thoại:</label>
+            <input type="text" name="SDT" id="SDT" [(ngModel)]="userData.sdt" required>
+          </div>
+          <div class="form-group">
+            <label for="Email">Email:</label>
+            <input type="email" name="Email" id="Email" [(ngModel)]="userData.email" required>
+          </div>
+        </div>
+      </section>
+  
+      <section class="form-section">
+        <h2 class="section-title">Thông tin chuyến đi</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="QuocTich">Quốc tịch:</label>
+            <input type="text" name="QuocTich" id="QuocTich" [(ngModel)]="userData.quocTich" required>
+          </div>
+          <div class="form-group">
+            <label for="MucDich">Mục đích:</label>
+            <input type="text" name="MucDich" id="MucDich" [(ngModel)]="userData.mucDich" required>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="form-group">
+            <label for="TuNgay">Từ ngày:</label>
+            <input type="text" name="TuNgay" id="TuNgay" [(ngModel)]="userData.tuNgay" required>
+          </div>
+          <div class="form-group">
+            <label for="DenNgay">Đến ngày:</label>
+            <input type="text" name="DenNgay" id="DenNgay" [(ngModel)]="userData.denNgay" required>
+          </div>
+        </div>
+      </section>
+  
+      <section class="form-section">
+        <h2 class="section-title">Nguồn kinh phí</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="TuTuc">Tự túc:</label>
+            <input type="text" name="TuTuc" id="TuTuc" [(ngModel)]="userData.tuTuc">
+          </div>
+          <div class="form-group">
+            <label for="TaiTro">Tài trợ:</label>
+            <input type="text" name="TaiTro" id="TaiTro" [(ngModel)]="userData.taiTro">
+          </div>
+          <div class="form-group">
+            <label for="BenhVien">Bệnh viện:</label>
+            <input type="text" name="BenhVien" id="BenhVien" [(ngModel)]="userData.benhVien">
+          </div>
+          <div class="form-group">
+            <label for="GiaTri">Giá trị:</label>
+            <input type="text" name="GiaTri" id="GiaTri" [(ngModel)]="userData.giaTri">
+          </div>
+        </div>
+      </section>
+  
+      <section class="form-section">
+        <h2 class="section-title">Thông tin khác</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="SoLanToi">Số lần tới:</label>
+            <input type="text" name="SoLanToi" id="SoLanToi" [(ngModel)]="userData.soLanToi">
+          </div>
+          <div class="form-group">
+            <label for="NgayGhiTrenTT">Ngày ghi trên thông tư:</label>
+            <input type="text" name="NgayGhiTrenTT" id="NgayGhiTrenTT" [(ngModel)]="userData.ngayGhiTrenTT">
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="form-group">
+            <label for="NgayPHTQTnhan">Ngày PHTQT nhận:</label>
+            <input type="text" name="NgayPHTQTnhan" id="NgayPHTQTnhan" [(ngModel)]="userData.ngayPHTQTnhan">
+          </div>
+          <div class="form-group">
+            <label for="BGDpheDuyet">BGD phê duyệt:</label>
+            <input type="text" name="BGDpheDuyet" id="BGDpheDuyet" [(ngModel)]="userData.bgdpheDuyet">
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ThuNgoNumber">Số thư ngỏ:</label>
+            <input type="text" name="ThuNgoNumber" id="ThuNgoNumber" [(ngModel)]="userData.thuNgoNumber">
+          </div>
+          <div class="form-group">
+            <label for="ThuNgoDate">Ngày thư ngỏ:</label>
+            <input type="text" name="ThuNgoDate" id="ThuNgoDate" [(ngModel)]="userData.thuNgoDate">
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="form-group">
+            <label for="BaoCaoSauChuyenCongTac">Báo cáo sau chuyến công tác:</label>
+            <input type="text" name="BaoCaoSauChuyenCongTac" id="BaoCaoSauChuyenCongTac" [(ngModel)]="userData.baoCaoSauChuyenCongTac">
+          </div>
+          <div class="form-group">
+            <label for="GhiChu">Ghi chú:</label>
+            <input type="text" name="GhiChu" id="GhiChu" [(ngModel)]="userData.ghiChu">
+          </div>
+          <div class="form-group">
+            <label for="QuaTang">Quà tặng:</label>
+            <input type="text" name="QuaTang" id="QuaTang" [(ngModel)]="userData.quaTang">
+          </div>
+        </div>
+      </section>
     </form>
-</div>
+  </div>
