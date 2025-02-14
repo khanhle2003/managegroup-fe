@@ -12,6 +12,7 @@ import { DoanvaoComponent } from '../doanvao/doanvao.component';
 export class ExcelImportComponent2 {
   file: File | null = null;
 
+
   constructor(private readonly http: HttpClient) {}
 
   /**
@@ -49,10 +50,11 @@ export class ExcelImportComponent2 {
       next: (response) => {
         console.log('Tệp đã được tải lên:', response);
         alert('Tệp đã được import thành công!');
-
+        window.location.reload();
       },
       error: (err) => {
         console.error('Lỗi khi import file:', err);
+        window.location.reload();
       },
     });
   }
