@@ -8,8 +8,6 @@ import { ButtonModule } from 'primeng/button';
 import { forkJoin } from 'rxjs';
 import { YearService } from '../../../../services/year.service';
 
-import { forkJoin } from 'rxjs';
-import { YearService } from '../../../../services/years.service';
 
 
 @Component({

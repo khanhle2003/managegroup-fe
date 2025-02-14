@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class UserService {
     private apiUrl = 'http://localhost:8080/qldoan';
     private EditUrl = 'http://localhost:8080/api/suadl';
+    private EditUrl2 = 'http://localhost:8080/api/doanvao/edit';
     constructor(private http: HttpClient) {}
 
 
@@ -20,5 +21,8 @@ export class UserService {
   }
   updateUser(id: number, userData: any): Observable<any> {
     return this.http.put<any>(`${this.EditUrl}/${id}`, userData);
+  }
+  updateUser2(id: number, userData: any): Observable<any> {
+    return this.http.put<any>(`${this.EditUrl2}/${id}`, userData);
   }
 }
