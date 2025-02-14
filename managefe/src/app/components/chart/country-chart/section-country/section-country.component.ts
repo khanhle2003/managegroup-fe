@@ -8,9 +8,6 @@ import { ButtonModule } from 'primeng/button';
 import { forkJoin } from 'rxjs';
 import { YearService } from '../../../../services/year.service';
 
-import { forkJoin } from 'rxjs';
-import { YearService } from '../../../../services/years.service';
-
 
 @Component({
   selector: 'app-section-country',
@@ -24,10 +21,10 @@ export class SectionCountryComponent {
   categories: string[] = [];
 
   selectedYear: string = "2012";
-  
+
   constructor(
-    private http: HttpClient, 
-    private chartComponent: CountryChartComponent, 
+    private http: HttpClient,
+    private chartComponent: CountryChartComponent,
     private yearService: YearService
   ) {
     this.yearService.currentYear.subscribe(year => {
@@ -71,19 +68,19 @@ export class SectionCountryComponent {
       countries: this.selectedCategories,
       year: this.selectedYear
     };
-    
+
     forkJoin({
       firstAPI: this.http.post('http://localhost:8080/api/search/country', requestBody),
       secondAPI: this.http.post('http://localhost:8080/api/search/countrydoanra', requestBody)
     }).subscribe({
       next: (results: any) => {
-        const firstCounts = this.selectedCategories.map(category => 
+        const firstCounts = this.selectedCategories.map(category =>
           results.firstAPI.countByCountry[category] || 0
         );
-        const secondCounts = this.selectedCategories.map(category => 
+        const secondCounts = this.selectedCategories.map(category =>
           results.secondAPI.countByCountry[category] || 0
         );
-        
+
         this.chartComponent.updateChartData(this.selectedCategories, firstCounts, secondCounts);
       },
       error: (error) => {
