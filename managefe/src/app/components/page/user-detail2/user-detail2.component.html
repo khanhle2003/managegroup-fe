@@ -1,0 +1,161 @@
+
+<div style="display: flex;; align-items: center; gap: 100px;position: fixed; margin-top: 5px; padding-left: 10px; margin-bottom: px; border-bottom: 1px solid #e5e7eb;
+position: sticky; top: 0; z-index: 100; margin: 5px auto; max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+box-shadow: 0 2px 5px rgba(6, 5, 5, 5); background: #ffffff;">
+  <a href="/doanvao" class="btn btn-back" style="display: flex; align-items: center; padding: 2px; margin-right: 480px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="30" height="30" fill="currentColor">
+      <path d="M11 19l-7-7 7-7v4h8v6h-8v4z"></path>
+    </svg>
+    Quay lại
+  </a>
+  <button (click)="goToEdit()"  id="buttonSua" style="background-color: #0b6ed7; color: #ffffff; position: sticky; padding: 5px; margin-top: 10px; ">
+    Sửa Thông tin
+  </button>
+</div>
+
+<div style="display: flex; margin-bottom: 10px;"></div>
+<div class="user-profile" *ngIf="userData">
+    <div class="profile-content">
+        <form>
+            <div class="info-group">
+                <h3>Thông tin cá nhân</h3>
+                <p class="info-item"><strong>Họ và tên:</strong> {{ userData.hoVaTen }}</p>
+                <p class="info-item"><strong>Giới tính:</strong> {{ userData.gioiTinh }}</p>
+                <p class="info-item"><strong>Ngày sinh:</strong> {{ userData.ngaySinh }}</p>
+
+                <p class="info-item"><strong>Đảng viên:</strong> {{ userData.chucDanh}}</p>
+                <p class="info-item"><strong>Chức vụ Đảng:</strong> {{ userData.chucVu }}</p>
+
+                <p class="info-item"><strong>Hộ chiếu:</strong> {{ userData.hoChieu }}</p>
+                <p class="info-item"><strong>Đơn vị công tác:</strong> {{ userData.donViCongTac }}</p>
+                <p class="info-item"><strong>Quốc tịch:</strong> {{ userData.quocTich }}</p>
+
+                <p class="info-item"><strong>Số điện thoại:</strong> {{ userData.sdt }}</p>
+                <p class="info-item"><strong>Email:</strong> {{ userData.email }}</p>
+
+              </div>
+        </form>
+
+        <div class="info-group">
+            <h3>Thông tin chuyến đi</h3>
+            <p class="info-item"><strong>Mục đích chuyến đi:</strong> {{
+                userData.mucDich }}</p>
+            <p class="info-item"><strong>Ngày bắt đầu:</strong> {{
+                userData.tuNgay }}</p>
+            <p class="info-item"><strong>Ngày kết thúc:</strong> {{
+                userData.denNgay }}</p>
+        </div>
+
+        <div class="info-group">
+            <h3>Thông tin tài chính</h3>
+            <p class="info-item"><strong>Tự túc:</strong> {{ userData.tuTuc
+                }}</p>
+            <p class="info-item"><strong>Nhà tài trợ:</strong> {{
+                userData.taiTro }}</p>
+            <p class="info-item"><strong>Bệnh viện:</strong> {{
+                userData.benhVien }}</p>
+            <p class="info-item"><strong>Giá trị:</strong> {{ userData.giaTri
+                }}</p>
+        </div>
+
+        <div class="info-group">
+            <h3>Thông tin quản lý</h3>
+            <p class="info-item"><strong>Số Lần tới:</strong> {{
+                userData.soLanToi }}</p>
+            <p class="info-item"><strong>Ngày ghi trên TT:</strong> {{
+                userData.ngayGhiTrenTT }}</p>
+            <p class="info-item"><strong>Ngày PHTQT nhận :</strong>
+                {{ userData.ngayPHTQTnhan }}</p>
+            <p class="info-item"><strong>BQD phê duyệt:</strong> {{
+                userData.bqdpheDuyet }}</p>
+            <p class="info-item"><strong>Số thư mời:</strong> {{
+                userData.thuNgoNumber }}</p>
+            <p class="info-item"><strong>Ngày thư mời:</strong> {{
+                userData.thuNgoDate }}</p>
+            <p class="info-item"><strong>Báo cáo sau chuyến công tác:</strong> {{
+                userData.baoCaoSauChuyenCongTac }}</p>
+            <p class="info-item"><strong>Ghi chú:</strong> {{ userData.ghiChu
+                }}</p>
+            <p class="info-item"><strong>Quà tặng:</strong> {{ userData.quaTang }}</p>
+        </div>
+    </div>
+    <div style="max-height: 72vh; overflow-y: auto; overflow-x: auto; margin: 50px 40px 0 40px; border: 1px solid #ffffff; border-radius: 10px;margin-top: 20px; ">
+        <table class="data-table" style="width: 100%; border-collapse: separate; border-spacing: 2px;">
+          <thead style="position: sticky; top: 0; background-color: #0b6ed7; color: rgb(255, 255, 255); z-index: 1;">
+            <tr>
+
+              <th data-header="Họ và Tên">Họ và Tên</th>
+        <th data-header="Ngày sinh">Ngày sinh</th>
+        <th data-header="Giới tính">Giới tính</th>
+        <th data-header="Chức danh">Chức danh</th>
+        <th data-header="Chức vụ">Chức vụ</th>
+        <th data-header="Hộ chiếu">Hộ chiếu</th>
+        <th data-header="Đơn vị công tác">Đơn vị công tác</th>
+        <th data-header="Số điện thoại">Số điện thoại</th>
+        <th data-header="Email">Email</th>
+        <th data-header="Quốc Tịch">Quốc Tịch</th>
+        <th data-header="Mục đích chuyến đi">Mục đích chuyến đi</th>
+        <th data-header="Từ ngày">Từ ngày</th>
+        <th data-header="Đến ngày">Đến ngày</th>
+        <th data-header="Tụ túc">Tụ túc</th>
+        <th data-header="Tài trợ">Tài trợ</th>
+        <th data-header="Bệnh viện">Bệnh viện</th>
+        <th data-header="Giá tr">Giá trị</th>
+        <th data-header="Số lần tới bệnh viện">Số lần tới bệnh viện</th>
+        <th data-header="Ngày ghi trên TT">Ngày ghi trên TT</th>
+        <th data-header="ngày PHQT nhận">ngày PHQT nhận</th>
+        <th data-header="BGD phê duyệt">BGD phê duyệt</th>
+        <th data-header="Số thư mời">Số thư mời</th>
+        <th data-header="Ngày thư mời">Ngày thư mời</th>
+        <th data-header="Báo cáo sau chuyến công tác">Báo cáo sau chuyến công tác</th>
+        <th data-header="Ghi chú">Ghi chú</th>
+        <th data-header="Quà tặng">Quà tặng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let item of data">
+        <tr
+          data-header="Họ và Tên"
+          *ngIf="item.hoVaTen === userData.hoVaTen">
+
+
+       <td data-header="Họ và Tên"  style="cursor: pointer;" class="hoverable">{{ item.hoVaTen }} </td>
+       <td>{{ item.ngaySinh || '' }}</td>
+       <td>{{ item.gioiTinh || '' }}</td>
+       <td>{{ item.chucDanh || '' }}</td>
+       <td>{{ item.chucVu || '' }}</td>
+       <td>{{ item.hoChieu || '' }}</td>
+       <td>{{ item.donViCongTac || '' }}</td>
+       <td>{{ item.sdt || '' }}</td>
+       <td>{{ item.email || '' }}</td>
+       <td>{{ item.quocTich || '' }}</td>
+       <td>{{ item.mucDich || '' }}</td>
+       <td>{{ item.tuNgay || '' }}</td>
+       <td>{{ item.denNgay || '' }}</td>
+       <td>{{ item.tuTuc || '' }}</td>
+       <td>{{ item.taiTro || '' }}</td>
+       <td>{{ item.benhVien || '' }}</td>
+       <td>{{ item.giaTri || '' }}</td>
+       <td>{{ item.soLanToi || '' }}</td>
+       <td>{{ item.ngayGhiTrenTT || '' }}</td>
+       <td>{{ item.ngayPHTQTnhan || '' }}</td>
+       <td>{{ item.bqdpheDuyet || '' }}</td>
+       <td>{{ item.thuNgoNumber || '' }}</td>
+       <td>{{ item.thuNgoDate || '' }}</td>
+       <td>{{ item.baoCaoSauChuyenCongTac || '' }}</td>
+       <td>{{ item.ghiChu || '' }}</td>
+       <td>{{ item.quaTang || '' }}</td>
+        </tr>
+    </ng-container>
+        </tbody>
+      </table>
+    </div>
+
+
+</div>
+
+<div class="loading" *ngIf="!userData">
+    <p>Đang tải dữ liệu...</p>
+</div>
