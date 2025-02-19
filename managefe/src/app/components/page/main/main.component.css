@@ -1,0 +1,9 @@
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.trip-container {
+    flex: 1;
+    margin: 10px;
+}

@@ -1,6 +1,6 @@
 /* Container styling */
 
-.trip-container {
+.trip2-container {
     max-width: 500px;
     margin: 30px auto;
     background-color: #ffffff;
@@ -9,13 +9,13 @@
     padding: 20px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-right: 0;
+    margin-left: 0;
 }
 
 
 /* Label styling */
 
-.trip-container label {
+.trip2-container label {
     font-size: 16px;
     font-weight: bold;
     color: #333;
@@ -25,7 +25,7 @@
 
 /* Select dropdown styling */
 
-.trip-container select {
+.trip2-container select {
     padding: 8px 12px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -35,14 +35,14 @@
     cursor: pointer;
 }
 
-.trip-container select:focus {
+.trip2-container select:focus {
     border-color: #007bff;
 }
 
 
 /* Headings for results */
 
-.trip-container h4 {
+.trip2-container h4 {
     font-size: 18px;
     margin-top: 20px;
     color: #444;
@@ -52,17 +52,17 @@
 /* Optional: Responsive text alignment */
 
 @media (max-width: 600px) {
-    .trip-container {
+    .trip2-container {
         padding: 15px;
     }
-    .trip-container label,
-    .trip-container select,
-    .trip-container h4 {
+    .trip2-container label,
+    .trip2-container select,
+    .trip2-container h4 {
         font-size: 14px;
     }
 }
 
-.doanra_chart {
+.doanvao_chart {
     text-align: center;
     font-size: 20px;
     font-weight: bold;

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainComponent } from './main.component';
+import { Trip2Component } from './trip2.component';
 
-describe('MainComponent', () => {
-  let component: MainComponent;
-  let fixture: ComponentFixture<MainComponent>;
+describe('Trip2Component', () => {
+  let component: Trip2Component;
+  let fixture: ComponentFixture<Trip2Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainComponent]
+      imports: [Trip2Component]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MainComponent);
+    fixture = TestBed.createComponent(Trip2Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

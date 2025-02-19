@@ -1,0 +1,16 @@
+<div class="trip2-container">
+    <div class="doanvao_chart">Bảng tính trung bình đoàn vào</div>
+    <label for="year">Chọn năm:</label>
+    <select id="year" [(ngModel)]="selectedYear" (change)="onYearChange()">
+        <option *ngFor="let year of getUniqueYears()" [value]="year">{{ year }}</option>
+    </select>
+
+    <div *ngIf="trips.length > 0">
+        <div *ngIf="averageDays !== null && averageDays > 0">
+            <h4>Trung bình số ngày chênh lệch: {{ averageDays | number: '1.0-2' }}</h4>
+        </div>
+        <div *ngIf="averageDays === null || averageDays === 0">
+            <h4>Không có dữ liệu hợp lệ để tính trung bình</h4>
+        </div>
+    </div>
+</div>
