@@ -63,10 +63,10 @@ export class TripComponent implements OnInit {
   private convertToDate(dateString: string): Date | null {
     if (!dateString) {
 
-      return null; 
+      return null;
     }
-    
-    const parts = dateString.split('/'); 
+
+    const parts = dateString.split('/');
     if (parts.length !== 3) {
       return null;
     }
