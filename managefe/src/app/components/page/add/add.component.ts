@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-add',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule,],
+  imports: [CommonModule, HttpClientModule, FormsModule,], 
   templateUrl: './add.component.html',
   styleUrl: './add.component.css'
 })

@@ -16,8 +16,7 @@ import { RegisterComponent } from './components/page/register/register.component
 import { EditUserDvComponent } from './components/page/edit-user-dv/edit-user-dv.component';
 
 import { UserDetail2Component } from './components/page/user-detail2/user-detail2.component';
-
-
+import { Add2Component } from './components/page/add2/add2.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -36,6 +35,7 @@ export const routes: Routes = [
          {path: 'user-detail2/:id', component: UserDetail2Component},
 
          {path: 'add-data', component: AddComponent},
+         {path: 'add-data2', component: Add2Component},
          {path: 'edit-user/:id', component: EditUserComponent},
          {path: 'app-import-excel', component: ExcelImportComponent},
          {path: 'app-import-excel2', component: ExcelImportComponent2},

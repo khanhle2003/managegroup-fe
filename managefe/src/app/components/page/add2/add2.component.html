@@ -3,64 +3,72 @@
         <div class="form-actions">
 
             <div style="max-height:72px;display: flex;">
-                <a href="/data-table" class="btn btn-back" style="margin-left: 10px;">
+                <a href="/doanvao" class="btn btn-back" style="margin-left: 10px;">
 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
-              <path d="M11 19l-7-7 7-7v4h8v6h-8v4z"></path>
-            </svg> Quay lại
+                <path d="M11 19l-7-7 7-7v4h8v6h-8v4z"></path>
+              </svg> Quay lại
                 </a>
 
                 <button type="reset" style="margin-left: 10px ;" class="btn btn-reset">
-
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="13" height="13" style="vertical-align: middle; margin-right: 5px;">
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M12 4V1L8 5l4 4V6c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z" fill="currentColor"/>
-              </svg>
-              Làm mới
-            </button>
+  
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="13" height="13" style="vertical-align: middle; margin-right: 5px;">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M12 4V1L8 5l4 4V6c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z" fill="currentColor"/>
+                </svg>
+                Làm mới
+              </button>
             </div>
             <button type="submit" style="margin-right: 8px; margin-top: 5px; padding: 10px 20px" class="btn btn-submit">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
-            <path d="M2 21l21-9-21-9v7l15 2-15 2v7z"></path>
-          </svg>
-          Lưu
-        </button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
+              <path d="M2 21l21-9-21-9v7l15 2-15 2v7z"></path>
+            </svg>
+            Lưu
+          </button>
         </div>
         <section class="form-section">
             <h2 class="section-title">Thông tin cá nhân</h2>
             <div class="form-row">
                 <div class="form-group">
-                    <label for="FullName">Họ và tên:</label>
-                    <input type="text" name="FullName" id="FullName" [(ngModel)]="dataAdd.fullname" required>
+                    <label for="hoVaTen">Họ và tên:</label>
+                    <input type="text" name="hoVaTen" id="hoVaTen" [(ngModel)]="dataAdd.hoVaTen" required>
                 </div>
                 <div class="form-group">
-                    <label for="dob">Ngày sinh:</label>
-                    <input type="date" name="dob" id="dob" [(ngModel)]="dataAdd.birthDate" required>
+                    <label for="ngaySinh">Ngày sinh:</label>
+                    <input type="date" name="ngaySinh" id="ngaySinh" [(ngModel)]="dataAdd.ngaySinh" required>
                 </div>
                 <div class="form-group">
-                    <label for="gender">Giới tính:</label>
-                    <select #gender="ngModel" name="gender" id="gender" [(ngModel)]="dataAdd.gender">
+                    <label for="gioiTinh">Giới tính:</label>
+                    <select #gioiTinh="ngModel" name="gioiTinh" id="gioiTinh" [(ngModel)]="dataAdd.gioiTinh">
+  
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                    </select>
+                </div>
 
-                      <option value="Nam">Nam</option>
-                      <option value="Nữ">Nữ</option>
-                  </select>
+                <div class="form-group">
+                    <label for="quocTich">Quốc tịch</label>
+                    <input type="text" name="quocTich" id="quocTich" [(ngModel)]="dataAdd.quocTich" required>
                 </div>
+
             </div>
+        </section>
+
+        <section class="form-group">
             <h2 class="section-title">Thông tin liên hệ</h2>
             <div class="form-row">
                 <div class="form-group">
-                    <label for="phoneNumber">Số điện thoại:</label>
-                    <input type="text" name="phoneNumber" id="phoneNumber" [(ngModel)]="dataAdd.phoneNumber" required>
+                    <label for="sdt">Số điện thoại:</label>
+                    <input type="text" name="sdt" id="sdt" [(ngModel)]="dataAdd.sdt" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" name="email" id="email" [(ngModel)]="dataAdd.email" required>
                 </div>
             </div>
-
         </section>
 
-        <section class="form-section">
+        <!-- <section class="form-section">
             <div class="form-row">
                 <div class="form-group">
                     <div class="checkbox-group">
@@ -75,12 +83,12 @@
                     <input type="text" name="PartyMember" id="PartyMember" [(ngModel)]="dataAdd.partyPosition">
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <section class="form-section">
             <h2 class="section-title">Thông tin công việc</h2>
             <div class="form-row">
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label>Loại nhân viên:</label>
                     <div class="radio-group">
                         <div class="radio-option">
@@ -92,42 +100,42 @@
                             <label for="vienChuc">Viên chức</label>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group">
-                    <label for="JobTitle">Chức danh nghề nghiệp:</label>
-                    <input type="text" name="JobTitle" id="JobTitle" [(ngModel)]="dataAdd.jobTitle" required>
+                    <label for="chucDanh">Chức danh nghề nghiệp:</label>
+                    <input type="text" name="chucDanh" id="chucDanh" [(ngModel)]="dataAdd.chucDanh" required>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="position">Chức vụ chính quyền (nếu có):</label>
-                    <input type="text" name="position" id="position" [(ngModel)]="dataAdd.jobName">
+                    <label for="chucVu">Chức vụ chính quyền (nếu có):</label>
+                    <input type="text" name="chucVu" id="chucVu" [(ngModel)]="dataAdd.chucVu">
                 </div>
                 <div class="form-group">
-                    <label for="Unit">Đơn vị công tác:</label>
-                    <input type="text" name="Unit" id="Unit" required [(ngModel)]="dataAdd.unit">
+                    <label for="donViCongTac">Đơn vị công tác:</label>
+                    <input type="text" name="donViCongTac" id="donViCongTac" required [(ngModel)]="dataAdd.donViCongTac">
                 </div>
             </div>
         </section>
 
         <!-- <section class="form-section">
-          <h2 class="section-title">Thông tin liên hệ</h2>
-          <div class="form-row">
-              <div class="form-group">
-                  <label for="phoneNumber">Số điện thoại:</label>
-                  <input type="number" name="phoneNumber" id="phoneNumber" [(ngModel)]="dataAdd.phoneNumber" required>
-              </div>
-              <div class="form-group">
-                  <label for="email">Email:</label>
-                  <input type="email" name="email" id="email" [(ngModel)]="dataAdd.email" required>
-              </div>
-          </div>
-      </section> -->
+            <h2 class="section-title">Thông tin liên hệ</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phoneNumber">Số điện thoại:</label>
+                    <input type="number" name="phoneNumber" id="phoneNumber" [(ngModel)]="dataAdd.phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" [(ngModel)]="dataAdd.email" required>
+                </div>
+            </div>
+        </section> -->
 
         <section class="form-section">
             <h2 class="section-title">Thông tin chuyến đi</h2>
-            <div class="form-row">
+            <!-- <div class="form-row">
                 <div class="form-group">
                     <label for="Country">Quốc gia/Vùng lãnh thổ đến:</label>
                     <input type="text" name="Country" id="Country" [(ngModel)]="dataAdd.country" required>
@@ -136,32 +144,32 @@
                     <label for="InvitationUnit">Tên cơ quan/Tổ chức/Cá nhân mời (nếu có):</label>
                     <input type="text" name="InvitationUnit" id="InvitationUnit" [(ngModel)]="dataAdd.invitationUnit" required>
                 </div>
-            </div>
+            </div> -->
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="StartDate">Từ ngày:</label>
-                    <input type="date" name="StartDate" id="StartDate" [(ngModel)]="dataAdd.startDate" required>
+                    <label for="tuNgay">Từ ngày:</label>
+                    <input type="date" name="tuNgay" id="tuNgay" [(ngModel)]="dataAdd.tuNgay" required>
                 </div>
                 <div class="form-group">
-                    <label for="EndDate">Đến ngày:</label>
-                    <input type="date" name="EndDate" id="EndDate" [(ngModel)]="dataAdd.endDate" required>
+                    <label for="denNgay">Đến ngày:</label>
+                    <input type="date" name="denNgay" id="denNgay" [(ngModel)]="dataAdd.denNgay" required>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="monthBegin">Tháng bắt đầu:</label>
                     <input type="text" name="monthBegin" id="monthBegin" [(ngModel)]="dataAdd.monthBegin">
                 </div>
                 <div class="form-group">
                     <label for="thoiGianDiChuyen">Thời gian di chuyến:</label>
                     <input type="text" name="thoiGianDiChuyen" id="thoiGianDiChuyen" [(ngModel)]="dataAdd.thoigiandichuyen">
-                </div>
+                </div> -->
 
             </div>
 
             <div class="form-group">
                 <label>Mục đích chuyến đi:</label>
                 <div class="radio-group purpose-group">
-                    <input type="text" name="TripPurpose" id="TripPurpose1" [(ngModel)]="dataAdd.tripPurpose" required>
+                    <input type="text" name="mucDich" id="mucDich" [(ngModel)]="dataAdd.mucDich" required>
                 </div>
             </div>
         </section>
@@ -170,12 +178,12 @@
             <h2 class="section-title">Thông tin thông báo</h2>
             <div class="form-row">
                 <div class="form-group">
-                    <label for="notificationNumber">Số thông báo:</label>
-                    <input type="text" name="notificationNumber" id="notificationNumber" [(ngModel)]="dataAdd.notificationNumber" required>
+                    <label for="thuNgoNumber">Số thông báo:</label>
+                    <input type="text" name="thuNgoNumber" id="thuNgoNumber" [(ngModel)]="dataAdd.thuNgoNumber" required>
                 </div>
                 <div class="form-group">
-                    <label for="notificationDate">Ngày thông báo:</label>
-                    <input type="date" name="notificationDate" id="notificationDate" [(ngModel)]="dataAdd.notificationDate" required>
+                    <label for="thuNgoDate">Ngày thông báo:</label>
+                    <input type="date" name="thuNgoDate" id="thuNgoDate" [(ngModel)]="dataAdd.thuNgoDate" required>
                 </div>
             </div>
         </section>
@@ -184,40 +192,40 @@
             <h2 class="section-title">Nguồn kinh phí</h2>
             <div class="funding-group">
                 <div class="form-group">
-                    <label for="Sponsor">Bên mời:</label>
-                    <input type="text" name="Sponsor" id="Sponsor" [(ngModel)]="dataAdd.sponsor">
+                    <label for="taiTro">Bên mời:</label>
+                    <input type="text" name="taiTro" id="taiTro" [(ngModel)]="dataAdd.taiTro">
                 </div>
                 <div class="form-group">
-                    <label for="SelfFunded">Cá nhân tự túc:</label>
-                    <input type="text" name="SelfFunded" id="SelfFunded" [(ngModel)]="dataAdd.selfFunded">
+                    <label for="tuTuc">Cá nhân tự túc:</label>
+                    <input type="text" name="tuTuc" id="tuTuc" [(ngModel)]="dataAdd.tuTuc">
                 </div>
                 <div class="form-group">
-                    <label for="Hospital">Bệnh viện tài trợ:</label>
-                    <input type="text" name="Hospital" id="Hospital" [(ngModel)]="dataAdd.hospital">
+                    <label for="benhVien">Bệnh viện tài trợ:</label>
+                    <input type="text" name="benhVien" id="benhVien" [(ngModel)]="dataAdd.benhVien">
                 </div>
                 <div class="form-group">
-                    <label for="monthBegin">Giá trị:</label>
-                    <input type="text" name="monthBegin" id="monthBegin" [(ngModel)]="dataAdd.giaTri">
+                    <label for="giaTri">Giá trị:</label>
+                    <input type="text" name="giaTri" id="giaTri" [(ngModel)]="dataAdd.giaTri">
                 </div>
             </div>
         </section>
 
         <section class="form-section">
             <div class="form-group">
-                <label>Số lần xin đi nước ngoài trong năm:</label>
-                <input type="number" name="ForeignTripCount" id="ForeignTripCount" [(ngModel)]="dataAdd.foreignTripCount" required>
+                <label>Số lần tới:</label>
+                <input type="number" name="soLanToi" id="soLanToi" [(ngModel)]="dataAdd.soLanToi" required>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label>Số ngày đã nghỉ phép trong năm:</label>
                 <input type="text" name="ForeignTripCount" id="ForeignTripCount" [(ngModel)]="dataAdd.restCount" required>
             </div>
             <div class="form-group">
                 <label>Người được ủy quyền:</label>
                 <input type="text" name="ForeignTripCount" id="ForeignTripCount" [(ngModel)]="dataAdd.alternative" required>
-            </div>
+            </div> -->
             <div class="form-group">
                 <label>Ngày nộp báo cáo kết quả:</label>
-                <input type="date" name="ForeignTripCount" id="ForeignTripCount" [(ngModel)]="dataAdd.submitDay" required>
+                <input type="date" name="baoCaoSauChuyenCongTac" id="baoCaoSauChuyenCongTac" [(ngModel)]="dataAdd.baoCaoSauChuyenCongTac" required>
             </div>
         </section>
 
@@ -226,7 +234,7 @@
         <section class="form-section">
             <h2 class="section-title">Thông tin bổ sung</h2>
             <div class="form-row">
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="photoHochieu">Ngày hết hạn hộ chiếu:</label>
                     <input type="date" name="photoHochieu" id="photoHochieu" [(ngModel)]="dataAdd.photoHochieu">
                 </div>
@@ -249,20 +257,30 @@
                 <div class="form-group">
                     <label for="moiDichDanh">Mời đích danh:</label>
                     <input type="text" name="moiDichDanh" id="moiDichDanh" [(ngModel)]="dataAdd.moiDichDanh">
-                </div>
+                </div> -->
 
 
                 <div class="form-group">
-                    <label for="ngayXinDI">Ngày xin đi:</label>
-                    <input type="date" name="ngayXinDI" id="ngayXinDI" [(ngModel)]="dataAdd.ngayXindi">
+                    <label for="ngayGhiTrenTT">Ngày ghi trên TT:</label>
+                    <input type="date" name="ngayGhiTrenTT" id="ngayGhiTrenTT" [(ngModel)]="dataAdd.ngayGhiTrenTT">
                 </div>
                 <div class="form-group">
-                    <label for="ngayPnhanHS">Ngày phòng nhận hồ sơ:</label>
-                    <input type="date" name="ngayPnhanHS" id="ngayPnhanHS" [(ngModel)]="dataAdd.ngayPnhanHS">
+                    <label for="ngayPHTQTnhan">Ngày PHTQT nhận:</label>
+                    <input type="date" name="ngayPHTQTnhan" id="ngayPHTQTnhan" [(ngModel)]="dataAdd.ngayPHTQTnhan">
                 </div>
                 <div class="form-group">
-                    <label for="ngaychuyenHSsangP">Ngày chuyển hồ sơ sang phòng:</label>
-                    <input type="date" name="ngaychuyenHSsangP" id="ngaychuyenHSsangP" [(ngModel)]="dataAdd.ngaychuyenHSsangP">
+                    <label for="bqdpheDuyet">BQĐ phê duyệt:</label>
+                    <input type="text" name="bqdpheDuyet" id="bqdpheDuyet" [(ngModel)]="dataAdd.bqdpheDuyet">
+                </div>
+
+                <div class="form-group">
+                    <label for="ghiChu">Ghi chú:</label>
+                    <input type="text" name="ghiChu" id="ghiChu" [(ngModel)]="dataAdd.ghiChu">
+                </div>
+
+                <div class="form-group">
+                    <label for="quaTang">Quà tặng:</label>
+                    <input type="text" name="quaTang" id="quaTang" [(ngModel)]="dataAdd.quaTang">
                 </div>
             </div>
         </section>
