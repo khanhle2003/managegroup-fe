@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { YearService } from '../../../services/years.service';
 
 @Component({
   selector: 'app-trip2',
@@ -18,7 +17,7 @@ export class Trip2Component implements OnInit {
   selectedYear: number | null = null;
   averageDaysByYear: { [key: number]: number | null } = {};
 
-  constructor(private http: HttpClient, private yearService: YearService) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.http.get<any[]>('http://localhost:8080/auth/qldoan/columns2').subscribe(data => {
@@ -55,7 +54,6 @@ export class Trip2Component implements OnInit {
     });
   }
 
-  // thêm điều kiện để iểm tra xem datestring có null hay không
   private convertToDate(dateString: string): Date | null {
     if (!dateString || dateString === 'Không áp dụng') {
       return null;
@@ -75,7 +73,7 @@ export class Trip2Component implements OnInit {
   }
 
   onYearChange(): void {
-    console.log('Selected Year:', this.selectedYear); //thêm console log để xem chi tiết năm nào được hiẻn thị
+    console.log('Selected Year:', this.selectedYear);
     if (this.selectedYear !== null) {
       this.http.get<number>(`http://localhost:8080/auth/qldoan/average-by-year2?year=${this.selectedYear}`).subscribe(
         (data) => {
