@@ -34,7 +34,6 @@ export class SectionCountryComponent {
 
   ngOnInit() {
     this.fetchCountries();
-
   }
   fetchCountries() {
     this.http.get<string[]>('http://localhost:8080/api/data/countries')
@@ -45,6 +44,7 @@ export class SectionCountryComponent {
 
           const initialCounts = new Array(this.selectedCategories.length).fill(0);
           this.chartComponent.updateChartData(this.selectedCategories, initialCounts, []);
+          this.logSelected();
         },
         error: (error) => {
           console.error('Error fetching countries:', error);
