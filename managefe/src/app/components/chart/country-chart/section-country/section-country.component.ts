@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { CountryChartComponent } from '../country-chart.component';
 import { ButtonModule } from 'primeng/button';
 import { forkJoin } from 'rxjs';
-import { YearService } from '../../../../services/year.service';
+import { YearService } from '../../../../services/years.service';
 
 
 @Component({
@@ -45,6 +45,7 @@ export class SectionCountryComponent {
 
           const initialCounts = new Array(this.selectedCategories.length).fill(0);
           this.chartComponent.updateChartData(this.selectedCategories, initialCounts, []);
+          this.logSelected();
         },
         error: (error) => {
           console.error('Error fetching countries:', error);

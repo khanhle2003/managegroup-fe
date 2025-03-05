@@ -98,15 +98,26 @@
                         label: 'Số lượng quốc gia đoàn ra',
                         backgroundColor: 'rgba(0, 255, 255, 1)',
                         borderColor: 'rgba(0, 255, 255, 1)',
-                        data: [...counts]
-                    }, 
+                        data: [...counts],
+                        tooltip: {
+                          callbacks: {
+                              label: (tooltipItem: { dataIndex: number }) => countries[tooltipItem.dataIndex]
+                          }
+                      }
+
+                    },
                         {
                             label: 'Số lượng quốc gia đoàn vào',
                             backgroundColor: 'rgba(255, 26, 145, 1)',
                             borderColor: 'rgba(255, 26, 145, 1)',
-                            data: [...countsFromSecondAPI]
+                            data: [...countsFromSecondAPI],
+                            tooltip: {
+                              callbacks: {
+                                  label: (tooltipItem: { dataIndex: number }) => countries[tooltipItem.dataIndex]
+                              }
+                          }
                         }
-                
+
                 ]
             };
             this.cd.detectChanges();

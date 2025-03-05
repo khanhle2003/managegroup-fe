@@ -18,7 +18,7 @@ export class SectionInvtComponent {
   selectedCategories: any[] = [];
    categories: any[] = [];
    isDisabled: boolean = false;
-   selectedYear:string = '2012';
+   selectedYear:string = '2023';
    constructor(private http: HttpClient, private chartComponent: InvtChartComponent, private cdr: ChangeDetectorRef,    private yearService: YearService) {
     this.yearService.currentYear.subscribe(year => {
       this.selectedYear = year;
@@ -29,30 +29,40 @@ export class SectionInvtComponent {
        this.logSelected();
     }
 
- 
+
     fetchCountries() {
       this.http.get<string[]>('http://localhost:8080/api/data/invitation')
         .subscribe({
           next: (data: string[]) => {
             this.categories = data;
             this.selectedCategories = this.categories.slice(0, 10);
-            
-        
-        
+
+
+
           },
           error: (error) => {
             console.error('Error fetching countries:', error);
           }
         });
     }
-    
+    onSelectionChange() {
+      if (this.selectedCategories.length > 15) {
+        alert('Chọn tối đa 15 đơn vị');
+
+        // Revert the last selection by removing the last added item
+        this.selectedCategories = this.selectedCategories.slice(0, 15);
+        return;
+      }
+      this.logSelected();
+    }
+
     logSelected() {
       if (this.selectedCategories.length === 0) {
         this.isDisabled = true;
-        return; 
+        return;
       } else if (this.selectedCategories.length > 15) {
         this.isDisabled = true;
-        return; 
+        return;
       } else {
         this.isDisabled = false;
       }
@@ -65,15 +75,15 @@ export class SectionInvtComponent {
       };
 
       console.log('Request Body:', requestBody);
-    
+
       forkJoin({
         firstAPI: this.http.post('http://localhost:8080/api/search/invitation/doanra', requestBody),
       }).subscribe({
         next: (results: any) => {
-          const firstCounts = this.selectedCategories.map(category => 
+          const firstCounts = this.selectedCategories.map(category =>
             results.firstAPI.countByUnit[category] || 0
           );
-         
+
           this.chartComponent.updateChartData(this.selectedCategories, firstCounts);
         },
         error: (error) => {
