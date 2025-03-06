@@ -34,7 +34,6 @@ export class SectionCountryComponent {
 
   ngOnInit() {
     this.fetchCountries();
-
   }
   fetchCountries() {
     this.http.get<string[]>('http://localhost:8080/api/data/countries')

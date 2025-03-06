@@ -1,10 +1,10 @@
 .user-profile {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: #f4f7fa;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .profile-header {
@@ -16,29 +16,64 @@
 }
 
 .profile-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
 }
 
 .info-group {
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-radius: 6px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid #e6e9ed;
+}
+
+.info-group:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.info-group h3 {
+  color: #2c3e50;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e6e9ed;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .info-item {
-    margin: 10px 0;
-    color: #4a5568;
-    line-height: 1.6;
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f3f5;
+  transition: background-color 0.2s ease;
 }
 
+.info-item:last-child {
+  border-bottom: none;
+}
+.info-item:hover {
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
 .info-item strong {
-    color: #2d3748;
-    font-weight: 600;
-    margin-right: 8px;
+  color: #34495e;
+  font-weight: 600;
+  flex: 0 0 40%;
+  margin-right: 15px;
 }
 
+.info-item span {
+  color: #2c3e50;
+  flex: 0 0 60%;
+  text-align: right;
+}
 .loading {
     text-align: center;
     padding: 40px;
@@ -47,18 +82,28 @@
 }
 
 @media (max-width: 768px) {
-    .user-profile {
-        margin: 10px;
-        padding: 15px;
-    }
+  .user-profile {
+      padding: 15px;
+  }
 
-    .profile-content {
-        grid-template-columns: 1fr;
-    }
+  .profile-content {
+      grid-template-columns: 1fr;
+  }
 
-    .profile-header {
-        font-size: 20px;
-    }
+  .info-group {
+      padding: 15px;
+  }
+
+  .info-item {
+      flex-direction: column;
+  }
+
+  .info-item strong,
+  .info-item span {
+      text-align: left;
+      flex: none;
+      margin-right: 0;
+  }
 }
 input:focus,
 select:focus {
