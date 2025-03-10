@@ -227,7 +227,7 @@
                 </div>
                 <div class="form-group">
                     <label for="khac">Khác:</label>
-                    <input type="text" name="khac" id="khac" [(ngModel)]="userData.Khac">
+                    <input type="text" name="khac" id="khac" [(ngModel)]="userData.khac">
                 </div>
                 <div class="form-group">
                   <label for="moiDichDanh">Mời đích danh:</label>
@@ -247,6 +247,151 @@
                   <label for="ngaychuyenHSsangP">Ngày chuyển hồ sơ sang phòng:</label>
                   <input type="text" name="ngaychuyenHSsangP" id="ngaychuyenHSsangP" [(ngModel)]="userData.ngaychuyenHSsangP">
               </div>
+            </div>
+        </section>
+  
+        <section class="form-section">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="dauThoiGian">Đầu thời gian:</label>
+                    <input type="text" name="dauThoiGian" id="dauThoiGian" [(ngModel)]="userData.dauthoigian">
+                </div>
+                <div class="form-group">
+                    <label for="lanhanvien">Là nhân viên:</label>
+                    <input type="text" name="lanhanvien" id="lanhanvien" [(ngModel)]="userData.lanhanvien">
+                </div>
+                <div class="form-group">
+                    <label for="codcmoihaykhong">Có được mời hay không:</label>
+                    <input type="text" name="codcmoihaykhong" id="codcmoihaykhong" [(ngModel)]="userData.codcmoihaykhong">
+                </div>
+                <div class="form-group">
+                    <label for="baogomthoigiandichuyenchua">Bao gồm thời gian di chuyển chưa:</label>
+                    <input type="text" name="baogomthoigiandichuyenchua" id="baogomthoigiandichuyenchua" [(ngModel)]="userData.baogomthoigiandichuyenchua">
+                </div>
+                <div class="form-group">
+                    <label for="ndcuthe">Nội dung cụ thể:</label>
+                    <input type="text" name="ndcuthe" id="ndcuthe" [(ngModel)]="userData.ndcuthe">
+                </div>
+                <div class="form-group">
+                    <label for="bangiaocv">Bàn giao công việc:</label>
+                    <input type="text" name="bangiaocv" id="bangiaocv" [(ngModel)]="userData.bangiaocv">
+                </div>
+                <div class="form-group">
+                    <label for="tentcmoi">Tên tổ chức, cá nhân mời:</label>
+                    <input type="text" name="tentcmoi" id="tentcmoi" [(ngModel)]="userData.tentcmoi">
+                </div>
+                <div class="form-group">
+                    <label for="ndhoinghi">Nội dung cụ thể hội nghị:</label>
+                    <input type="text" name="ndhoinghi" id="ndhoinghi" [(ngModel)]="userData.ndhoinghi">
+                </div>
+                <div class="form-group">
+                    <label for="ndviecrieng">Nội dung cụ thể việc riêng:</label>
+                    <input type="text" name="ndviecrieng" id="ndviecrieng" [(ngModel)]="userData.ndviecrieng">
+                </div>
+                <div class="form-group">
+                    <label for="tcngoaiBvtaitro">Tổ chức, cá nhân ngoài bệnh viện tài trợ:</label>
+                    <input type="text" name="tcngoaiBvtaitro" id="tcngoaiBvtaitro" [(ngModel)]="userData.tcngoaiBvtaitro">
+                </div>
+                <div class="form-group">
+                    <label for="dangtaithumoi">Đăng tải thư mời:</label>
+                    <input type="text" name="dangtaithumoi" id="dangtaithumoi" [(ngModel)]="userData.dangtaithumoi">
+                </div>
+                <div class="form-group">
+                    <label for="Thongtindinhkem">Thông tin đính kèm:</label>
+                    <input type="text" name="Thongtindinhkem" id="Thongtindinhkem" [(ngModel)]="userData.thongtindinhkem">
+                </div>
+                <div class="form-group">
+                    <label for="CCCD">CCCD:</label>
+                    <input type="text" name="CCCD" id="CCCD" [(ngModel)]="userData.cccd">
+                </div>
+                <div class="form-group">
+                    <label for="oral">Đăng tải chứng nhận/xác nhận báo cáo viên:</label>
+                    <input type="text" name="oral" id="oral" [(ngModel)]="userData.oral">
+                </div>
+                <div class="form-group">
+                    <label for="qddinuocngoai">Đã có quyết định đi nước ngoài chưa:</label>
+                    <input type="text" name="qddinuocngoai" id="qddinuocngoai" [(ngModel)]="userData.qddinuocngoai">
+                </div>
+                <div class="form-group">
+                    <label for="tinhtrangchuyendi">Tình trạng chuyến đi:</label>
+                    <input type="text" name="tinhtrangchuyendi" id="tinhtrangchuyendi" [(ngModel)]="userData.tinhtrangchuyendi">
+                </div>
+                <div class="form-group">
+                    <label for="emailLD">Email lãnh đạo:</label>
+                    <input type="text" name="emailLD" id="emailLD" [(ngModel)]="userData.emailLD">
+                </div>
+                <div class="form-group">
+                    <label for="ngaydithucte">Ngày đi thực tế:</label>
+                    <input type="text" name="ngaydithucte" id="ngaydithucte" [(ngModel)]="userData.ngaydithucte">
+                </div>
+                <div class="form-group">
+                    <label for="ngaydenthucte">Ngày đến thực tế:</label>
+                    <input type="text" name="ngaydenthucte" id="ngaydenthucte" [(ngModel)]="userData.ngaydenthucte">
+                </div>
+                <div class="form-group">
+                    <label for="baocaotomtat">Báo cáo tóm tắt:</label>
+                    <input type="text" name="baocaotomtat" id="baocaotomtat" [(ngModel)]="userData.baocaotomtat">
+                </div>
+                <div class="form-group">
+                    <label for="tiepxuccoquan">Tiếp xúc cơ quan:</label>
+                    <input type="text" name="tiepxuccoquan" id="tiepxuccoquan" [(ngModel)]="userData.tiepxuccoquan">
+                </div>
+                <div class="form-group">
+                    <label for="viechaphanhbaovebimatnn">Việc chấp hành quy định bảo vệ bí mật Nhà nước:</label>
+                    <input type="text" name="viechaphanhbaovebimatnn" id="viechaphanhbaovebimatnn" [(ngModel)]="userData.viechaphanhbaovebimatnn">
+                </div>
+                <div class="form-group">
+                    <label for="vdelienquandenchinhtrinoibo">Những vấn đề khác liên quan đến chính trị nội bộ:</label>
+                    <input type="text" name="vdelienquandenchinhtrinoibo" id="vdelienquandenchinhtrinoibo" [(ngModel)]="userData.vdelienquandenchinhtrinoibo">
+                </div>
+                <div class="form-group">
+                    <label for="hdngoaikehoach">Hoạt động ngoài kế hoạch:</label>
+                    <input type="text" name="hdngoaikehoach" id="hdngoaikehoach" [(ngModel)]="userData.hdngoaikehoach">
+                </div>
+                <div class="form-group">
+                    <label for="Certificate">Đăng tải bằng cấp chứng chỉ, chứng nhận:</label>
+                    <input type="text" name="Certificate" id="Certificate" [(ngModel)]="userData.certificate">
+                </div>
+                <div class="form-group">
+                    <label for="ndynghiaapdungvatrienkhaibenhvien">Những nội dung có ý nghĩa thiết thực có thể áp dụng và triển khai đối với Bệnh viện và đơn vị:</label>
+                    <input type="text" name="ndynghiaapdungvatrienkhaibenhvien" id="ndynghiaapdungvatrienkhaibenhvien" [(ngModel)]="userData.ndynghiaapdungvatrienkhaibenhvien">
+                </div>
+                <div class="form-group">
+                    <label for="dexuatkiennghi">Đề xuất kiến nghị:</label>
+                    <input type="text" name="dexuatkiennghi" id="dexuatkiennghi" [(ngModel)]="userData.dexuatkiennghi">
+                </div>
+                <div class="form-group">
+                    <label for="ttquyetdinh">Tình trạng quyết định:</label>
+                    <input type="text" name="ttquyetdinh" id="ttquyetdinh" [(ngModel)]="userData.ttquyetdinh">
+                </div>
+                <div class="form-group">
+                    <label for="lydohoan">Lý do hoãn:</label>
+                    <input type="text" name="lydohoan" id="lydohoan" [(ngModel)]="userData.lydohoan">
+                </div>
+                <div class="form-group">
+                    <label for="ndchuyendibihoan">Nội dung chuyến đi bị hoãn:</label>
+                    <input type="text" name="ndchuyendibihoan" id="ndchuyendibihoan" [(ngModel)]="userData.ndchuyendibihoan">
+                </div>
+                <div class="form-group">
+                    <label for="mayte">Mã y tế:</label>
+                    <input type="text" name="mayte" id="mayte" [(ngModel)]="userData.mayte">
+                </div>
+                <div class="form-group">
+                    <label for="editURL">URL chỉnh sửa:</label>
+                    <input type="text" name="editURL" id="editURL" [(ngModel)]="userData.editURL">
+                </div>
+                <div class="form-group">
+                    <label for="docURL">URL tài liệu:</label>
+                    <input type="text" name="docURL" id="docURL" [(ngModel)]="userData.docURL">
+                </div>
+                <div class="form-group">
+                    <label for="increment">Tăng:</label>
+                    <input type="text" name="increment" id="increment" [(ngModel)]="userData.increment">
+                </div>
+                <div class="form-group">
+                    <label for="pdfURL">URL PDF:</label>
+                    <input type="text" name="pdfURL" id="pdfURL" [(ngModel)]="userData.pdfURL">
+                </div>
             </div>
         </section>
   
