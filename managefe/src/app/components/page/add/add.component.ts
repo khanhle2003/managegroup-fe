@@ -100,7 +100,7 @@ export class DataAdd {
   qddinuocngoai: string = ""; // Quyết định đi nước ngoài
   baocaotomtat: string = ""; // Báo cáo tóm tắt
   country: string = ""; // Quốc gia đến
-  Employee: string = ""; // loại nhân viên
+  mployee: string = ""; // loại nhân viên
 
   // Thông tin tài chính
   selfFunded: string = ""; // Tự túc
@@ -150,4 +150,5 @@ export class DataAdd {
   songaynghiphep: string = ""; // Số ngày nghỉ phép
   hdngoaikehoach: string = ""; // Hoạt động ngoài kế hoạch
   thongtindinhkem: string = ""; // Thông tin đính kèm
+
 }
