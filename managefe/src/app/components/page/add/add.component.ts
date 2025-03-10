@@ -136,9 +136,19 @@ export class DataAdd {
   ndchuyendibihoan: string = ""; // Nội dung chuyến đi bị hoãn
   dexuatkiennghi: string = ""; // Đề xuất kiến nghị
   ndynghiaapdungvatrienkhaibenhvien: string = ""; // Nội dung ý nghĩa áp dụng tại bệnh viện
-  mayte: string = ""; // Mã y tế
+  dangtaithumoi: string = ""; // Đăng tải thư mời
+  mayte: String = ""; // Mã y tế
   editURL: string = ""; // URL chỉnh sửa
   docURL: string = ""; // URL tài liệu
   increment: string = ""; // Tăng
   pdfURL: string = ""; // URL PDF
+  lanhanvien: string = ""; // Là nhân viên
+  codcmoihaykhong: string = ""; // Có được mời hay không
+  baogomthoigiandichuyenchua: string = ""; // Bao gồm thời gian di chuyển chưa
+  ndcuthe: string = ""; // Nội dung cụ thể
+  bangiaocv: string = ""; // Bàn giao công việc
+  songaynghiphep: string = ""; // Số ngày nghỉ phép
+  hdngoaikehoach: string = ""; // Hoạt động ngoài kế hoạch
+  thongtindinhkem: string = ""; // Thông tin đính kèm
+
 }

@@ -308,6 +308,7 @@
           <input type="text" name="ndynghiaapdungvatrienkhaibenhvien" id="ndynghiaapdungvatrienkhaibenhvien"
             [(ngModel)]="dataAdd.ndynghiaapdungvatrienkhaibenhvien">
         </div>
+        <div class="form-group"></div>
         <div class="form-group">
           <label for="khac">Khác:</label>
           <input type="text" name="khac" id="khac" [(ngModel)]="dataAdd.khac">
@@ -333,6 +334,76 @@
           <input type="text" name="pdfURL" id="pdfURL" [(ngModel)]="dataAdd.pdfURL">
         </div>
       </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="dangtaithumoi">Đăng tải thư mời:</label>
+          <input type="text" name="dangtaithumoi" id="dangtaithumoi" [(ngModel)]="dataAdd.dangtaithumoi">
+        </div>
+        <div class="form-group">
+          <label for="mayte">Mã y tế:</label>
+          <input type="text" name="mayte" id="mayte" [(ngModel)]="dataAdd.mayte">
+        </div>
+        <div class="form-group">
+          <label for="editURL">URL chỉnh sửa:</label>
+          <input type="text" name="editURL" id="editURL" [(ngModel)]="dataAdd.editURL">
+        </div>
+        <div class="form-group">
+          <label for="docURL">URL tài liệu:</label>
+          <input type="text" name="docURL" id="docURL" [(ngModel)]="dataAdd.docURL">
+        </div>
+        <div class="form-group">
+          <label for="increment">Tăng:</label>
+          <input type="text" name="increment" id="increment" [(ngModel)]="dataAdd.increment">
+        </div>
+        <div class="form-group">
+          <label for="pdfURL">URL PDF:</label>
+          <input type="text" name="pdfURL" id="pdfURL" [(ngModel)]="dataAdd.pdfURL">
+        </div>
+        <div class="form-group">
+          <label for="lanhanvien">Là nhân viên:</label>
+          <select name="lanhanvien" id="lanhanvien" [(ngModel)]="dataAdd.lanhanvien">
+            <option value="Có">Có</option>
+            <option value="Không">Không</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="codcmoihaykhong">Có được mời hay không:</label>
+          <select name="codcmoihaykhong" id="codcmoihaykhong" [(ngModel)]="dataAdd.codcmoihaykhong">
+            <option value="Có">Có</option>
+            <option value="Không">Không</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="baogomthoigiandichuyenchua">Bao gồm thời gian di chuyển chưa:</label>
+          <select name="baogomthoigiandichuyenchua" id="baogomthoigiandichuyenchua" [(ngModel)]="dataAdd.baogomthoigiandichuyenchua">
+            <option value="Có">Có</option>
+            <option value="Không">Không</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="codcmoihaykhong">Có được mời hay không:</label>
+          <input type="text" name="codcmoihaykhong" id="codcmoihaykhong" [(ngModel)]="dataAdd.codcmoihaykhong">
+        </div>
+        <div class="form-group">
+          <label for="baogomthoigiandichuyenchua">Bao gồm thời gian di chuyển chưa:</label>
+          <input type="text" name="baogomthoigiandichuyenchua" id="baogomthoigiandichuyenchua" [(ngModel)]="dataAdd.baogomthoigiandichuyenchua">
+        </div>
+        <div class="form-group">
+          <label for="ndcuthe">Nội dung cụ thể:</label>
+          <input type="text" name="ndcuthe" id="ndcuthe" [(ngModel)]="dataAdd.ndcuthe">
+        </div>
+        <div class="form-group">
+          <label for="bangiaocv">Bàn giao công việc:</label>
+          <input type="text" name="bangiaocv" id="bangiaocv" [(ngModel)]="dataAdd.bangiaocv">
+        </div>
+        <div class="form-group">
+          <label for="songaynghiphep">Số ngày nghỉ phép:</label>
+          <input type="text" name="songaynghiphep" id="songaynghiphep" [(ngModel)]="dataAdd.songaynghiphep">
+        </div>
+        <div class="form-group">
+          <label for="hdngoaikehoach">Hoạt động ngoài kế hoạch:</label>
+      </div>
+    </div>
     </section>
 
   </form>
