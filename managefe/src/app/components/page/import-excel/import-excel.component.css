@@ -1,11 +1,45 @@
-.btn {
+/* Container chứa dropdown */
+.import-container {
+  margin: 20px;
+}
 
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 16px;
-  }
+/* Button chính */
+.btn-secondary {
+  background-color: #6c757d; /* Màu nền mặc định của Bootstrap */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
+.btn-secondary:hover {
+  background-color: #5a6268; /* Màu nền khi hover */
+}
 
+/* Dropdown menu */
+.dropdown-menu {
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 0;
+}
+
+/* Các mục trong dropdown */
+.dropdown-item {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa; /* Màu nền khi hover */
+  color: #000;
+}
+
+/* Tùy chỉnh mũi tên dropdown */
+.dropdown-toggle::after {
+  margin-left: 10px;
+}

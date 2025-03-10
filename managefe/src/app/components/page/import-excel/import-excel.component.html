@@ -1,19 +1,12 @@
-<div class="container">
-  <form enctype="multipart/form-data">
-    <div class="form-group">
-
-      <input
-        type="file"
-        id="file"
-        #fileInput
-        (change)="onFileChange($event)"
-        class="d-none"
-        accept=".xlsx, .xls"
-      />
-
-      <button type="button" class="btn btn-primary" (click)="onUploadClick(fileInput)">
-        Thêm dữ liệu Excel
-      </button>
+<div class="import-container">
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Import Excel
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" (click)="importFile('http://localhost:8080/api/import')">Năm 2024</a>
+      <a class="dropdown-item" (click)="importFile('http://localhost:8080/api/import1')">Năm 2025 Đủ</a>
+      <a class="dropdown-item" (click)="importFile('http://localhost:8080/api/importNull')">Năm 2025 Thiếu</a>
     </div>
-  </form>
+  </div>
 </div>
