@@ -118,7 +118,7 @@ Xóa mục đã chọn
         <th data-header="Email">Email</th>
         <th data-header="Quốc gia">Quốc gia</th>
         <th data-header="Đơn vị mời">Đơn vị mời</th>
-        <th data-header="Đơn vị mời">Mời đích danh</th>
+        <th data-header="Mời đích danh">Mời đích danh</th>
         <th data-header="Mục đích">Mục đích</th>
         <th data-header="Ngày bắt đầu">Ngày bắt đầu</th>
         <th data-header="Tháng bắt đầu">Tháng bắt đầu</th>
@@ -135,14 +135,19 @@ Xóa mục đã chọn
         <th data-header="Ngày thông báo">Ngày thông báo</th>
         <th data-header="Ngày chuyển hồ sơ sang Phòng">Ngày chuyển hồ sơ sang phòng</th>
         <th data-header="Người tiếp nhận">Người tiếp nhận</th>
-        <th data-header="Số nghỉ phép">Số quyết định</th>
-        <th data-header="Ngày nghỉ phép">Ngày quyết định</th>
+        <th data-header="Số quyết định">Số quyết định</th>
+        <th data-header="Ngày quyết định">Ngày quyết định</th>
         <th data-header="Ngày nộp">Ngày nộp</th>
         <th data-header="Ảnh hộ chiếu">Ảnh hộ chiếu</th>
         <th data-header="Nội dung">Nội dung</th>
         <th data-header="Tên báo cáo">Tên báo cáo</th>
         <th data-header="Hoãn/Hủy">Hoãn/Hủy</th>
         <th data-header="Khác">Khác</th>
+        <th data-header="Mã y tế">Mã y tế</th>
+        <th data-header="URL chỉnh sửa">URL chỉnh sửa</th>
+        <th data-header="URL tài liệu">URL tài liệu</th>
+        <th data-header="increment">Tăng</th>
+        <th data-header="URL PDF">URL PDF</th>
       </tr>
     </thead>
     <tbody>
@@ -189,6 +194,11 @@ Xóa mục đã chọn
     <td>{{ item.tenBaoCao || '' }}</td>
     <td>{{ item.hoanHuy || '' }}</td>
     <td>{{ item.khac || '' }}</td>
+    <td>{{ item.maYTe || '' }}</td>
+    <td>{{ item.urlEdit || '' }}</td>
+    <td>{{ item.urlDocument || '' }}</td>
+    <td>{{ item.increment || '' }}</td>
+    <td>{{ item.urlPDF || '' }}</td>
   </tr>
   </tbody>
 </table>

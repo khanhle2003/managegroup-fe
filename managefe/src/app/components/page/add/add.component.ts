@@ -100,7 +100,7 @@ export class DataAdd {
   qddinuocngoai: string = ""; // Quyết định đi nước ngoài
   baocaotomtat: string = ""; // Báo cáo tóm tắt
   country: string = ""; // Quốc gia đến
-  Employee: string = ""; // loại nhân viên
+  mployee: string = ""; // loại nhân viên
 
   // Thông tin tài chính
   selfFunded: string = ""; // Tự túc
@@ -136,4 +136,9 @@ export class DataAdd {
   ndchuyendibihoan: string = ""; // Nội dung chuyến đi bị hoãn
   dexuatkiennghi: string = ""; // Đề xuất kiến nghị
   ndynghiaapdungvatrienkhaibenhvien: string = ""; // Nội dung ý nghĩa áp dụng tại bệnh viện
+  mayte: string = ""; // Mã y tế
+  editURL: string = ""; // URL chỉnh sửa
+  docURL: string = ""; // URL tài liệu
+  increment: string = ""; // Tăng
+  pdfURL: string = ""; // URL PDF
 }
